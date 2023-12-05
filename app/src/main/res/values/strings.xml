@@ -38,6 +38,11 @@
     <string name="include_ads">Include Ads</string>
     <string name="loading" translatable="false">Loading</string>
 
+    <string name="name_exits">Name already exists</string>
+    <string name="name_empty">Name cannot be empty</string>
+    <string name="name_unchange">Name unchanged</string>
+    <string name="file_not_exist">File doesn\'t exist</string>
+
     <string name="facebook_app_id" translatable="false">658479892893626</string>
     <string name="facebook_client_token" translatable="false">4581f4e98590e6488d30a686ee373133</string>
 </resources>
