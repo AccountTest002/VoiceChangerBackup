@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_toolbar">@dimen/_40sdp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="icon_size">10dp</dimen>
+
+    <dimen name="margin_end_ak">@dimen/_69sdp</dimen>
+    <dimen name="margin_end_dino">@dimen/_69sdp</dimen>
+    <dimen name="margin_end_revolver">@dimen/_45sdp</dimen>
+    <dimen name="margin_end_rifles">@dimen/_80sdp</dimen>
+    <dimen name="margin_end_machinegun">@dimen/_87sdp</dimen>
+    <dimen name="margin_end_blaster">@dimen/_86sdp</dimen>
+    <dimen name="margin_end_acr">@dimen/_83sdp</dimen>
+    <dimen name="margin_end_hk416">@dimen/_75sdp</dimen>
+    <dimen name="margin_end_awm">@dimen/_93sdp</dimen>
+    <dimen name="margin_end_m24">@dimen/_95sdp</dimen>
+
+    <style name="BottomSheetDialogStyle" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
