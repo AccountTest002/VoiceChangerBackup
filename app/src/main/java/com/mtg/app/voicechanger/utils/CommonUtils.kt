@@ -20,24 +20,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object CommonUtils {
-//    private var firebaseAnalytics: FirebaseAnalytics? = null
-//    fun setFirebaseAnalytics(firebaseAnalytics: FirebaseAnalytics?) {
-//        this.firebaseAnalytics = firebaseAnalytics
-//    }
-//
-//    fun logEvent(value: String) {
-//        if (firebaseAnalytics == null) {
-//            return
-//        }
-//        try {
-//            Log.d("android_log", "logEvent: $value")
-//            val bundle = Bundle()
-//            bundle.putString("EVENT", value)
-//            firebaseAnalytics!!.logEvent(value, bundle)
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//    }
 
     fun setUserProperties(properties: String?, value: String?, context: Context?) {
         try {

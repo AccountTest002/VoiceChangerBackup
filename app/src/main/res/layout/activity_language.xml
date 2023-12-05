@@ -37,7 +37,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/grand_bold"
             android:text="@string/language"
             android:textColor="@color/color_274577"
             android:textSize="@dimen/_16sdp"

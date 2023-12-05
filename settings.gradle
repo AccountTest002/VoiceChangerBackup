@@ -17,4 +17,3 @@ dependencyResolutionManagement {
 rootProject.name = "VoiceChanger"
 include ':app'
 include ':MTGLibs'
-include ':custom_seekbar'

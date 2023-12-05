@@ -36,7 +36,7 @@ object ActionUtils {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf<String>(Constants.EMAIL))
         emailIntent.putExtra(
             Intent.EXTRA_SUBJECT,
-            context.getString(R.string.app_name) + " Feedback"
+            context.getString(R.string.app_name_store) + " Feedback"
         )
         emailIntent.putExtra(Intent.EXTRA_TEXT, "")
         emailIntent.selector = selectorIntent

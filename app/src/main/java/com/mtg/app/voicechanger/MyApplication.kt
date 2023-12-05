@@ -28,15 +28,10 @@ class MyApplication : MyApplication(), Application.ActivityLifecycleCallbacks {
         RemoteConfigManager.instance?.loadRemote()
         AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity::class.java)
         AppOpenManager.getInstance().disableAppResumeWithActivity(PermissionStorageDialog::class.java)
-//        AppOpenManager.getInstance().disableAppResumeWithRewardActivity(HomeActivity::class.java)
-//        AppOpenManager.getInstance().specialAppResumeWithActivity(IncomingActivity::class.java)
         registerActivityLifecycleCallbacks(this)
         EventLogger.init(applicationContext)
-        //todo facebook sdk
         AudienceNetworkInitializeHelper.initialize(this)
         FacebookSdk.sdkInitialize(this);
-//        Common.createDatabase(DbRepository(this),this)
-//        Common.printHashKey(this)
         AppPreferences(this)
     }
 
@@ -44,14 +39,14 @@ class MyApplication : MyApplication(), Application.ActivityLifecycleCallbacks {
         super.onActivityPreCreated(activity, savedInstanceState)
         val removableActivities = ArrayList<Activity>()
         if (activity is SplashActivity) {
-            if (!lsActivity.isEmpty()) {
+            if (lsActivity.isNotEmpty()) {
                 for (a in lsActivity) {
                     a.finish()
                     removableActivities.add(a)
                 }
             }
         }
-        lsActivity.removeAll(removableActivities)
+        lsActivity.removeAll(removableActivities.toSet())
         lsActivity.add(activity)
     }
 
@@ -88,13 +83,8 @@ class MyApplication : MyApplication(), Application.ActivityLifecycleCallbacks {
     }
 
     override fun getPurchaseList(): MutableList<PurchaseModel> {
-//        return Arrays.asList(
-//            PurchaseModel(PRODUCT_LIFETIME_OLD, PurchaseModel.ProductType.INAPP),
-//            PurchaseModel(PRODUCT_LIFETIME, PurchaseModel.ProductType.INAPP)
-//        )
         return mutableListOf(
             PurchaseModel(BillingDialog.PRODUCT_ID, PurchaseModel.ProductType.INAPP),
-//            PurchaseModel(BillingDialog.PRODUCT_SUBS, PurchaseModel.ProductType.SUBS)
         )
     }
 

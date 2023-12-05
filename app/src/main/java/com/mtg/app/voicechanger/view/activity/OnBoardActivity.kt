@@ -4,11 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
 import androidx.viewpager2.widget.ViewPager2
-import com.common.control.interfaces.AdCallback
 import com.common.control.manager.AdmobManager
 import com.common.control.manager.AppOpenManager
 import com.mtg.app.voicechanger.databinding.ActivityOnboardingBinding
-import com.mtg.app.voicechanger.AdCache
 import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
@@ -82,15 +80,6 @@ class OnBoardActivity :
             if (binding.viewpagerOnboard.currentItem == (binding.viewpagerOnboard.adapter as ViewPagerAddFragmentsAdapter).itemCount - 1) {
                 SharedPrefs.put(this, Const.KEY_FIRST_INTRO, true)
                 startActivity(Intent(this@OnBoardActivity, MainActivity::class.java))
-                AdmobManager.getInstance().showInterstitial(this,
-                    AdCache.getInstance().interGuide,
-                    object : AdCallback() {
-                        override fun onAdClosed() {
-                            super.onAdClosed()
-                            AdCache.getInstance().interGuide = null
-                            finish()
-                        }
-                    })
 
             } else {
                 binding.viewpagerOnboard.currentItem++

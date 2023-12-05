@@ -25,7 +25,6 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_40sdp"
         android:layout_marginBottom="@dimen/_20sdp"
-        android:fontFamily="@font/grand_regular"
         android:gravity="center"
         android:lineSpacingExtra="@dimen/_5sdp"
         android:text="@string/please_check_the_internet_or_vpn_and_try_again"

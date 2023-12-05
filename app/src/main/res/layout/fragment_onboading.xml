@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_40sdp"
-        android:fontFamily="@font/grand_semi"
         android:gravity="center"
         android:lines="2"
         android:text="@string/text_on_boarding_3"

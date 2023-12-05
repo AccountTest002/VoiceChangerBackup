@@ -38,7 +38,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
 
     override fun initView() {
         AdmobManager.getInstance().loadNative(
-            this, BuildConfig.native_language, binding.frAd, R.layout.custom_native_ads_large_click
+            this, BuildConfig.native_language, binding.frAd, R.layout.custom_native_ads_onboard
         )
         AppOpenManager.getInstance().hideNativeOrBannerWhenShowOpenApp(this, binding.frAd)
         setStatusBarColor()

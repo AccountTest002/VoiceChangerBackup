@@ -43,9 +43,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:ellipsize="end"
-                android:fontFamily="@font/grand_bold"
+                android:fontFamily="@font/quicksand_bold"
                 android:gravity="center"
-                android:text="@string/app_name"
+                android:text="@string/app_name_store"
                 android:textColor="@color/color_274577"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_rate"
@@ -68,7 +68,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:fontFamily="@font/grand_regular"
                 android:text="@string/rate"
                 android:textColor="@color/color_274577"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -128,7 +127,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
-                    android:text="@string/home"
                     android:visibility="gone" />
             </LinearLayout>
 
@@ -150,7 +148,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
-                    android:text="@string/favorite"
                     android:visibility="gone" />
             </LinearLayout>
 

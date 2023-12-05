@@ -40,8 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:fontFamily="@font/grand_medium"
-            android:text="@string/app_name"
+            android:text="@string/app_name_store"
             android:textColor="@color/white"
             android:textSize="@dimen/_18sdp"
             app:layout_constraintBottom_toBottomOf="@id/img_logo"
@@ -67,7 +66,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:fontFamily="@font/grand_medium"
                 android:text="@string/settings"
                 android:textSize="@dimen/_14sdp" />
 
@@ -91,7 +89,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/grand_regular"
                     android:text="@string/language"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_14sdp" />
@@ -124,7 +121,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/grand_regular"
                     android:text="@string/rate_us"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_14sdp" />
@@ -157,7 +153,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/grand_regular"
                     android:text="@string/share"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_14sdp" />
@@ -190,7 +185,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/grand_regular"
                     android:text="@string/feedback_us"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_14sdp" />
@@ -223,7 +217,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/grand_regular"
                     android:text="@string/privacy"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_14sdp" />
