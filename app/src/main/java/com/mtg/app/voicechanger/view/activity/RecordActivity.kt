@@ -75,7 +75,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
     }
 
     override fun initView() {
-        fullScreen()
 //        textToVoiceDialog = TextToVoiceDialog()
 //        textToVoiceDialog.setOnDoneListener {
 //            textTTS = it
@@ -108,18 +107,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
     }
 
     override fun addEvent() {
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    fun fullScreen() {
-        val window = window
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        val statusBackground = ContextCompat.getDrawable(this, R.drawable.bg_full)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = Color.TRANSPARENT
-        }
-        window.setBackgroundDrawable(statusBackground)
     }
 
     override fun onRequestPermissionsResult(

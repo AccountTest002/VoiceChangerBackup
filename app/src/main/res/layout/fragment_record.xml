@@ -16,9 +16,9 @@
             android:layout_height="0dp"
             android:background="@drawable/bg_head"
             android:paddingHorizontal="@dimen/_16sdp"
-            android:paddingTop="@dimen/_20sdp"
-            app:layout_constraintDimensionRatio="360:142"
-            app:layout_constraintHeight_percent="0.197222"
+            android:paddingTop="@dimen/_45sdp"
+            app:layout_constraintDimensionRatio="360:152"
+            app:layout_constraintHeight_percent="0.597222"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView

@@ -2,15 +2,21 @@ package com.mtg.app.voicechanger.view.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
 import android.graphics.drawable.AnimationDrawable
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.view.animation.AnimationUtils
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.mtg.app.voicechanger.BuildConfig
@@ -50,6 +56,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
     }
 
     override fun initView() {
+        fullScreen()
 
         setupDrawerNavigation()
 //        val rotate1Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_rotate1)
@@ -164,6 +171,28 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
     private fun hideRate() {
         binding.btnRate.hide()
         binding.navContent.btnRateNavigation.hide()
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    fun fullScreen() {
+        if (isAdded) {
+            activity?.window?.apply {
+                clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                statusBarColor = Color.TRANSPARENT
+                setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.bg_full))
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+
+                    decorView.setOnApplyWindowInsetsListener { _, insets ->
+                        insets.consumeSystemWindowInsets()
+                        WindowInsets.CONSUMED
+                    }
+                }
+            }
+        }
     }
 
 

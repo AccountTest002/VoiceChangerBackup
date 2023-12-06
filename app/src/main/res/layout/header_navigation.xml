@@ -14,7 +14,7 @@
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="29:10"
+        app:layout_constraintDimensionRatio="29:15"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -31,7 +31,8 @@
             android:src="@drawable/ic_ads"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent=".55"
+            app:layout_constraintHeight_percent=".35"
+            app:layout_constraintVertical_bias="0.7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -63,29 +63,28 @@ class StopRecordFragment : BaseFragment<FragmentStopRecordBinding>(FragmentStopR
 
 
     override fun initView() {
-        countDownTimer = object : CountDownTimer(5000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                binding.txtCountDown.text =
-                    (millisUntilFinished.toFloat() / 1000).roundToInt().toString()
-            }
-
-            override fun onFinish() {
+//        countDownTimer = object : CountDownTimer(5000, 1000) {
+//            override fun onTick(millisUntilFinished: Long) {
+//                binding.txtCountDown.text =
+//                    (millisUntilFinished.toFloat() / 1000).roundToInt().toString()
+//            }
+//
+//            override fun onFinish() {
                 recording()
 
-                binding.txtCountDown.visibility = View.GONE
+//                binding.txtCountDown.visibility = View.GONE
 
                 binding.visualizer.visibility = View.VISIBLE
                 binding.timelineTextView.visibility = View.VISIBLE
-                binding.btnStop.visibility = View.VISIBLE
                 runnableAnimation = object : Runnable {
                     override fun run() {
                         handler.postDelayed(this, 1000)
                     }
                 }
                 handler.post(runnableAnimation!!)
-            }
-        }
-        countDownTimer?.start()
+//            }
+//        }
+//        countDownTimer?.start()
     }
 
     override fun addEvent() {
