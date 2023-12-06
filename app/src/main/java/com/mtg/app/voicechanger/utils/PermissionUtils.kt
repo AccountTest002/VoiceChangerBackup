@@ -13,6 +13,7 @@ import android.os.Environment
 import android.provider.Settings
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.R
@@ -22,6 +23,7 @@ import java.lang.Exception
 object PermissionUtils {
     const val REQUEST_PERMISSION_RECORD = 10
     const val REQUEST_PERMISSION_READ_WRITE = 11
+    const val REQUEST_PERMISSION_READ_AUDIO = 32134
 
     fun checkPermissionRecord(context: Context): Boolean {
         val record = ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)
@@ -81,4 +83,45 @@ object PermissionUtils {
             Log.d(TAG, "requestAccessAllFile: error " + e.message)
         }
     }
+
+
+    fun checkReadAudioPms(context: Context): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.READ_MEDIA_AUDIO
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    fun requestReadAudioPms(act: Activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
+                act,
+                arrayOf(Manifest.permission.READ_MEDIA_AUDIO),
+                REQUEST_PERMISSION_READ_AUDIO
+            )
+        } else {
+            ActivityCompat.requestPermissions(
+                act,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                REQUEST_PERMISSION_READ_AUDIO
+            )
+        }
+    }
+    fun requestReadAudioPmsSettings(act: Activity) {
+        try {
+            val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
+            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri)
+            act.startActivityForResult(intent, REQUEST_PERMISSION_READ_AUDIO)
+        } catch (e: Exception) {
+            Log.d(TAG, "requestPms: error " + e.message)
+        }
+    }
+
 }
