@@ -5,7 +5,6 @@ import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
 
 object FirebaseUtils {
-    @JvmStatic
     fun sendEventSubmitRate(context: Context?, comment: String?, rate: Int) {
         val bundle = Bundle()
         bundle.putString("event_type", "rated")
@@ -14,14 +13,12 @@ object FirebaseUtils {
         FirebaseAnalytics.getInstance(context!!).logEvent("prox_rating_layout", bundle)
     }
 
-    @JvmStatic
     fun sendEventLaterRate(context: Context?) {
         val bundle = Bundle()
         bundle.putString("event_type", "cancel")
         FirebaseAnalytics.getInstance(context!!).logEvent("prox_rating_layout", bundle)
     }
 
-    @JvmStatic
     fun sendEventChangeRate(context: Context?, rate: Int) {
         val bundle = Bundle()
         bundle.putString("event_type", "rated")

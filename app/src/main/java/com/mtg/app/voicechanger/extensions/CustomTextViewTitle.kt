@@ -22,7 +22,7 @@ class CustomTextViewTitle : AppCompatTextView {
     private var isCreateShadow = true
     private var linearGradient: LinearGradient? = null
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         if (isCreateShadow) {
             isCreateShadow = false
             val rectText = Rect()
@@ -35,7 +35,9 @@ class CustomTextViewTitle : AppCompatTextView {
         linearGradient?.run {
             paint.shader = this
             paint.style = Paint.Style.FILL
-            super.onDraw(canvas)
+            if (canvas != null) {
+                super.onDraw(canvas)
+            }
         }
 
 
@@ -44,7 +46,9 @@ class CustomTextViewTitle : AppCompatTextView {
         paint.shader = null
 
         paint.color = Color.GREEN
-        super.onDraw(canvas)
+        if (canvas != null) {
+            super.onDraw(canvas)
+        }
 
     }
 
