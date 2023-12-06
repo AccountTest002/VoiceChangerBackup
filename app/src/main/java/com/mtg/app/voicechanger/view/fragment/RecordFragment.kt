@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.graphics.drawable.AnimationDrawable
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.core.view.GravityCompat
@@ -104,6 +105,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
 
     override fun addEvent() {
         binding.btnRecord.setOnClickListener {
+            Log.d("Click","Record")
             FirebaseUtils.sendEvent(requireContext(), "Layout_Home", "Click recoding")
             callback?.onRecord()
         }

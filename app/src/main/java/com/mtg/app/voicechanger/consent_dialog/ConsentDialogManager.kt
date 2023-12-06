@@ -11,7 +11,7 @@ import com.mtg.app.voicechanger.consent_dialog.remote_config.RemoteConfigManager
 import com.mtg.app.voicechanger.consent_dialog.remote_config.RemoteConfigManager.BooleanCallback
 import com.mtg.app.voicechanger.consent_dialog.remote_config.RemoteConfigManager.NumberCallback
 import com.mtg.app.voicechanger.utils.constant.Const
-import com.mtg.app.voicechanger.view.activity.MainActivity
+import com.mtg.app.voicechanger.view.activity.RecordActivity
 
 class ConsentDialogManager : BaseDialogConsentManager() {
     private var rejectSplashCount: Long = 0
@@ -111,7 +111,7 @@ class ConsentDialogManager : BaseDialogConsentManager() {
                         buttonClickCount = 0
                         if (canRequestAds(activity)) {
                             BillingDialog.instance!!.dismiss()
-                            val intent = Intent(activity, MainActivity::class.java)
+                            val intent = Intent(activity, RecordActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             activity.startActivity(intent)
@@ -149,7 +149,7 @@ class ConsentDialogManager : BaseDialogConsentManager() {
         val onDismiss = ConsentForm.OnConsentFormDismissedListener {
             if (canRequestAds(activity)) {
                 BillingDialog.instance!!.dismiss()
-                val intent = Intent(activity, MainActivity::class.java)
+                val intent = Intent(activity, RecordActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 activity.startActivity(intent)

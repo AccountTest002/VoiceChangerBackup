@@ -79,7 +79,7 @@ class OnBoardActivity :
             }
             if (binding.viewpagerOnboard.currentItem == (binding.viewpagerOnboard.adapter as ViewPagerAddFragmentsAdapter).itemCount - 1) {
                 SharedPrefs.put(this, Const.KEY_FIRST_INTRO, true)
-                startActivity(Intent(this@OnBoardActivity, MainActivity::class.java))
+                startActivity(Intent(this@OnBoardActivity, RecordActivity::class.java))
 
             } else {
                 binding.viewpagerOnboard.currentItem++

@@ -19,7 +19,7 @@ import com.mtg.app.voicechanger.consent_dialog.base.BaseDialog
 import com.mtg.app.voicechanger.databinding.DialogBillingBinding
 import com.mtg.app.voicechanger.utils.EventLogger.Companion.getInstance
 import com.mtg.app.voicechanger.utils.constant.Const
-import com.mtg.app.voicechanger.view.activity.MainActivity
+import com.mtg.app.voicechanger.view.activity.RecordActivity
 import java.util.Objects
 
 class BillingDialog : BaseDialog<DialogBillingBinding?>(), PurchaseCallback {
@@ -146,7 +146,7 @@ class BillingDialog : BaseDialog<DialogBillingBinding?>(), PurchaseCallback {
         progressBar.show()
         Handler().postDelayed({
             requireActivity().finishAffinity()
-            startActivity(Intent(requireContext(), MainActivity::class.java))
+            startActivity(Intent(requireContext(), RecordActivity::class.java))
         }, 2000)
     }
 

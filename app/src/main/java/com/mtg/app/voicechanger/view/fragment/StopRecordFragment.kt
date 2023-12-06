@@ -11,13 +11,14 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import com.mtg.app.voicechanger.R
+import com.mtg.app.voicechanger.base.BaseFragment
+import com.mtg.app.voicechanger.databinding.FragmentRecordBinding
 import com.mtg.app.voicechanger.databinding.FragmentStopRecordBinding
 import com.mtg.app.voicechanger.media.Recorder
 import com.mtg.app.voicechanger.utils.NumberUtils
 import kotlin.math.roundToInt
 
-class StopRecordFragment : Fragment() {
-    private lateinit var binding: FragmentStopRecordBinding
+class StopRecordFragment : BaseFragment<FragmentStopRecordBinding>(FragmentStopRecordBinding::inflate) {
     private var countDownTimer: CountDownTimer? = null
     private var callback: Callback? = null
 
@@ -42,20 +43,6 @@ class StopRecordFragment : Fragment() {
         return fragment
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentStopRecordBinding.inflate(inflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        init()
-    }
-
     override fun onStart() {
         super.onStart()
         if (isStop) {
@@ -74,12 +61,8 @@ class StopRecordFragment : Fragment() {
         isStop = false
     }
 
-    private fun init() {
-        initView()
-        initEvent()
-    }
 
-    private fun initView() {
+    override fun initView() {
         countDownTimer = object : CountDownTimer(5000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 binding.txtCountDown.text =
@@ -105,7 +88,7 @@ class StopRecordFragment : Fragment() {
         countDownTimer?.start()
     }
 
-    private fun initEvent() {
+    override fun addEvent() {
         binding.btnBack.setOnClickListener { back() }
         binding.btnStop.setOnClickListener {
             stopRecord()
@@ -122,6 +105,7 @@ class StopRecordFragment : Fragment() {
 //            )
         }
     }
+
 
     private fun recording() {
         recorder = Recorder(requireContext())

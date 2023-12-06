@@ -123,7 +123,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
             SharedPrefs.put(this, Const.SHARE_PREF_LANGUAGE, itemLanguage!!.name)
             SharedPrefs.setLanguageConfig(this)
             //todo go to next
-            startActivity(Intent(this, MainActivity::class.java).apply {
+            startActivity(Intent(this, RecordActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             })
