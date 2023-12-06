@@ -82,12 +82,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 //            }
 //        }
         if (SharedPrefs.getBoolean(this, Const.KEY_FIRST_INTRO)) {
-            MainActivity.start(this)
+            RecordActivity.start(this)
         } else {
             if (!appPreferences.isChooseLanguage) {
                 LanguageActivity.start(this)
             } else {
-                MainActivity.start(this)
+                RecordActivity.start(this)
             }
         }
 

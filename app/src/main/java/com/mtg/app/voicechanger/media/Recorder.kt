@@ -5,9 +5,9 @@ import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
 import android.util.Log
-import com.mtg.app.voicechanger.VoiceChangerApp.Companion.TAG
 import com.mtg.app.voicechanger.interfaces.RecorderListener
 import com.mtg.app.voicechanger.utils.FileUtils
+import com.mtg.app.voicechanger.utils.constant.Constants.TAG
 import java.io.IOException
 
 class Recorder(context: Context?) : RecorderListener {

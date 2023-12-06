@@ -3,8 +3,9 @@ package com.mtg.app.voicechanger.media
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.util.Log
-import com.mtg.app.voicechanger.VoiceChangerApp.Companion.TAG
+//import com.mtg.app.voicechanger.VoiceChangerApp.Companion.TAG
 import com.mtg.app.voicechanger.interfaces.PlayerListener
+import com.mtg.app.voicechanger.utils.constant.Constants.TAG
 import java.io.IOException
 
 class Player : PlayerListener {

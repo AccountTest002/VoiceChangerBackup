@@ -16,7 +16,7 @@ import android.widget.Toast
 import androidx.core.content.FileProvider
 import com.aventrix.jnanoid.jnanoid.NanoIdUtils
 import com.mtg.app.voicechanger.R
-import com.mtg.app.voicechanger.VoiceChangerApp
+import com.mtg.app.voicechanger.utils.constant.Constants.TAG
 import java.io.*
 import java.lang.Exception
 import java.lang.NumberFormatException
@@ -125,17 +125,17 @@ class FileUtils {
 
             //Tên để trống
             if (newName.isEmpty()) {
-                Log.d(VoiceChangerApp.TAG, "renameFile: false")
+                Log.d(TAG, "renameFile: false")
                 Toast.makeText(context, R.string.name_empty, Toast.LENGTH_SHORT).show()
                 return null
             } else if (newName == oldName) {
-                Log.d(VoiceChangerApp.TAG, "renameFile: false")
+                Log.d(TAG, "renameFile: false")
                 Toast.makeText(context, R.string.name_unchange, Toast.LENGTH_SHORT).show()
                 return null
             }
             if (File(path).exists()) {
                 if (File(newPath).exists()) {
-                    Log.d(VoiceChangerApp.TAG, "renameFile: false")
+                    Log.d(TAG, "renameFile: false")
                     Toast.makeText(context, R.string.name_exits, Toast.LENGTH_SHORT).show()
                     return null
                 }
@@ -143,13 +143,13 @@ class FileUtils {
                     broadcastScanFile(context, oldFile.path)
                     broadcastScanFile(context, newFile.path)
                     Log.d(
-                        VoiceChangerApp.TAG,
+                        TAG,
                         "renameFile: " + oldFile.path + " --> " + newFile.path
                     )
                     return newFile.path
                 }
             }
-            Log.d(VoiceChangerApp.TAG, "renameFile: false")
+            Log.d(TAG, "renameFile: false")
             Toast.makeText(context, R.string.file_not_exist, Toast.LENGTH_SHORT).show()
             return null
         }
@@ -159,11 +159,11 @@ class FileUtils {
             if (file.exists()) {
                 if (file.delete()) {
                     broadcastScanFile(context, path)
-                    Log.d(VoiceChangerApp.TAG, "deleteFile: true")
+                    Log.d(TAG, "deleteFile: true")
                     return true
                 }
             }
-            Log.d(VoiceChangerApp.TAG, "deleteFile: false")
+            Log.d(TAG, "deleteFile: false")
             Toast.makeText(context, R.string.file_not_exist, Toast.LENGTH_SHORT).show()
             return false
         }
