@@ -89,13 +89,13 @@ object ActionUtils {
 
     private fun rateInApp(context: Activity) {
         val manager: ReviewManager = ReviewManagerFactory.create(context)
-        val request: Task<ReviewInfo> = manager.requestReviewFlow()
-        request.addOnCompleteListener(OnCompleteListener<ReviewInfo?> { task: Task<ReviewInfo?> ->
+        val request: com.google.android.play.core.tasks.Task<ReviewInfo> = manager.requestReviewFlow()
+        request.addOnCompleteListener { task: com.google.android.play.core.tasks.Task<ReviewInfo> ->
             if (task.isSuccessful) {
                 // We can get the ReviewInfo object
                 val reviewInfo = task.result
-                reviewInfo?.let { manager.launchReviewFlow(context, it) }
+                reviewInfo.let { manager.launchReviewFlow(context, it) }
             }
-        })
+        }
     }
 }
