@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.mtg.app.voicechanger.BuildConfig
+import com.mtg.app.voicechanger.ImportAudioFlow
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseFragment
 import com.mtg.app.voicechanger.databinding.FragmentOnboadingBinding
@@ -28,6 +29,7 @@ import com.mtg.app.voicechanger.utils.ActionUtils
 import com.mtg.app.voicechanger.utils.CommonUtils
 import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.FirebaseUtils
+import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.hide
 import com.mtg.app.voicechanger.view.activity.LanguageActivity
 import com.mtg.app.voicechanger.view.activity.PolicyWebViewActivity
@@ -119,6 +121,13 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
         binding.btnDrawer.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
             EventLogger.getInstance()?.logEvent("click_main_setting")
+        }
+        binding.btnFileDevice.setOnClickListener {
+            ImportAudioFlow(requireActivity(), object: ImportAudioFlow.Callback{
+                override fun onNoPms() {
+                    PermissionUtils.requestReadAudioPms(requireActivity())
+                }
+            }).start()
         }
 
 //        dialog.setOnImportListener {

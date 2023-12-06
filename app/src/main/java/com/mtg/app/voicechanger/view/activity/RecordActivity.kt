@@ -17,7 +17,9 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.common.control.base.OnActionCallback
 import com.mtg.app.voicechanger.BuildConfig
+import com.mtg.app.voicechanger.ImportAudioFlow
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.databinding.ActivityRecordBinding
@@ -25,6 +27,7 @@ import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.NetworkUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.base.getRealPath
+import com.mtg.app.voicechanger.view.dialog.DialogReadAudioPms
 import com.mtg.app.voicechanger.view.fragment.RecordFragment
 import com.mtg.app.voicechanger.view.fragment.StopRecordFragment
 import com.proxglobal.proxads.adsv2.ads.ProxAds
@@ -76,19 +79,19 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
 
     override fun initView() {
 //        textToVoiceDialog = TextToVoiceDialog()
-//        textToVoiceDialog.setOnDoneListener {
-//            textTTS = it
-//            try{
-//                val checkIntent = Intent()
-//                checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
-//                checkTTSLauncher.launch(checkIntent)
-//            }catch (e: Exception) {
-//                shortToast(R.string.process_error)
-//            }
+////        textToVoiceDialog.setOnDoneListener {
+////            textTTS = it
+////            try{
+////                val checkIntent = Intent()
+////                checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
+////                checkTTSLauncher.launch(checkIntent)
+////            }catch (e: Exception) {
+////                shortToast(R.string.process_error)
+////            }
+////
+////        }
 //
-//        }
-
-//        loadingDialog = LoadingDialog()
+////        loadingDialog = LoadingDialog()
 
         val fragment0 = listFragment[0]
         if (fragment0 is RecordFragment) {
@@ -168,6 +171,18 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
                 }
             } else {
                 showDialogGoToSetting(PermissionUtils.REQUEST_PERMISSION_READ_WRITE)
+            }
+        }
+
+        if (requestCode == PermissionUtils.REQUEST_PERMISSION_READ_AUDIO) {
+            if (!PermissionUtils.checkReadAudioPms(this)) {
+                showDialogReadAudioPms()
+            } else {
+                ImportAudioFlow(this, object: ImportAudioFlow.Callback{
+                    override fun onNoPms() {
+                        PermissionUtils.requestReadAudioPms(this@RecordActivity)
+                    }
+                }).start()
             }
         }
     }
@@ -438,4 +453,27 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
 //            R.anim.anim_right_left_2
 //        )
     }
+
+
+    private fun showDialogReadAudioPms() {
+        DialogReadAudioPms(this).setCallBack(OnActionCallback { key, data ->
+            PermissionUtils.requestReadAudioPmsSettings(this)
+        }).show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PermissionUtils.REQUEST_PERMISSION_READ_AUDIO) {
+            if (!PermissionUtils.checkReadAudioPms(this)) {
+                showDialogReadAudioPms()
+            } else {
+                ImportAudioFlow(this, object: ImportAudioFlow.Callback{
+                    override fun onNoPms() {
+                        PermissionUtils.requestReadAudioPms(this@RecordActivity)
+                    }
+                }).start()
+            }
+        }
+    }
+
 }
