@@ -130,8 +130,7 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:padding="@dimen/_3sdp"
-                    android:src="@drawable/ic_next" />
+                    android:padding="@dimen/_3sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -162,8 +161,7 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:padding="@dimen/_3sdp"
-                    android:src="@drawable/ic_next" />
+                    android:padding="@dimen/_3sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -194,8 +192,7 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:padding="@dimen/_3sdp"
-                    android:src="@drawable/ic_next" />
+                    android:padding="@dimen/_3sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -226,8 +223,7 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:padding="@dimen/_3sdp"
-                    android:src="@drawable/ic_next" />
+                    android:padding="@dimen/_3sdp"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

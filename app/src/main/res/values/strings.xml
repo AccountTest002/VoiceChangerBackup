@@ -54,4 +54,6 @@
     <string name="sound_effect">Sound Effect</string>
     <string name="my_works">My Works</string>
     <string name="all_changed_voices_saved_here">All changed voices saved here</string>
+    <string name="recording_tap_to_stop">Recording - Tap to stop</string>
+    <string name="record_audio">Record Audio</string>
 </resources>

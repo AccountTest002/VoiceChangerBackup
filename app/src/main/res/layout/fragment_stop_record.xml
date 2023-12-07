@@ -6,47 +6,91 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_main">
 
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:padding="8dp"
-        android:src="@drawable/ic_back"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clHeadBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_90sdp"
+        android:background="@drawable/bg_head_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.imn.iivisu.RecorderVisualizer
-        android:id="@+id/visualizer"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:background="#0D0B29"
-        android:visibility="gone"
-        app:approximateBarDuration="75"
-        app:backgroundBarPrimeColor="#0D0B29"
-        app:barWidth="3dp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_back"
-        app:loadedBarPrimeColor="#49DAEE"
-        app:maxAmp="100"
-        app:spaceBetweenBar="2dp" />
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintVertical_bias="0.8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/record_audio"
+            android:fontFamily="@font/quicksand_bold"
+            android:textSize="@dimen/_18sdp"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintTop_toTopOf="@+id/btn_back"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_back"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/timeline_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
+        android:fontFamily="@font/quicksand_bold"
         android:text="@string/zero_time"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:visibility="gone"
+        android:textColor="#7F7F7F"
+        android:textSize="@dimen/_38sdp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/clVisual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/visualizer" />
+        app:layout_constraintTop_toBottomOf="@+id/clHeadBar" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clVisual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4">
+
+        <View
+            android:id="@+id/vLine"
+            android:layout_width="@dimen/_2sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:background="#FF6C02"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.imn.iivisu.RecorderVisualizer
+            android:id="@+id/visualizer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@color/transparent"
+            app:approximateBarDuration="75"
+            app:barWidth="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadedBarPrimeColor="#008ED5"
+            app:maxAmp="100"
+            app:spaceBetweenBar="@dimen/_3sdp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btn_stop"
@@ -54,20 +98,31 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/bt_create_excel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_action"
-            android:src="@drawable/ic_record"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBtn"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:background="@drawable/bg_btn_record"
+            android:elevation="@dimen/_1sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_pause"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="@dimen/_120sdp"
@@ -81,5 +136,16 @@
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/btn_am_start" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_medium"
+        android:gravity="center"
+        android:text="@string/recording_tap_to_stop"
+        android:textSize="@dimen/_17sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_stop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -74,7 +74,7 @@ class StopRecordFragment : BaseFragment<FragmentStopRecordBinding>(FragmentStopR
 
 //                binding.txtCountDown.visibility = View.GONE
 
-                binding.visualizer.visibility = View.VISIBLE
+                binding.clVisual.visibility = View.VISIBLE
                 binding.timelineTextView.visibility = View.VISIBLE
                 runnableAnimation = object : Runnable {
                     override fun run() {
