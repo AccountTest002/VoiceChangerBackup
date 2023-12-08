@@ -27,6 +27,7 @@ import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.NetworkUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.base.getRealPath
+import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.dialog.DialogReadAudioPms
 import com.mtg.app.voicechanger.view.fragment.RecordFragment
 import com.mtg.app.voicechanger.view.fragment.StopRecordFragment
@@ -446,7 +447,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
     private fun goToChangeVoice(action: String, path: String) {
         val intent = Intent(this, ChangeVoiceActivity::class.java)
         intent.action = action
-        intent.putExtra(ChangeVoiceActivity.PATH_FILE, path)
+        intent.putExtra(Constants.PATH_FILE, path)
         startActivity(intent)
         overridePendingTransition(
             R.anim.anim_right_left_1,

@@ -19,7 +19,7 @@ import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.LanguageUtils
 import com.mtg.app.voicechanger.utils.LanguageUtils.listCountry
 import com.mtg.app.voicechanger.utils.app.AppPreferences
-import com.mtg.app.voicechanger.utils.constant.Const
+import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.adapter.LanguageAdapter
 
 class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageBinding::inflate) {
@@ -75,7 +75,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
                         it.bgSelected = R.drawable.bg_item_language
                     }
                 }
-                if (key == Const.KEY_LANGUAGE) {
+                if (key == Constants.KEY_LANGUAGE) {
                     itemLanguage = data[0] as ItemLanguage?
                     itemLanguage?.let {
                         it.imgSelect = (R.drawable.ic_checked)
@@ -115,12 +115,12 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
 //            setLanguage(itemLanguage!!.languageToLoad)
             setLanguageWithoutNotification(itemLanguage!!.languageToLoad)
 
-            if (!SharedPrefs.getBoolean(this, Const.KEY_FIRST_INTRO)) {
+            if (!SharedPrefs.getBoolean(this, Constants.KEY_FIRST_INTRO)) {
                 OnBoardActivity.start(this)
                 return@setOnClickListener
             }
 
-            SharedPrefs.put(this, Const.SHARE_PREF_LANGUAGE, itemLanguage!!.name)
+            SharedPrefs.put(this, Constants.SHARE_PREF_LANGUAGE, itemLanguage!!.name)
             SharedPrefs.setLanguageConfig(this)
             //todo go to next
             startActivity(Intent(this, RecordActivity::class.java).apply {

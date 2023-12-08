@@ -7,7 +7,7 @@ import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.data.model.ItemLanguage
 import com.mtg.app.voicechanger.data.preferences.SharedPrefs
 import com.mtg.app.voicechanger.utils.app.AppPreferences
-import com.mtg.app.voicechanger.utils.constant.Const
+import com.mtg.app.voicechanger.utils.constant.Constants
 import java.util.Locale
 
 object LanguageUtils {
@@ -253,8 +253,8 @@ object LanguageUtils {
     fun getFlagIcon(context: Context): Int {
         val mList: List<ItemLanguage> = listCountry
         val currentCode =
-            context.getSharedPreferences(Const.SHARE_PREF_LANGUAGE, Context.MODE_PRIVATE)
-                .getString(Const.SHARE_PREF_LANGUAGE, "English (US)")
+            context.getSharedPreferences(Constants.SHARE_PREF_LANGUAGE, Context.MODE_PRIVATE)
+                .getString(Constants.SHARE_PREF_LANGUAGE, "English (US)")
         for (i in mList.indices) {
 //            if (mList[i].getLanguageToLoad().equals(currentCode)) {
 //                return mList[i].getImageFlag()
@@ -267,7 +267,7 @@ object LanguageUtils {
     }
 
     fun getCurrentLanguageCode(context: Context): String {
-        val languageName = SharedPrefs.getString(context, Const.SHARE_PREF_LANGUAGE, "default")
+        val languageName = SharedPrefs.getString(context, Constants.SHARE_PREF_LANGUAGE, "default")
         val itemLanguage =
             listCountry.findLast { it.name.equals(languageName, true) } ?: return "en"
         return itemLanguage.languageToLoad

@@ -13,7 +13,7 @@ import com.mtg.app.voicechanger.data.preferences.SharedPrefs
 import com.mtg.app.voicechanger.utils.Common
 import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.app.AppPreferences
-import com.mtg.app.voicechanger.utils.constant.Const
+import com.mtg.app.voicechanger.utils.constant.Constants
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     private var appPreferences = AppPreferences.instance
@@ -70,7 +70,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
     }
 
     private fun startMain() {
-        val languageToLoad = SharedPrefs.getString(this, Const.SHARE_PREF_LANGUAGE, "default")
+        val languageToLoad = SharedPrefs.getString(this, Constants.SHARE_PREF_LANGUAGE, "default")
 //        if (languageToLoad == "default") {
 //            startActivity(Intent(this, LanguageActivity::class.java))
 //        } else {
@@ -81,7 +81,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 //                startActivity(Intent(this@SplashActivity, OnBoardActivity::class.java))
 //            }
 //        }
-        if (SharedPrefs.getBoolean(this, Const.KEY_FIRST_INTRO)) {
+        if (SharedPrefs.getBoolean(this, Constants.KEY_FIRST_INTRO)) {
             RecordActivity.start(this)
         } else {
             if (!appPreferences.isChooseLanguage) {

@@ -3,7 +3,6 @@ package com.mtg.app.voicechanger.data.preferences
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import com.mtg.app.voicechanger.utils.constant.Const
 import com.mtg.app.voicechanger.utils.constant.Constants
 
 object SharedPrefs {
@@ -56,7 +55,7 @@ object SharedPrefs {
     }
 
     fun setLanguageConfig(context: Context) {
-        getDefaultSharedPref(context).edit().putBoolean(Const.CONFIG_BT_BACK, true).apply()
+        getDefaultSharedPref(context).edit().putBoolean(Constants.CONFIG_BT_BACK, true).apply()
     }
 
     fun isRated(context: Context): Boolean {

@@ -21,6 +21,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
@@ -36,10 +37,13 @@ import com.mtg.app.voicechanger.utils.NetworkUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.base.showConfirmationDialog
+import com.mtg.app.voicechanger.utils.constant.Constants.CHANGE_TO_RECORD
+import com.mtg.app.voicechanger.utils.constant.Constants.PATH_FILE
 import com.mtg.app.voicechanger.view.adapter.EffectAdapter
 import com.mtg.app.voicechanger.view.dialog.NameDialog
 import com.mtg.app.voicechanger.view.fragment.BasicEffectFragment
 import com.mtg.app.voicechanger.view.fragment.CustomEffectFragment
+import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.proxglobal.proxads.adsv2.ads.ProxAds
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
 import com.proxglobal.purchase.ProxPurchase
@@ -56,9 +60,6 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
     WaveFormView.Callback, CustomEffectFragment.Callback {
 
     companion object {
-        const val PATH_FILE = "PATH_FILE"
-        const val CHANGE_TO_RECORD = "CHANGE_TO_RECORD"
-
         var effectSelected = FFMPEGUtils.effects[0]
     }
 
@@ -505,13 +506,13 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
 
     private fun stopPlayer() {
         player?.stop()
-        binding.layoutPlayer.btnPauseOrResume.setImageResource(R.drawable.ic_record)
+        binding.layoutPlayer.btnPauseOrResume.setImageResource(R.drawable.ic_play)
         handler.removeCallbacksAndMessages(null)
     }
 
     private fun pausePlayer() {
         player?.pause()
-        binding.layoutPlayer.btnPauseOrResume.setImageResource(R.drawable.ic_record)
+        binding.layoutPlayer.btnPauseOrResume.setImageResource(R.drawable.ic_play)
         handler.removeCallbacksAndMessages(null)
     }
 

@@ -12,6 +12,7 @@ import com.mtg.app.voicechanger.databinding.FragmentStopRecordBinding
 import com.mtg.app.voicechanger.media.Recorder
 import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
+import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.dialog.NameDialog
 import com.mtg.app.voicechanger.view.activity.ChangeVoiceActivity
 
@@ -83,7 +84,7 @@ class StopRecordFragment :
             val intent = Intent(requireActivity(), ChangeVoiceActivity::class.java)
             intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
             intent.putExtra(
-                ChangeVoiceActivity.PATH_FILE,
+                Constants.PATH_FILE,
                 FileUtils.getTempRecordingFilePath(requireContext())
             )
             startActivity(intent)

@@ -13,7 +13,7 @@ import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.base.ViewPagerAddFragmentsAdapter
 import com.mtg.app.voicechanger.data.preferences.SharedPrefs
 import com.mtg.app.voicechanger.utils.EventLogger
-import com.mtg.app.voicechanger.utils.constant.Const
+import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.utils.setSize
 import com.mtg.app.voicechanger.view.fragment.OnBoardFragment
 
@@ -78,7 +78,7 @@ class OnBoardActivity :
                 2 -> EventLogger.getInstance()?.logEvent("click_guide_3")
             }
             if (binding.viewpagerOnboard.currentItem == (binding.viewpagerOnboard.adapter as ViewPagerAddFragmentsAdapter).itemCount - 1) {
-                SharedPrefs.put(this, Const.KEY_FIRST_INTRO, true)
+                SharedPrefs.put(this, Constants.KEY_FIRST_INTRO, true)
                 startActivity(Intent(this@OnBoardActivity, RecordActivity::class.java))
 
             } else {

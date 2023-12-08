@@ -10,7 +10,7 @@ import com.mtg.app.voicechanger.consent_dialog.dialog.BillingDialog
 import com.mtg.app.voicechanger.consent_dialog.remote_config.RemoteConfigManager
 import com.mtg.app.voicechanger.consent_dialog.remote_config.RemoteConfigManager.BooleanCallback
 import com.mtg.app.voicechanger.consent_dialog.remote_config.RemoteConfigManager.NumberCallback
-import com.mtg.app.voicechanger.utils.constant.Const
+import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.activity.RecordActivity
 
 class ConsentDialogManager : BaseDialogConsentManager() {
@@ -58,7 +58,7 @@ class ConsentDialogManager : BaseDialogConsentManager() {
                 return@showDialog
             }
             BillingDialog.instance!!.setCallback { key: String, data: Array<Any?>? ->
-                if (key == Const.KEY_CANCEL) {
+                if (key == Constants.KEY_CANCEL) {
                     val dismissedListener =
                         ConsentForm.OnConsentFormDismissedListener { error: FormError? ->
                             RemoteConfigManager.instance!!.loadReshowGDPRSplashCount(
@@ -106,7 +106,7 @@ class ConsentDialogManager : BaseDialogConsentManager() {
         buttonClickCount++
         return if (buttonClickCount == RemoteConfigManager.instance!!.limitFunctionClickCount()) {
             BillingDialog.instance!!.setCallback { key: String, data: Array<Any?>? ->
-                if (key == Const.KEY_CANCEL) {
+                if (key == Constants.KEY_CANCEL) {
                     val onDismiss = ConsentForm.OnConsentFormDismissedListener {
                         buttonClickCount = 0
                         if (canRequestAds(activity)) {

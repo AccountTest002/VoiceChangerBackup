@@ -10,7 +10,7 @@ import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.databinding.ItemLanguageBinding
 import com.mtg.app.voicechanger.base.BaseAdapter
 import com.mtg.app.voicechanger.data.model.ItemLanguage
-import com.mtg.app.voicechanger.utils.constant.Const
+import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.utils.setSize
 
 class LanguageAdapter(mList: List<ItemLanguage?>?, context: Context?) :
@@ -55,7 +55,7 @@ class LanguageAdapter(mList: List<ItemLanguage?>?, context: Context?) :
         }
 
         override fun onClick(v: View) {
-            mCallback?.run { callback(Const.KEY_LANGUAGE, itemView.tag) }
+            mCallback?.run { callback(Constants.KEY_LANGUAGE, itemView.tag) }
         }
     }
 }

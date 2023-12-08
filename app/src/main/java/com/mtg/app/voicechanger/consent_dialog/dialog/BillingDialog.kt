@@ -18,7 +18,7 @@ import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.consent_dialog.base.BaseDialog
 import com.mtg.app.voicechanger.databinding.DialogBillingBinding
 import com.mtg.app.voicechanger.utils.EventLogger.Companion.getInstance
-import com.mtg.app.voicechanger.utils.constant.Const
+import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.activity.RecordActivity
 import java.util.Objects
 
@@ -109,7 +109,7 @@ class BillingDialog : BaseDialog<DialogBillingBinding?>(), PurchaseCallback {
 //                Toast.makeText(requireContext(), getString(R.string.please_check_the_internet_or_vpn_and_try_again), Toast.LENGTH_SHORT).show();
 //                callback.callback(KEY_CANCEL, null);
 //            }
-            callback!!.callback(Const.KEY_CANCEL, null)
+            callback!!.callback(Constants.KEY_CANCEL, null)
         }
         binding!!.btnContinue.setOnClickListener { v: View? ->
             Objects.requireNonNull(getInstance())?.logEvent("click_intro_continue")
@@ -122,7 +122,7 @@ class BillingDialog : BaseDialog<DialogBillingBinding?>(), PurchaseCallback {
 //                }
                 startPurchaseForever()
             } else {
-                callback!!.callback(Const.KEY_CANCEL, null as Any?)
+                callback!!.callback(Constants.KEY_CANCEL, null as Any?)
             }
         }
     }
