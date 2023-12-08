@@ -63,7 +63,7 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
         var effectSelected = FFMPEGUtils.effects[0]
     }
 
-//    private lateinit var model: FileVoiceViewModel
+    private lateinit var model: FileVoiceViewModel
     private val myScop = CoroutineScope(Job() + Dispatchers.Main)
 
     private var isCustom = false
@@ -252,11 +252,11 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
             binding.layoutLoading.root.visibility = View.VISIBLE
             binding.layoutLoading.txtProcessing.setText(R.string.process_error)
             binding.layoutLoading.txtProcessing.setTextColor(resources.getColor(R.color.white))
-            binding.btnSave2.isEnabled = false
+            binding.btnSave.isEnabled = false
         } else {
             binding.layoutPlayer.root.visibility = View.VISIBLE
             binding.layoutLoading.root.visibility = View.GONE
-            binding.btnSave2.isEnabled = true
+            binding.btnSave.isEnabled = true
         }
     }
 
@@ -267,7 +267,7 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
             requestPermissionReadWriteFile()
         }
 
-//        model = ViewModelProvider(this)[FileVoiceViewModel::class.java]
+        model = ViewModelProvider(this)[FileVoiceViewModel::class.java]
         fullScreen()
         player = Player()
         isPlaying = true
@@ -295,54 +295,54 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
     override fun addEvent() {
         binding.btnBack.setOnClickListener { onBackPressed() }
 
-//        binding.btnSave2.setOnClickListener {
-//            FirebaseUtils.sendEvent(this, "Layout_Effect", "Click Save")
-//            pausePlayer()
-//            val name = binding.layoutPlayer.txtName2.text.toString()
-//            val fragment = listFragment[1]
-//            if (isCreatedCustomEffectFragment) {
-//                if (fragment is CustomEffectFragment) {
-//                    if (fragment.isCustom()) {
-//                        isCustom = true
-//                    }
-//                }
-//            }
-//
-//            val nameDialog = NameDialog().newInstance(name)
-//            nameDialog.setOnSaveListener {
-//                myScop.launch(Dispatchers.IO) {
-//                    val cmd: String = if (!isCustom) {
-//                        FFMPEGUtils.getCMDConvertRecording(
-//                            FileUtils.getTempEffectFilePath(this@ChangeVoiceActivity),
-//                            it
-//                        )
-//                    } else {
-//                        FFMPEGUtils.getCMDConvertRecording(
-//                            FileUtils.getTempCustomFilePath(this@ChangeVoiceActivity),
-//                            it
-//                        )
-//                    }
-//
-//                    FFMPEGUtils.executeFFMPEG(cmd, object : FFmpegExecuteCallback {
-//                        override fun onSuccess() {
-//                            myScop.launch(Dispatchers.IO) {
-//                                insertEffectToDB(it)
-//                                withContext(Dispatchers.Main) {
-//                                    goToFileVoice(true)
-//                                }
-//                            }
-//                        }
-//
-//                        override fun onFailed() {
-//                            myScop.launch(Dispatchers.Main) {
-//                                goToFileVoice(false)
-//                            }
-//                        }
-//                    })
-//                }
-//            }
-//            nameDialog.show(supportFragmentManager, "NameDialog")
-//        }
+        binding.btnSave.setOnClickListener {
+            FirebaseUtils.sendEvent(this, "Layout_Effect", "Click Save")
+            pausePlayer()
+            val name = binding.layoutPlayer.txtName2.text.toString()
+            val fragment = listFragment[1]
+            if (isCreatedCustomEffectFragment) {
+                if (fragment is CustomEffectFragment) {
+                    if (fragment.isCustom()) {
+                        isCustom = true
+                    }
+                }
+            }
+
+            val nameDialog = NameDialog().newInstance(name)
+            nameDialog.setOnSaveListener {
+                myScop.launch(Dispatchers.IO) {
+                    val cmd: String = if (!isCustom) {
+                        FFMPEGUtils.getCMDConvertRecording(
+                            FileUtils.getTempEffectFilePath(this@ChangeVoiceActivity),
+                            it
+                        )
+                    } else {
+                        FFMPEGUtils.getCMDConvertRecording(
+                            FileUtils.getTempCustomFilePath(this@ChangeVoiceActivity),
+                            it
+                        )
+                    }
+
+                    FFMPEGUtils.executeFFMPEG(cmd, object : FFmpegExecuteCallback {
+                        override fun onSuccess() {
+                            myScop.launch(Dispatchers.IO) {
+                                insertEffectToDB(it)
+                                withContext(Dispatchers.Main) {
+                                    goToFileVoice(true)
+                                }
+                            }
+                        }
+
+                        override fun onFailed() {
+                            myScop.launch(Dispatchers.Main) {
+                                goToFileVoice(false)
+                            }
+                        }
+                    })
+                }
+            }
+            nameDialog.show(supportFragmentManager, "NameDialog")
+        }
 
         binding.layoutPlayer.visualizer.callback = this
 
@@ -405,33 +405,31 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
         fileVoice.duration = playerEffect.duration.toLong()
         fileVoice.size = File(path).length()
         fileVoice.date = Date().time
-//        model.insertBG(fileVoice)
+        model.insertBG(fileVoice)
     }
 
     private fun goToFileVoice(isSuccess: Boolean) {
         ProxAds.instance.showInterstitial(this, "interstitial", object : AdsCallback() {
             override fun onClosed() {
-//                super.onClosed()
+                super.onClosed()
 //                startActivity(Intent(this@ChangeVoiceActivity, FileVoiceActivity::class.java))
-//                overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
-//                if (isSuccess) {
-//                    shortToast(R.string.save_success)
-//                    Toast.makeText(this,R.string.processing_in_progress,Toast.LENGTH_SHORT).show()
-//                } else {
-//                    shortToast(R.string.save_fail)
-//                    Toast.makeText(this,R.string.processing_in_progress,Toast.LENGTH_SHORT).show()
-//                }
+                overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
+                if (isSuccess) {
+                    Toast.makeText(mContext,R.string.save_success,Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(mContext,R.string.save_fail,Toast.LENGTH_SHORT).show()
+                }
             }
 
             override fun onError() {
                 super.onError()
 //                startActivity(Intent(this@ChangeVoiceActivity, FileVoiceActivity::class.java))
-//                overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
-//                if (isSuccess) {
-//                    shortToast(R.string.save_success)
-//                } else {
-//                    shortToast(R.string.save_fail)
-//                }
+                overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
+                if (isSuccess) {
+                    Toast.makeText(mContext,R.string.save_success,Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(mContext,R.string.save_fail,Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }

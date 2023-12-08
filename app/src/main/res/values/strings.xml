@@ -65,5 +65,6 @@
     <string name="processing_in_progress">Processing in progress, please try again later</string>
     <string name="voice_effects">Voice Effects</string>
     <string name="save">Save</string>
-
+    <string name="save_success">Save successfully</string>
+    <string name="save_fail">Save failure</string>
 </resources>
