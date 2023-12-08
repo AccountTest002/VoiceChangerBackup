@@ -63,7 +63,7 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
         var effectSelected = FFMPEGUtils.effects[0]
     }
 
-    private lateinit var model: FileVoiceViewModel
+//    private lateinit var model: FileVoiceViewModel
     private val myScop = CoroutineScope(Job() + Dispatchers.Main)
 
     private var isCustom = false
@@ -267,7 +267,7 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
             requestPermissionReadWriteFile()
         }
 
-        model = ViewModelProvider(this)[FileVoiceViewModel::class.java]
+//        model = ViewModelProvider(this)[FileVoiceViewModel::class.java]
         fullScreen()
         player = Player()
         isPlaying = true
@@ -405,7 +405,7 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
         fileVoice.duration = playerEffect.duration.toLong()
         fileVoice.size = File(path).length()
         fileVoice.date = Date().time
-        model.insertBG(fileVoice)
+//        model.insertBG(fileVoice)
     }
 
     private fun goToFileVoice(isSuccess: Boolean) {

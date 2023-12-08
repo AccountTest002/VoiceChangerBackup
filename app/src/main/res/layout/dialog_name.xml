@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_14sdp"
     android:background="@drawable/bg_dialog_no_internet">
-
 
 
     <TextView
         android:id="@+id/txt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/quicksand_bold"
         android:text="Voice name"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textColor="#303030"
+        android:textSize="@dimen/_14sdp"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -27,28 +27,30 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Enter file name here"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
+        android:inputType="textPersonName"
+        android:backgroundTint="#448FFF"
+        android:textColor="#8D8D8D"
+        android:textColorHint="#8D8D8D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_cancel"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/bg_btn_cc"
+        android:fontFamily="@font/quicksand_medium"
+        android:gravity="center"
         android:text="@string/cancel"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:backgroundTint="#F5F5F5"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textColor="#8D8D8D"
+        android:textSize="@dimen/_14sdp"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_save"
@@ -56,18 +58,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_noti" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_save"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_name"
+        android:fontFamily="@font/quicksand_medium"
+        android:gravity="center"
         android:text="Save"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
+        android:textSize="@dimen/_14sdp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -81,11 +84,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Saving"
-        android:textColor="@color/white"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_name"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/edt_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
