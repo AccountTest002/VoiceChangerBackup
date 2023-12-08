@@ -1,0 +1,22 @@
+<vector android:autoMirrored="true" android:height="101dp"
+    android:viewportHeight="101" android:viewportWidth="101"
+    android:width="101dp" xmlns:aapt="http://schemas.android.com/aapt" xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <clip-path android:pathData="M0,0h101v101h-101z"/>
+        <path android:fillAlpha="0.5" android:fillColor="#000000"
+            android:pathData="M12,1L89,1A11,11 0,0 1,100 12L100,89A11,11 0,0 1,89 100L12,100A11,11 0,0 1,1 89L1,12A11,11 0,0 1,12 1z" android:strokeWidth="2">
+            <aapt:attr name="android:strokeColor">
+                <gradient android:endX="107.62" android:endY="18.05"
+                    android:startX="0" android:startY="0" android:type="linear">
+                    <item android:color="#FF5D77F0" android:offset="0"/>
+                    <item android:color="#FF4BDFFF" android:offset="1"/>
+                </gradient>
+            </aapt:attr>
+        </path>
+        <path android:fillColor="#5D77F0" android:pathData="M85,82L90,82A4,4 0,0 1,94 86L94,91A4,4 0,0 1,90 95L85,95A4,4 0,0 1,81 91L81,86A4,4 0,0 1,85 82z"/>
+        <path android:fillColor="#00000000"
+            android:pathData="M84,88.67L86.33,91L91,86"
+            android:strokeColor="#ffffff" android:strokeLineCap="round"
+            android:strokeLineJoin="round" android:strokeWidth="1"/>
+    </group>
+</vector>

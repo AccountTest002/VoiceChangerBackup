@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.button.MaterialButton
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.data.model.Effect
@@ -25,7 +26,7 @@ class EffectAdapter(
         var isExecuting = false
     }
 
-    private var imgSelect: ImageView? = null
+    private var imgSelect: ConstraintLayout? = null
 
     private var addEffectListener: ((Effect) -> Unit)? = null
 
@@ -54,8 +55,8 @@ class EffectAdapter(
 //        button.text = effects[position].title
         holder.binding.tvName.text = effects[position].title
         button.setImageResource(effects[position].src)
-        val rocketAnimation = holder.binding.imgSelect.background as AnimationDrawable
-        rocketAnimation.start()
+        val rocketAnimation = holder.binding.imgSelect.background
+//        rocketAnimation.start()
         if (effects[position].title == ChangeVoiceActivity.effectSelected.title) {
             holder.binding.imgSelect.visibility = View.VISIBLE
             imgSelect = holder.binding.imgSelect
