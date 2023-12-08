@@ -20,14 +20,13 @@
 
     <ImageView
         android:id="@+id/btn_pause_or_resume"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:backgroundTint="#5D77F0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/visualizer"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/ic_play"/>
+        app:srcCompat="@drawable/ic_play"/>
 
     <space.siy.waveformview.WaveFormView
         android:id="@+id/visualizer"
@@ -37,8 +36,8 @@
         app:blockColorPlayed="#49DAEE"
         app:showTimeText="false"
         app:blockWidth="10"
-        app:topBlockScale="2"
-        app:bottomBlockScale="2"
+        app:topBlockScale="11"
+        app:bottomBlockScale="5"
         app:peakMode="peakmode_average"
         app:secPerBlock="0.1"
         app:layout_constraintEnd_toStartOf="@+id/txt_current_time"

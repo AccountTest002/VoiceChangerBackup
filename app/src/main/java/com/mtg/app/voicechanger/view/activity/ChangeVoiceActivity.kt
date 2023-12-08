@@ -261,6 +261,11 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
     }
 
     override fun initView() {
+        if (PermissionUtils.checkPermissionReadWriteFile(this)) {
+            initData()
+        } else {
+            requestPermissionReadWriteFile()
+        }
 
 //        model = ViewModelProvider(this)[FileVoiceViewModel::class.java]
         fullScreen()
