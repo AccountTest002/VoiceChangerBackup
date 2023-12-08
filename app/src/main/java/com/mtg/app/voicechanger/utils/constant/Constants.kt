@@ -13,6 +13,7 @@ object Constants {
     const val COUNT_OPEN_TOPIC = "COUNT_OPEN_TOPIC"
     const val COUNT_OPEN_SOUND_PLAY = "COUNT_OPEN_SOUND_PLAY"
     const val COUNT_OPEN_FAVORITE = "COUNT_OPEN_FAVORITE"
+    const val FOLDER_APP = "Voice Changer"
 
     const val KEY_CURRENT_LANGUAGE = "KEY_CURRENT_LANGUAGE_JDK"
     const val KEY_CHOOSE_LANGUAGE = "KEY_CHOOSE_LANGUAGE_JDK"

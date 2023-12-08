@@ -6,32 +6,32 @@ import com.mtg.app.voicechanger.data.room.FileVoiceDAO
 import javax.inject.Inject
 
 class FileVoiceRepository @Inject constructor(private val dao: FileVoiceDAO) {
-    val fileVoices: MutableLiveData<List<FileVoice?>?>
+    val fileVoices: MutableLiveData<List<FileVoice>>
         get() {
-            val data = MutableLiveData<List<FileVoice?>?>()
-            data.setValue(dao.allVoice)
+            val data = MutableLiveData<List<FileVoice>>()
+            data.value = dao.allVoice
             return data
         }
-    val fileVoicesBG: MutableLiveData<List<FileVoice?>?>
+    val fileVoicesBG: MutableLiveData<List<FileVoice>>
         get() {
-            val data = MutableLiveData<List<FileVoice?>?>()
-            data.postValue(dao.allVoice)
+            val data = MutableLiveData<List<FileVoice>>()
+            data.postValue(dao.allVoice as List<FileVoice>?)
             return data
         }
-    val fileVideos: MutableLiveData<List<FileVoice?>?>
+    val fileVideos: MutableLiveData<List<FileVoice>>
         get() {
-            val data = MutableLiveData<List<FileVoice?>?>()
-            data.setValue(dao.allVideo)
+            val data = MutableLiveData<List<FileVoice>>()
+            data.value = dao.allVideo
             return data
         }
-    val fileVideosBG: MutableLiveData<List<FileVoice?>?>
+    val fileVideosBG: MutableLiveData<List<FileVoice>>
         get() {
-            val data = MutableLiveData<List<FileVoice?>?>()
-            data.postValue(dao.allVideo)
+            val data = MutableLiveData<List<FileVoice>>()
+            data.postValue(dao.allVideo as List<FileVoice>?)
             return data
         }
 
-    fun check(path: String?): FileVoice? {
+    fun check(path: String): FileVoice {
         return dao.check(path)
     }
 

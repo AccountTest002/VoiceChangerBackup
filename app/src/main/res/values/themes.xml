@@ -42,4 +42,7 @@
     <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
+    <style name="CustomDialogAnimation">
+        <item name="android:windowExitAnimation">@anim/anim_top_bottom_2</item>
+    </style>
 </resources>

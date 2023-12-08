@@ -96,8 +96,8 @@ android {
         disable 'ContentDescription'
         disable 'SpUsage'
     }
-    buildFeatures {
-        dataBinding true
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -176,17 +176,8 @@ dependencies {
     implementation 'com.aventrix.jnanoid:jnanoid:2.0.0'
 
     implementation 'com.github.imnirdst:iivisu:1.1.0'
+    implementation 'com.arthenica:ffmpeg-kit-full:4.5.1.LTS'
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    implementation 'com.drewnoakes:metadata-extractor:2.18.0'
 
-//    def utilsVersion = "1.0.6"
-//    implementation "com.github.ntduc-let.Utils:ActivityUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:AnimationUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:ColorUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:ContextUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:DateTimeUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:FileUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:NumberUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:StringUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:ToastUtils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:ViewPager2Utils:$utilsVersion"
-//    implementation "com.github.ntduc-let.Utils:RecyclerViewUtils:$utilsVersion"
 }

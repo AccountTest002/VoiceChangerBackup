@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/_12sdp">
+
+    <TextView
+        android:id="@+id/txt_name2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:visibility="gone"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_pause_or_resume"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:backgroundTint="#5D77F0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/visualizer"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/ic_play"/>
+
+    <space.siy.waveformview.WaveFormView
+        android:id="@+id/visualizer"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:blockColor="@color/white"
+        app:blockColorPlayed="#49DAEE"
+        app:showTimeText="false"
+        app:blockWidth="10"
+        app:topBlockScale="2"
+        app:bottomBlockScale="2"
+        app:peakMode="peakmode_average"
+        app:secPerBlock="0.1"
+        app:layout_constraintEnd_toStartOf="@+id/txt_current_time"
+        app:layout_constraintStart_toEndOf="@+id/btn_pause_or_resume"
+        app:layout_constraintTop_toTopOf="@+id/btn_pause_or_resume"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_pause_or_resume"/>
+
+    <TextView
+        android:id="@+id/txt_current_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:textSize="@dimen/_11sdp"
+        android:text="@string/zero_time"
+        android:textColor="#B4B4B4"
+        app:layout_constraintBottom_toBottomOf="@+id/visualizer"
+        app:layout_constraintStart_toEndOf="@+id/visualizer"
+        app:layout_constraintTop_toTopOf="@+id/visualizer" />
+
+    <TextView
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:textSize="@dimen/_11sdp"
+        android:text="/"
+        android:textColor="#B4B4B4"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_current_time"
+        app:layout_constraintStart_toEndOf="@+id/txt_current_time"
+        app:layout_constraintTop_toTopOf="@+id/txt_current_time" />
+
+    <TextView
+        android:id="@+id/txt_total_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:textSize="@dimen/_11sdp"
+        android:text="@string/zero_time"
+        android:textColor="#B4B4B4"
+        app:layout_constraintBottom_toBottomOf="@+id/space"
+        app:layout_constraintStart_toEndOf="@+id/space"
+        app:layout_constraintTop_toTopOf="@+id/space" />
+
+    <ImageView
+        android:id="@+id/ivVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_volume"
+        android:backgroundTint="#5D77F0"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_total_time"
+        app:layout_constraintStart_toEndOf="@+id/txt_total_time"
+        app:layout_constraintTop_toTopOf="@+id/txt_total_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

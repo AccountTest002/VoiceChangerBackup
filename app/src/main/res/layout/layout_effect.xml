@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/arch_corner_24">
+
+    <TextView
+        android:id="@+id/btn_effect"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:gravity="center"
+        android:text="Change Voice"
+        android:textAllCaps="false"
+        android:textColor="@color/_5d77f0"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_custom"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCV"
+        android:layout_width="@dimen/_23sdp"
+        android:layout_height="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:backgroundTint="#5D77F0"
+        app:cardCornerRadius="@dimen/_9sdp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_effect"
+        app:layout_constraintStart_toStartOf="@+id/btn_effect"
+        app:layout_constraintTop_toBottomOf="@+id/btn_effect" />
+
+    <TextView
+        android:id="@+id/btn_custom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:gravity="center"
+        android:text="Background Sound"
+        android:textColor="#5F5F5F"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_effect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_effect" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvBS"
+        android:layout_width="@dimen/_23sdp"
+        android:layout_height="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:backgroundTint="#5D77F0"
+        android:visibility="gone"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_custom"
+        app:layout_constraintStart_toStartOf="@+id/btn_custom"
+        app:layout_constraintTop_toBottomOf="@+id/btn_custom" />
+
+    <FrameLayout
+        android:id="@+id/layout_fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_effect" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

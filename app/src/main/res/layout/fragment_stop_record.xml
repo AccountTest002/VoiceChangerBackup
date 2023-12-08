@@ -96,6 +96,7 @@
         android:id="@+id/btn_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +104,7 @@
         app:layout_constraintVertical_bias="0.7">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clBtn"
+            android:id="@+id/clBtnStop"
             android:layout_width="@dimen/_65sdp"
             android:layout_height="@dimen/_65sdp"
             android:background="@drawable/bg_btn_record"
@@ -138,14 +139,73 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/tvStop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_medium"
         android:gravity="center"
+        android:visibility="gone"
         android:text="@string/recording_tap_to_stop"
         android:textSize="@dimen/_17sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_stop" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBtnStart"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:background="@drawable/bg_btn_record"
+            android:elevation="@dimen/_1sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_record"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/btn_am_start" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_medium"
+        android:gravity="center"
+        android:text="@string/press_the_button_to_record"
+        android:textSize="@dimen/_17sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

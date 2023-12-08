@@ -56,4 +56,14 @@
     <string name="all_changed_voices_saved_here">All changed voices saved here</string>
     <string name="recording_tap_to_stop">Recording - Tap to stop</string>
     <string name="record_audio">Record Audio</string>
+    <string name="press_the_button_to_record">Press the button to record</string>
+    <string name="title_activity_change_voice">ChangeVoiceActivity</string>
+
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+    <string name="processing_in_progress">Processing in progress, please try again later</string>
+    <string name="voice_effects">Voice Effects</string>
+    <string name="save">Save</string>
+
 </resources>

@@ -19,11 +19,11 @@ interface FileVoiceDAO {
     fun delete(fileVoice: FileVoice?)
 
     @get:Query("SELECT * FROM filevoice WHERE path LIKE '%mp3'")
-    val allVoice: List<FileVoice?>?
+    val allVoice: List<FileVoice>
 
     @get:Query("SELECT * FROM filevoice WHERE path LIKE '%mp4'")
-    val allVideo: List<FileVoice?>?
+    val allVideo: List<FileVoice>
 
     @Query("SELECT * FROM filevoice WHERE path= :path")
-    fun check(path: String?): FileVoice?
+    fun check(path: String): FileVoice
 }

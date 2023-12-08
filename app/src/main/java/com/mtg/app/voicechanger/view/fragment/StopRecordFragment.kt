@@ -1,31 +1,28 @@
 package com.mtg.app.voicechanger.view.fragment
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.os.Bundle
 import android.content.Intent
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.animation.AnimationUtils
-import androidx.fragment.app.Fragment
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseFragment
-import com.mtg.app.voicechanger.databinding.FragmentRecordBinding
 import com.mtg.app.voicechanger.databinding.FragmentStopRecordBinding
 import com.mtg.app.voicechanger.media.Recorder
+import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
-import kotlin.math.roundToInt
+import com.mtg.app.voicechanger.view.dialog.NameDialog
+import com.mtg.app.voicechanger.view.activity.ChangeVoiceActivity
 
-class StopRecordFragment : BaseFragment<FragmentStopRecordBinding>(FragmentStopRecordBinding::inflate) {
+class StopRecordFragment :
+    BaseFragment<FragmentStopRecordBinding>(FragmentStopRecordBinding::inflate) {
     private var countDownTimer: CountDownTimer? = null
     private var callback: Callback? = null
 
     private var recorder: Recorder? = null
     private var isStop = false
     private val handler = Handler(Looper.getMainLooper())
-    private var runnableAnimation: Runnable? = null
     private val runnableTime: Runnable = object : Runnable {
         override fun run() {
             binding.timelineTextView.text = NumberUtils.formatAsTime(
@@ -63,45 +60,37 @@ class StopRecordFragment : BaseFragment<FragmentStopRecordBinding>(FragmentStopR
 
 
     override fun initView() {
-//        countDownTimer = object : CountDownTimer(5000, 1000) {
-//            override fun onTick(millisUntilFinished: Long) {
-//                binding.txtCountDown.text =
-//                    (millisUntilFinished.toFloat() / 1000).roundToInt().toString()
-//            }
-//
-//            override fun onFinish() {
-                recording()
 
-//                binding.txtCountDown.visibility = View.GONE
-
-                binding.clVisual.visibility = View.VISIBLE
-                binding.timelineTextView.visibility = View.VISIBLE
-                runnableAnimation = object : Runnable {
-                    override fun run() {
-                        handler.postDelayed(this, 1000)
-                    }
-                }
-                handler.post(runnableAnimation!!)
-//            }
-//        }
-//        countDownTimer?.start()
+        binding.clVisual.visibility = View.VISIBLE
+        binding.timelineTextView.visibility = View.VISIBLE
     }
 
     override fun addEvent() {
         binding.btnBack.setOnClickListener { back() }
+        binding.btnStart.setOnClickListener {
+            recording()
+            binding.btnStart.visibility = View.GONE
+            binding.tvStart.visibility = View.GONE
+            binding.btnStop.visibility = View.VISIBLE
+            binding.tvStop.visibility = View.VISIBLE
+        }
         binding.btnStop.setOnClickListener {
             stopRecord()
-//            val intent = Intent(requireActivity(), ChangeVoiceActivity::class.java)
-//            intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
-//            intent.putExtra(
-//                ChangeVoiceActivity.PATH_FILE,
-//                FileUtils.getTempRecordingFilePath(requireContext())
-//            )
-//            startActivity(intent)
-//            requireActivity().overridePendingTransition(
-//                R.anim.anim_right_left_1,
-//                R.anim.anim_right_left_2
-//            )
+            binding.btnStart.visibility = View.VISIBLE
+            binding.tvStart.visibility = View.VISIBLE
+            binding.btnStop.visibility = View.GONE
+            binding.tvStop.visibility = View.GONE
+            val intent = Intent(requireActivity(), ChangeVoiceActivity::class.java)
+            intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
+            intent.putExtra(
+                ChangeVoiceActivity.PATH_FILE,
+                FileUtils.getTempRecordingFilePath(requireContext())
+            )
+            startActivity(intent)
+            requireActivity().overridePendingTransition(
+                R.anim.anim_right_left_1,
+                R.anim.anim_right_left_2
+            )
         }
     }
 

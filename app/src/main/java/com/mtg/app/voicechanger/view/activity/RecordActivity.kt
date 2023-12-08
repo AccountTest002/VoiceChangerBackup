@@ -444,14 +444,14 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
     }
 
     private fun goToChangeVoice(action: String, path: String) {
-//        val intent = Intent(this, ChangeVoiceActivity::class.java)
-//        intent.action = action
-//        intent.putExtra(ChangeVoiceActivity.PATH_FILE, path)
-//        startActivity(intent)
-//        overridePendingTransition(
-//            R.anim.anim_right_left_1,
-//            R.anim.anim_right_left_2
-//        )
+        val intent = Intent(this, ChangeVoiceActivity::class.java)
+        intent.action = action
+        intent.putExtra(ChangeVoiceActivity.PATH_FILE, path)
+        startActivity(intent)
+        overridePendingTransition(
+            R.anim.anim_right_left_1,
+            R.anim.anim_right_left_2
+        )
     }
 
 

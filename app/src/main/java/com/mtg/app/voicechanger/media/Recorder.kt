@@ -15,7 +15,7 @@ class Recorder(context: Context?) : RecorderListener {
     var path: String?
         private set
     private var startTime: Long
-    private var isRecording: Boolean
+    var isRecording: Boolean
 
     init {
         path = context?.let { FileUtils.getTempRecordingFilePath(it) }
