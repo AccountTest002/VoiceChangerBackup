@@ -50,13 +50,11 @@ class AudioChooserActivity :
     }
 
     private fun loadFile() {
-        LoadDataUtils.loadAudio(this, object: LoadDataUtils.CallBack{
-            override fun onSuccess(list: List<AudioFile>) {
-                audioList.clear()
-                audioList.addAll(list)
-                adapter.notifyDataSetChanged()
-            }
-        })
+        LoadDataUtils.loadAudio(this) { list ->
+            audioList.clear()
+            audioList.addAll(list)
+            adapter.notifyDataSetChanged()
+        }
     }
 
     override fun addEvent() {

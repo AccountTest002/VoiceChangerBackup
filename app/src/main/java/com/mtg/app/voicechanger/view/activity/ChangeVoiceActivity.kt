@@ -27,6 +27,7 @@ import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
+import com.mtg.app.voicechanger.callback.OnItemClickListener
 import com.mtg.app.voicechanger.data.model.Effect
 import com.mtg.app.voicechanger.data.model.FileVoice
 import com.mtg.app.voicechanger.databinding.ActivityChangeVoiceBinding
@@ -41,6 +42,7 @@ import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.base.showConfirmationDialog
 import com.mtg.app.voicechanger.utils.constant.Constants.CHANGE_TO_RECORD
 import com.mtg.app.voicechanger.utils.constant.Constants.PATH_FILE
+import com.mtg.app.voicechanger.utils.constant.Constants.STUDENT_EXTRA
 import com.mtg.app.voicechanger.view.adapter.EffectAdapter
 import com.mtg.app.voicechanger.view.dialog.NameDialog
 import com.mtg.app.voicechanger.view.fragment.BasicEffectFragment
@@ -62,7 +64,7 @@ import kotlin.math.roundToInt
 class ChangeVoiceActivity :
     BaseActivity<ActivityChangeVoiceBinding>(ActivityChangeVoiceBinding::inflate),
     BasicEffectFragment.Callback,
-    WaveFormView.Callback, CustomEffectFragment.Callback {
+    WaveFormView.Callback, CustomEffectFragment.Callback, OnItemClickListener {
 
     companion object {
         var effectSelected = FFMPEGUtils.effects[0]
@@ -412,13 +414,14 @@ class ChangeVoiceActivity :
         fileVoice.size = File(path).length()
         fileVoice.date = Date().time
         model.insertBG(fileVoice)
+        onItemClick(fileVoice)
     }
 
     private fun goToFileVoice(isSuccess: Boolean) {
         ProxAds.instance.showInterstitial(this, "interstitial", object : AdsCallback() {
             override fun onClosed() {
                 super.onClosed()
-                startActivity(Intent(this@ChangeVoiceActivity, SavedActivity::class.java))
+//                startActivity(Intent(this@ChangeVoiceActivity, SavedActivity::class.java))
                 overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
                 if (isSuccess) {
                     Toast.makeText(mContext, R.string.save_success, Toast.LENGTH_SHORT).show()
@@ -429,7 +432,7 @@ class ChangeVoiceActivity :
 
             override fun onError() {
                 super.onError()
-                startActivity(Intent(this@ChangeVoiceActivity, SavedActivity::class.java))
+//                startActivity(Intent(this@ChangeVoiceActivity, SavedActivity::class.java))
                 overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
                 if (isSuccess) {
                     Toast.makeText(mContext, R.string.save_success, Toast.LENGTH_SHORT).show()
@@ -653,5 +656,11 @@ class ChangeVoiceActivity :
                 }
             })
         }
+    }
+
+    override fun onItemClick(fileVoice: FileVoice) {
+        val intent = Intent(this, SavedActivity::class.java)
+        intent.putExtra(STUDENT_EXTRA, fileVoice)
+        startActivity(intent)
     }
 }

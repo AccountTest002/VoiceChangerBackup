@@ -71,7 +71,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_9sdp"
             android:contentDescription="@null"
-            android:src="@drawable/ic_backward"
+            android:src="@drawable/img_item_audio"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.06"

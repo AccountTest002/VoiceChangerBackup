@@ -8,6 +8,8 @@ object Constants {
         ""
     const val PUBLISH_NAME = ""
 
+    const val STUDENT_EXTRA = "STUDENT_EXTRA"
+
     const val IS_RATE = "IS_RATE"
     const val COUNT_RATE = "COUNT_RATE"
     const val COUNT_OPEN_TOPIC = "COUNT_OPEN_TOPIC"

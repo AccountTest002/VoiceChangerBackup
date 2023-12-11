@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
-        android:visibility="gone"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,18 +22,18 @@
         android:id="@+id/btn_pause_or_resume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/visualizer"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_play"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_play" />
 
     <space.siy.waveformview.WaveFormView
         android:id="@+id/visualizer"
         android:layout_width="0dp"
         android:layout_height="150dp"
         app:blockColor="@color/white"
-        app:blockColorPlayed="#49DAEE"
+        app:blockColorPlayed="#008ED5"
         app:showTimeText="false"
         app:blockWidth="10"
         app:topBlockScale="11"
@@ -50,9 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_bold"
-        android:textSize="@dimen/_11sdp"
         android:text="@string/zero_time"
         android:textColor="#B4B4B4"
+        android:textSize="@dimen/_11sdp"
         app:layout_constraintBottom_toBottomOf="@+id/visualizer"
         app:layout_constraintStart_toEndOf="@+id/visualizer"
         app:layout_constraintTop_toTopOf="@+id/visualizer" />
@@ -62,9 +62,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_bold"
-        android:textSize="@dimen/_11sdp"
         android:text="/"
         android:textColor="#B4B4B4"
+        android:textSize="@dimen/_11sdp"
         app:layout_constraintBottom_toBottomOf="@+id/txt_current_time"
         app:layout_constraintStart_toEndOf="@+id/txt_current_time"
         app:layout_constraintTop_toTopOf="@+id/txt_current_time" />
@@ -74,9 +74,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_bold"
-        android:textSize="@dimen/_11sdp"
         android:text="@string/zero_time"
         android:textColor="#B4B4B4"
+        android:textSize="@dimen/_11sdp"
         app:layout_constraintBottom_toBottomOf="@+id/space"
         app:layout_constraintStart_toEndOf="@+id/space"
         app:layout_constraintTop_toTopOf="@+id/space" />
@@ -88,9 +88,8 @@
         android:background="@drawable/ic_volume"
         android:backgroundTint="#5D77F0"
         app:layout_constraintBottom_toBottomOf="@+id/txt_total_time"
-        app:layout_constraintStart_toEndOf="@+id/txt_total_time"
-        app:layout_constraintTop_toTopOf="@+id/txt_total_time"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toEndOf="@+id/txt_total_time"
+        app:layout_constraintTop_toTopOf="@+id/txt_total_time" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

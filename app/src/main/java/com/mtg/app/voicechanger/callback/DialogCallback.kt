@@ -1,4 +1,4 @@
-package com.mtgapp.image2pdf.callback
+package com.mtg.app.voicechanger.callback
 
 interface DialogCallback {
     fun onAllow(value: Any?)
