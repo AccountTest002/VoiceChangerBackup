@@ -90,4 +90,6 @@
     <string name="out_gain">Out Gain</string>
     <string name="delay">Delay</string>
     <string name="decay">Decay</string>
+    <string name="no_audio_files">No audio files</string>
+    <string name="no_results">No results</string>
 </resources>

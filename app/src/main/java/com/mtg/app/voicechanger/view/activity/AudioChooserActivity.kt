@@ -5,13 +5,18 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.data.model.AudioFile
 import com.mtg.app.voicechanger.databinding.ActivityAudioChooserBinding
+import com.mtg.app.voicechanger.utils.ListAudioManager
 import com.mtg.app.voicechanger.utils.LoadDataUtils
 import com.mtg.app.voicechanger.view.adapter.AudioAdapter
 
@@ -31,6 +36,17 @@ class AudioChooserActivity :
         }
     }
     private val audioList = arrayListOf<AudioFile>()
+    private val listAudioManger by lazy {
+        ListAudioManager(audioList, object: ListAudioManager.CallBack{
+            override fun onEmpty(it: Boolean) {
+                if (it) {
+                    binding.llEmptySearch.visibility = View.VISIBLE
+                } else {
+                    binding.llEmptySearch.visibility = View.GONE
+                }
+            }
+        })
+    }
     private lateinit var adapter: AudioAdapter
     override fun initView() {
         val window = window
@@ -42,25 +58,68 @@ class AudioChooserActivity :
         binding.ctHeader.background = null
 
         registerReceiver(loadFileReceiver, IntentFilter(LoadDataUtils.LOAD_SUCCESSFUL))
-        loadFile()
         adapter = AudioAdapter(audioList, this)
         binding.rcv.layoutManager = LinearLayoutManager(this)
         binding.rcv.adapter = adapter
+        loadFile()
 
     }
 
     private fun loadFile() {
-        LoadDataUtils.loadAudio(this, object: LoadDataUtils.CallBack{
+        LoadDataUtils.loadAudio(this, object : LoadDataUtils.CallBack {
             override fun onSuccess(list: List<AudioFile>) {
                 audioList.clear()
                 audioList.addAll(list)
+
                 adapter.notifyDataSetChanged()
+                if (audioList.isEmpty()) {
+                    binding.llEmpty.visibility = View.VISIBLE
+                    binding.ivSearch.visibility = View.GONE
+                }
             }
         })
     }
 
     override fun addEvent() {
+        binding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
+        binding.ivBackSearch.setOnClickListener {
+            binding.ctMainTop.visibility = View.VISIBLE
+            binding.ctSearchTop.visibility = View.GONE
+            binding.edtSearch.setText("")
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(binding.edtSearch.windowToken, 0)
+        }
+        binding.ivSearch.setOnClickListener {
+            binding.ctMainTop.visibility = View.GONE
+            binding.ctSearchTop.visibility = View.VISIBLE
+        }
 
+        binding.edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (binding.edtSearch.text!!.isEmpty()) {
+                    binding.ivCancelSearch.visibility = View.GONE
+                } else {
+                    binding.ivCancelSearch.visibility = View.VISIBLE
+                }
+                listAudioManger.filterList(binding.edtSearch.text.toString())
+                adapter.notifyDataSetChanged()
+            }
+
+        })
+
+        binding.ivCancelSearch.setOnClickListener {
+            binding.edtSearch.setText("")
+        }
     }
 
     override fun onDestroy() {
