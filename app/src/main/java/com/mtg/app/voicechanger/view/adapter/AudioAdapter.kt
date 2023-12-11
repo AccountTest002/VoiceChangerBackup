@@ -37,11 +37,14 @@ class AudioAdapter(mList: List<AudioFile?>?, context: Context?) :
         }
 
         fun loadData(itemAudio: AudioFile) {
-            binding.root.setTag(itemAudio)
+            binding.root.tag = itemAudio
             var name = File(itemAudio.path).name
             var detail = NumberUtils.formatAsTime(itemAudio.duration) +"   "+itemAudio.size
             binding.tvName.text = name
             binding.tvDetail.text = detail
+            binding.root.setOnClickListener {
+                mCallback?.callback("", binding.root.tag)
+            }
         }
 
         override fun onClick(v: View) {

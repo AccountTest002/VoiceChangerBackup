@@ -21,8 +21,12 @@ class DialogReadAudioPms(context: Context) :
     }
 
     private fun addEvent() {
-        binding.bt.setOnClickListener {
+        binding.btnCancel.setOnClickListener {
+            dismiss()
+        }
+        binding.btnAllow.setOnClickListener {
             callback?.callback("")
+            dismiss()
         }
     }
 }
