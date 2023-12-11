@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.common.control.base.OnActionCallback
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.data.model.AudioFile
@@ -59,6 +60,12 @@ class AudioChooserActivity :
 
         registerReceiver(loadFileReceiver, IntentFilter(LoadDataUtils.LOAD_SUCCESSFUL))
         adapter = AudioAdapter(audioList, this)
+        adapter.mCallback = object: OnActionCallback{
+            override fun callback(key: String?, vararg data: Any?) {
+                var item = data[0] as AudioFile
+
+            }
+        }
         binding.rcv.layoutManager = LinearLayoutManager(this)
         binding.rcv.adapter = adapter
         loadFile()
