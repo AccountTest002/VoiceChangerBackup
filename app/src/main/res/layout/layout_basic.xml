@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txt_tempo_pitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:text="@string/tempo_pitch"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="#5F5F5F"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_tempo_pitch"
+        app:layout_constraintEnd_toStartOf="@+id/seek_tempo_pitch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_tempo_pitch" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seek_tempo_pitch"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:trackColorActive="#5D77F0"
+        app:trackColorInactive="#A4A4A4"
+        app:tickColorActive="#4B5DFC"
+        app:tickColorInactive="#A4A4A4"
+        android:stepSize="2000"
+        android:value="16000"
+        android:valueFrom="4000"
+        android:valueTo="32000"
+        app:trackHeight="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:thumbRadius="5dp" />
+
+    <TextView
+        android:id="@+id/txt_tempo_rate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:text="@string/tempo_rate"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="#5F5F5F"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_tempo_rate"
+        app:layout_constraintEnd_toStartOf="@+id/seek_tempo_rate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_tempo_rate" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seek_tempo_rate"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:trackColorActive="#4B5DFC"
+        app:trackColorInactive="#A4A4A4"
+        app:tickColorActive="#4B5DFC"
+        app:tickColorInactive="#A4A4A4"
+        android:stepSize="0.1"
+        android:value="1"
+        android:valueFrom="0.5"
+        android:valueTo="5"
+        app:trackHeight="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_tempo_pitch"
+        app:thumbRadius="5dp" />
+
+    <TextView
+        android:id="@+id/txt_panning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:text="@string/panning"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="#5F5F5F"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_panning"
+        app:layout_constraintEnd_toStartOf="@+id/seek_panning"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_panning" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seek_panning"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:trackColorActive="#4B5DFC"
+        app:trackColorInactive="#A4A4A4"
+        app:tickColorActive="#4B5DFC"
+        app:tickColorInactive="#A4A4A4"
+        android:stepSize="0.1"
+        android:value="1"
+        android:valueFrom="0"
+        android:valueTo="1"
+        app:trackHeight="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_tempo_rate"
+        app:thumbRadius="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="4000"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_tempo_pitch"
+        app:layout_constraintStart_toStartOf="@+id/seek_tempo_pitch" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="32000"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_tempo_pitch"
+        app:layout_constraintEnd_toEndOf="@+id/seek_tempo_pitch" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="0.5"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_tempo_rate"
+        app:layout_constraintStart_toStartOf="@+id/seek_tempo_rate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="5"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_tempo_rate"
+        app:layout_constraintEnd_toEndOf="@+id/seek_tempo_rate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="0"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_panning"
+        app:layout_constraintStart_toStartOf="@+id/seek_panning" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="1"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_panning"
+        app:layout_constraintEnd_toEndOf="@+id/seek_panning" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
