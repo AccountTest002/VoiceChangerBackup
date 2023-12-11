@@ -179,11 +179,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
             if (!PermissionUtils.checkReadAudioPms(this)) {
                 showDialogReadAudioPms()
             } else {
-                ImportAudioFlow(this, object: ImportAudioFlow.Callback{
-                    override fun onNoPms() {
-                        PermissionUtils.requestReadAudioPms(this@RecordActivity)
-                    }
-                }).start()
+                startImport()
             }
         }
     }
@@ -468,13 +464,21 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
             if (!PermissionUtils.checkReadAudioPms(this)) {
                 showDialogReadAudioPms()
             } else {
-                ImportAudioFlow(this, object: ImportAudioFlow.Callback{
-                    override fun onNoPms() {
-                        PermissionUtils.requestReadAudioPms(this@RecordActivity)
-                    }
-                }).start()
+                startImport()
             }
         }
+    }
+
+    private fun startImport() {
+        ImportAudioFlow(this, object: ImportAudioFlow.Callback{
+            override fun onNoPms() {
+                PermissionUtils.requestReadAudioPms(this@RecordActivity)
+            }
+
+            override fun onNextScreen() {
+                AudioChooserActivity.start(this@RecordActivity)
+            }
+        }).start()
     }
 
 }

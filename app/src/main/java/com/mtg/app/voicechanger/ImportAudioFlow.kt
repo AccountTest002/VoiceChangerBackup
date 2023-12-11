@@ -24,16 +24,11 @@ class ImportAudioFlow(private val act: Activity, private val callback: Callback)
     }
 
     private fun importAudio(act: Activity) {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.setType("audio/*")
-        intent.putExtra(
-            Intent.EXTRA_MIME_TYPES,
-            arrayOf("audio/mp3", "audio/wav")
-        )
-        act.startActivityForResult(intent, REQUEST_CODE_IMPORT_AUDIO)
+        callback.onNextScreen()
     }
 
     interface Callback {
-        fun onNoPms();
+        fun onNoPms()
+        fun onNextScreen()
     }
 }
