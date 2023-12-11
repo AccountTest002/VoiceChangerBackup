@@ -89,4 +89,7 @@
     <string name="out_gain">Out Gain</string>
     <string name="delay">Delay</string>
     <string name="decay">Decay</string>
+    <string name="voice_name">Voice Name</string>
+    <string name="audio_saved">Audio saved</string>
+    <string name="play">Play</string>
 </resources>

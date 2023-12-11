@@ -415,7 +415,7 @@ class ChangeVoiceActivity :
         ProxAds.instance.showInterstitial(this, "interstitial", object : AdsCallback() {
             override fun onClosed() {
                 super.onClosed()
-//                startActivity(Intent(this@ChangeVoiceActivity, FileVoiceActivity::class.java))
+                startActivity(Intent(this@ChangeVoiceActivity, SavedActivity::class.java))
                 overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
                 if (isSuccess) {
                     Toast.makeText(mContext, R.string.save_success, Toast.LENGTH_SHORT).show()
@@ -426,7 +426,7 @@ class ChangeVoiceActivity :
 
             override fun onError() {
                 super.onError()
-//                startActivity(Intent(this@ChangeVoiceActivity, FileVoiceActivity::class.java))
+                startActivity(Intent(this@ChangeVoiceActivity, SavedActivity::class.java))
                 overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
                 if (isSuccess) {
                     Toast.makeText(mContext, R.string.save_success, Toast.LENGTH_SHORT).show()
