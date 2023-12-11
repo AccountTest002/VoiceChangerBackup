@@ -3,10 +3,7 @@ package com.mtg.app.voicechanger.view.fragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.os.Bundle
-import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -14,16 +11,13 @@ import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import com.mtg.app.voicechanger.BuildConfig
-import com.mtg.app.voicechanger.ImportAudioFlow
+import com.mtg.app.voicechanger.media.ImportAudioFlow
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseFragment
-import com.mtg.app.voicechanger.databinding.FragmentOnboadingBinding
 import com.mtg.app.voicechanger.databinding.FragmentRecordBinding
 import com.mtg.app.voicechanger.utils.ActionUtils
 import com.mtg.app.voicechanger.utils.CommonUtils
@@ -34,9 +28,6 @@ import com.mtg.app.voicechanger.utils.hide
 import com.mtg.app.voicechanger.view.activity.AudioChooserActivity
 import com.mtg.app.voicechanger.view.activity.LanguageActivity
 import com.mtg.app.voicechanger.view.activity.PolicyWebViewActivity
-import com.proxglobal.proxads.adsv2.ads.ProxAds
-import com.proxglobal.proxads.adsv2.callback.AdsCallback
-import com.proxglobal.purchase.ProxPurchase
 
 class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding::inflate) {
 //    private lateinit var dialog: MoreOptionDialog

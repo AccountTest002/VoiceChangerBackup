@@ -8,7 +8,7 @@
 //import android.view.ViewGroup
 //import androidx.databinding.DataBindingUtil
 //import androidx.databinding.ViewDataBinding
-//import com.documentmaster.documentscan.OnActionCallback
+//import com.mtg.app.voicechanger.OnActionCallback
 //import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 //import com.mtg.app.voicechanger.R
 //

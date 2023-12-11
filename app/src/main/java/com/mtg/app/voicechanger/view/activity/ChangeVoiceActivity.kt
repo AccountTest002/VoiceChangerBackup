@@ -16,6 +16,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
@@ -23,6 +24,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.mtg.app.voicechanger.BuildConfig
+import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.data.model.Effect
@@ -44,6 +46,7 @@ import com.mtg.app.voicechanger.view.dialog.NameDialog
 import com.mtg.app.voicechanger.view.fragment.BasicEffectFragment
 import com.mtg.app.voicechanger.view.fragment.CustomEffectFragment
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
+import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
 import com.proxglobal.proxads.adsv2.ads.ProxAds
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
 import com.proxglobal.purchase.ProxPurchase
@@ -65,8 +68,8 @@ class ChangeVoiceActivity :
         var effectSelected = FFMPEGUtils.effects[0]
     }
 
-    private val model: FileVoiceViewModel by lazy {
-        ViewModelProvider(this)[FileVoiceViewModel::class.java]
+    private val model: FileVoiceViewModel by viewModels {
+        VoiceViewModelFactory((application as MyApplication).repository)
     }
     private val myScop = CoroutineScope(Job() + Dispatchers.Main)
 
