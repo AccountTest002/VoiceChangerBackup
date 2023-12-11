@@ -95,4 +95,6 @@
     <string name="voice_name">Voice Name</string>
     <string name="audio_saved">Audio saved</string>
     <string name="play">Play</string>
+    <string name="allow">Allow</string>
+    <string name="txt_pms_audios">We need permission to access your audios</string>
 </resources>
