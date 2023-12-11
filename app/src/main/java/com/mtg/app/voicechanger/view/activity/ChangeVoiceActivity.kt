@@ -56,14 +56,19 @@ import java.util.*
 import kotlin.math.roundToInt
 
 
-class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityChangeVoiceBinding::inflate), BasicEffectFragment.Callback,
+class ChangeVoiceActivity :
+    BaseActivity<ActivityChangeVoiceBinding>(ActivityChangeVoiceBinding::inflate),
+    BasicEffectFragment.Callback,
     WaveFormView.Callback, CustomEffectFragment.Callback {
 
     companion object {
         var effectSelected = FFMPEGUtils.effects[0]
     }
 
-//    private lateinit var model: FileVoiceViewModel
+    //    private lateinit var model: FileVoiceViewModel
+    private val model: FileVoiceViewModel by lazy {
+        ViewModelProvider(this)[FileVoiceViewModel::class.java]
+    }
     private val myScop = CoroutineScope(Job() + Dispatchers.Main)
 
     private var isCustom = false
@@ -267,7 +272,6 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
             requestPermissionReadWriteFile()
         }
 
-//        model = ViewModelProvider(this)[FileVoiceViewModel::class.java]
         fullScreen()
         player = Player()
         isPlaying = true
@@ -368,7 +372,7 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
 
             if (isCustom) {
                 if (EffectAdapter.isExecuting) {
-                    Toast.makeText(this,R.string.processing_in_progress,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.processing_in_progress, Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
                 EffectAdapter.isExecuting = true
@@ -405,7 +409,7 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
         fileVoice.duration = playerEffect.duration.toLong()
         fileVoice.size = File(path).length()
         fileVoice.date = Date().time
-//        model.insertBG(fileVoice)
+        model.insertBG(fileVoice)
     }
 
     private fun goToFileVoice(isSuccess: Boolean) {
@@ -415,9 +419,9 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
 //                startActivity(Intent(this@ChangeVoiceActivity, FileVoiceActivity::class.java))
                 overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
                 if (isSuccess) {
-                    Toast.makeText(mContext,R.string.save_success,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(mContext, R.string.save_success, Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(mContext,R.string.save_fail,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(mContext, R.string.save_fail, Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -426,9 +430,9 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
 //                startActivity(Intent(this@ChangeVoiceActivity, FileVoiceActivity::class.java))
                 overridePendingTransition(R.anim.anim_right_left_1, R.anim.anim_right_left_2)
                 if (isSuccess) {
-                    Toast.makeText(mContext,R.string.save_success,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(mContext, R.string.save_success, Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(mContext,R.string.save_fail,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(mContext, R.string.save_fail, Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -549,10 +553,20 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
 
             binding.layoutPlayer.txtName2.text = nameFile + "-" + effectSelected.title
 
-            binding.layoutEffect.btnEffect.setTextColor( ContextCompat.getColor(this, R.color._5d77f0))
+            binding.layoutEffect.btnEffect.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color._5d77f0
+                )
+            )
             binding.layoutEffect.cvCV.visibility = View.VISIBLE
             binding.layoutEffect.btnEffect.isEnabled = false
-            binding.layoutEffect.btnCustom.setTextColor( ContextCompat.getColor(this, R.color._5f5f5f))
+            binding.layoutEffect.btnCustom.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color._5f5f5f
+                )
+            )
             binding.layoutEffect.cvBS.visibility = View.GONE
             binding.layoutEffect.btnCustom.isEnabled = true
 
@@ -562,10 +576,20 @@ class ChangeVoiceActivity : BaseActivity<ActivityChangeVoiceBinding>(ActivityCha
             binding.layoutPlayer.txtName2.text =
                 binding.layoutPlayer.txtName2.text.toString() + "-Custom"
 
-            binding.layoutEffect.btnEffect.setTextColor( ContextCompat.getColor(this, R.color._5f5f5f))
+            binding.layoutEffect.btnEffect.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color._5f5f5f
+                )
+            )
             binding.layoutEffect.cvCV.visibility = View.GONE
             binding.layoutEffect.btnEffect.isEnabled = true
-            binding.layoutEffect.btnCustom.setTextColor( ContextCompat.getColor(this, R.color._5d77f0))
+            binding.layoutEffect.btnCustom.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color._5d77f0
+                )
+            )
             binding.layoutEffect.cvBS.visibility = View.VISIBLE
             binding.layoutEffect.btnCustom.isEnabled = false
 
