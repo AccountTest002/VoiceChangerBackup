@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_in_gain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:text="@string/in_gain"
+        android:textColor="@color/_5f5f5f"
+        android:fontFamily="@font/quicksand_medium"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_in_gain"
+        app:layout_constraintEnd_toStartOf="@+id/seek_in_gain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_in_gain" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seek_in_gain"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:trackColorActive="#4B5DFC"
+        app:trackColorInactive="#A4A4A4"
+        app:tickColorActive="#4B5DFC"
+        app:tickColorInactive="#A4A4A4"
+        android:stepSize="0.1"
+        android:value="1"
+        android:valueFrom="0"
+        android:valueTo="1"
+        app:trackHeight="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:thumbRadius="5dp" />
+
+    <TextView
+        android:id="@+id/txt_out_gain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:text="@string/out_gain"
+        android:textColor="@color/_5f5f5f"
+        android:fontFamily="@font/quicksand_medium"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_out_gain"
+        app:layout_constraintEnd_toStartOf="@+id/seek_out_gain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_out_gain" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seek_out_gain"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:trackColorActive="#4B5DFC"
+        app:trackColorInactive="#A4A4A4"
+        app:tickColorActive="#4B5DFC"
+        app:tickColorInactive="#A4A4A4"
+        android:stepSize="0.1"
+        android:value="1"
+        android:valueFrom="0"
+        android:valueTo="1"
+        app:trackHeight="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_in_gain"
+        app:thumbRadius="5dp" />
+
+    <TextView
+        android:id="@+id/txt_delay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:text="@string/delay"
+        android:textColor="@color/_5f5f5f"
+        android:fontFamily="@font/quicksand_medium"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_delay"
+        app:layout_constraintEnd_toStartOf="@+id/seek_delay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_delay" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seek_delay"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:trackColorActive="#4B5DFC"
+        app:trackColorInactive="#A4A4A4"
+        app:tickColorActive="#4B5DFC"
+        app:tickColorInactive="#A4A4A4"
+        android:stepSize="100"
+        android:value="0"
+        android:valueFrom="0"
+        android:valueTo="1000"
+        app:trackHeight="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_out_gain"
+        app:thumbRadius="5dp" />
+
+    <TextView
+        android:id="@+id/txt_decay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:text="@string/decay"
+        android:textColor="@color/_5f5f5f"
+        android:fontFamily="@font/quicksand_medium"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_decay"
+        app:layout_constraintEnd_toStartOf="@+id/seek_delay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seek_decay" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seek_decay"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:trackColorActive="#4B5DFC"
+        app:trackColorInactive="#A4A4A4"
+        app:tickColorActive="#4B5DFC"
+        app:tickColorInactive="#A4A4A4"
+        android:stepSize="0.1"
+        android:value="1"
+        android:valueFrom="0"
+        android:valueTo="1"
+        app:trackHeight="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seek_delay"
+        app:thumbRadius="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="0"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_in_gain"
+        app:layout_constraintStart_toStartOf="@+id/seek_in_gain" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="1"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_in_gain"
+        app:layout_constraintEnd_toEndOf="@+id/seek_in_gain" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="0"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_out_gain"
+        app:layout_constraintStart_toStartOf="@+id/seek_out_gain" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="1"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_out_gain"
+        app:layout_constraintEnd_toEndOf="@+id/seek_out_gain" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="0"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_delay"
+        app:layout_constraintStart_toStartOf="@+id/seek_delay" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="1000"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_delay"
+        app:layout_constraintEnd_toEndOf="@+id/seek_delay" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="0"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_decay"
+        app:layout_constraintStart_toStartOf="@+id/seek_decay" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="1"
+        android:textColor="@color/b4b4b4"
+        android:textSize="@dimen/_9sdp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seek_decay"
+        app:layout_constraintEnd_toEndOf="@+id/seek_decay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

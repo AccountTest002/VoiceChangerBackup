@@ -65,7 +65,6 @@ class ChangeVoiceActivity :
         var effectSelected = FFMPEGUtils.effects[0]
     }
 
-    //    private lateinit var model: FileVoiceViewModel
     private val model: FileVoiceViewModel by lazy {
         ViewModelProvider(this)[FileVoiceViewModel::class.java]
     }
