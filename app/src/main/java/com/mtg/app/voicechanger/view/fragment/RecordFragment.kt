@@ -31,6 +31,7 @@ import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.FirebaseUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.hide
+import com.mtg.app.voicechanger.view.activity.AudioChooserActivity
 import com.mtg.app.voicechanger.view.activity.LanguageActivity
 import com.mtg.app.voicechanger.view.activity.PolicyWebViewActivity
 import com.proxglobal.proxads.adsv2.ads.ProxAds
@@ -126,6 +127,10 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
             ImportAudioFlow(requireActivity(), object: ImportAudioFlow.Callback{
                 override fun onNoPms() {
                     PermissionUtils.requestReadAudioPms(requireActivity())
+                }
+
+                override fun onNextScreen() {
+                    AudioChooserActivity.start(requireActivity())
                 }
             }).start()
         }

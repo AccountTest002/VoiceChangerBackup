@@ -67,6 +67,7 @@
     <string name="save">Save</string>
     <string name="save_success">Save successfully</string>
     <string name="save_fail">Save failure</string>
+    <string name="select_file">Select file</string>
     <string name="basic">Basic</string>
     <string name="equalizer">Equalizer</string>
     <string name="reverb">Reverb</string>
