@@ -11,10 +11,14 @@ import com.common.control.model.PurchaseModel
 import com.facebook.FacebookSdk
 import com.mtg.app.voicechanger.consent_dialog.dialog.BillingDialog
 import com.mtg.app.voicechanger.consent_dialog.remote_config.RemoteConfigManager
+import com.mtg.app.voicechanger.data.room.FileVoiceDatabase
+import com.mtg.app.voicechanger.repository.FileVoiceRepository
 import com.mtg.app.voicechanger.utils.AudienceNetworkInitializeHelper
 import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.app.AppPreferences
 import com.mtg.app.voicechanger.view.activity.SplashActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 
 
 class MyApplication : MyApplication(), Application.ActivityLifecycleCallbacks {
@@ -23,6 +27,9 @@ class MyApplication : MyApplication(), Application.ActivityLifecycleCallbacks {
         const val PRODUCT_LIFETIME = "PRODUCT_LIFETIME"
     }
     private val lsActivity = ArrayList<Activity>()
+
+    val database by lazy { FileVoiceDatabase.getDatabase(this) }
+    val repository by lazy { FileVoiceRepository(database.dao()) }
 
     override fun onApplicationCreate() {
         RemoteConfigManager.instance?.loadRemote()

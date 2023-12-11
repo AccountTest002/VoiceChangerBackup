@@ -16,5 +16,5 @@ class FileVoice {
     var date: Long = 0
 
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    lateinit var image: ByteArray
+    var image: ByteArray? = null
 }
