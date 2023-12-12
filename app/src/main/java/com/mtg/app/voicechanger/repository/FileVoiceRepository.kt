@@ -76,4 +76,7 @@ class FileVoiceRepository @Inject constructor(private val dao: FileVoiceDAO) {
     fun delete(fileVoice: FileVoice?) {
         dao.delete(fileVoice)
     }
+    fun getAllAudio(): List<FileVoice>{
+        return dao.allVoice
+    }
 }

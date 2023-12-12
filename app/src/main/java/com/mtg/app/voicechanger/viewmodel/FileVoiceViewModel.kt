@@ -17,6 +17,7 @@ class FileVoiceViewModel @Inject constructor(private val repository: FileVoiceRe
     private val fileVideos: MutableLiveData<List<FileVoice>> = repository.fileVideos
 
     fun getFileVoices(): LiveData<List<FileVoice>> {
+        fileVoices.postValue(repository.getAllAudio())
         return fileVoices
     }
 
