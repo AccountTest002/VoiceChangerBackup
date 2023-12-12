@@ -61,6 +61,16 @@ object LoadDataUtils {
         }
     }
 
+    fun checkSuccess(): Boolean{
+        return isLoaded && !isLoading
+    }
+
+    fun remove(path: String) {
+        if (checkSuccess()) {
+            audiosStorage.removeIf { it.path == path }
+        }
+    }
+
 
     fun interface CallBack {
         fun onSuccess(list: List<AudioFile>)
