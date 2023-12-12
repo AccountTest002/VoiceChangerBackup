@@ -54,7 +54,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
     }
 
     private fun setStatusBarColor() {
-        window.navigationBarColor = ContextCompat.getColor(this, R.color.color_1D1C21)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
     }
 
     private fun handleButtonBack() {
