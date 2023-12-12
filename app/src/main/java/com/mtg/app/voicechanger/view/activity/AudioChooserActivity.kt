@@ -41,7 +41,7 @@ class AudioChooserActivity :
     }
     private val audioList = arrayListOf<AudioFile>()
     private val listAudioManger by lazy {
-        ListAudioManager(audioList, object: ListAudioManager.CallBack{
+        ListAudioManager(audioList, object : ListAudioManager.CallBack {
             override fun onEmpty(it: Boolean) {
                 if (it) {
                     binding.llEmptySearch.visibility = View.VISIBLE
@@ -63,7 +63,7 @@ class AudioChooserActivity :
 
         registerReceiver(loadFileReceiver, IntentFilter(LoadDataUtils.LOAD_SUCCESSFUL))
         adapter = AudioAdapter(audioList, this)
-        adapter.mCallback = object: OnActionCallback{
+        adapter.mCallback = object : OnActionCallback {
             override fun callback(key: String?, vararg data: Any?) {
                 var item = data[0] as AudioFile
                 val intent = Intent(this@AudioChooserActivity, ChangeVoiceActivity::class.java)
@@ -72,6 +72,7 @@ class AudioChooserActivity :
                     Constants.PATH_FILE,
                     item.path
                 )
+                intent.putExtra(ChangeVoiceActivity.IS_FROM_IMPORT_FLOW, true)
                 startActivity(intent)
             }
         }
@@ -104,7 +105,8 @@ class AudioChooserActivity :
             binding.ctMainTop.visibility = View.VISIBLE
             binding.ctSearchTop.visibility = View.GONE
             binding.edtSearch.setText("")
-            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(binding.edtSearch.windowToken, 0)
         }
         binding.ivSearch.setOnClickListener {
