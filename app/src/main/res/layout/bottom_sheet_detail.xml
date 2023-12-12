@@ -10,11 +10,12 @@
         android:id="@+id/fr_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_4sdp"
         android:layout_marginTop="@dimen/_4sdp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <include layout="@layout/item_audio" />
+        <include
+            android:id="@+id/main"
+            layout="@layout/item_audio" />
     </FrameLayout>
 
     <LinearLayout
@@ -27,7 +28,7 @@
 
         <LinearLayout
             android:id="@+id/ll_share"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -49,7 +50,7 @@
 
         <LinearLayout
             android:id="@+id/ll_ringtone"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_32sdp"
             android:gravity="center_vertical"
@@ -71,7 +72,7 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/ll_rename"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_32sdp"
             android:gravity="center_vertical"
@@ -94,7 +95,7 @@
 
         <LinearLayout
             android:id="@+id/ll_delete"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_32sdp"
             android:gravity="center_vertical"

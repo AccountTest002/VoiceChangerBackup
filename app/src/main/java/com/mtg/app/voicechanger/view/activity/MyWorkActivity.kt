@@ -29,8 +29,10 @@ import com.mtg.app.voicechanger.utils.NumberUtils
 import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.adapter.AudioAdapter
 import com.mtg.app.voicechanger.view.adapter.AudioSavedAdapter
+import com.mtg.app.voicechanger.view.dialog.DeleteDialog
 import com.mtg.app.voicechanger.view.dialog.DetailBottomSheet
 import com.mtg.app.voicechanger.view.dialog.NameDialog
+import com.mtg.app.voicechanger.view.dialog.RenameDialog
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
 import java.io.File
@@ -78,7 +80,33 @@ class MyWorkActivity :
                 if (key.equals("play")) {
 
                 } else if (key.equals("more")) {
-                    DetailBottomSheet().show(supportFragmentManager, "")
+                    DetailBottomSheet(item, object: DetailBottomSheet.Callback{
+                        override fun onDelete() {
+                            DeleteDialog(this@MyWorkActivity, object: DeleteDialog.Callback{
+                                override fun onDelete() {
+
+                                }
+                            }).show()
+                        }
+
+                        override fun onRename() {
+                            RenameDialog(this@MyWorkActivity, item.path, object: RenameDialog.Callback{
+                                override fun onRename(newPath: String) {
+
+                                }
+
+                            }).show()
+                        }
+
+                        override fun onRingtone() {
+
+                        }
+
+                        override fun onShare() {
+
+                        }
+
+                    }).show(supportFragmentManager, "")
                 }
             }
         }
