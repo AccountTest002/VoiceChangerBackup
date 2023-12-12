@@ -5,6 +5,7 @@ import android.content.Intent
 import android.database.Cursor
 import android.provider.MediaStore
 import com.mtg.app.voicechanger.data.model.AudioFile
+import com.mtg.app.voicechanger.utils.constant.Constants
 import java.io.File
 
 object LoadDataUtils {
@@ -45,7 +46,9 @@ object LoadDataUtils {
                             NumberUtils.formatAsDate(File(path).lastModified()),
                             NumberUtils.formatAsSize(File(path).length())
                         )
-                        list.add(media)
+                        if (!path.contains(FileUtils.getDownloadFolderPath(Constants.FOLDER_APP))) {
+                            list.add(media)
+                        }
                     }
                     audiosStorage.addAll(list)
                     context.sendBroadcast(Intent(LOAD_SUCCESSFUL))
