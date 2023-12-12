@@ -17,9 +17,12 @@ import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.data.model.AudioFile
 import com.mtg.app.voicechanger.databinding.ActivityAudioChooserBinding
+import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.ListAudioManager
 import com.mtg.app.voicechanger.utils.LoadDataUtils
+import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.adapter.AudioAdapter
+import com.mtg.app.voicechanger.view.dialog.NameDialog
 
 class AudioChooserActivity :
     BaseActivity<ActivityAudioChooserBinding>(ActivityAudioChooserBinding::inflate) {
@@ -63,7 +66,13 @@ class AudioChooserActivity :
         adapter.mCallback = object: OnActionCallback{
             override fun callback(key: String?, vararg data: Any?) {
                 var item = data[0] as AudioFile
-
+                val intent = Intent(this@AudioChooserActivity, ChangeVoiceActivity::class.java)
+                intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
+                intent.putExtra(
+                    Constants.PATH_FILE,
+                    item.path
+                )
+                startActivity(intent)
             }
         }
         binding.rcv.layoutManager = LinearLayoutManager(this)
