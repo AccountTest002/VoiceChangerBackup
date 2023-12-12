@@ -29,6 +29,7 @@ import com.mtg.app.voicechanger.utils.NumberUtils
 import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.adapter.AudioAdapter
 import com.mtg.app.voicechanger.view.adapter.AudioSavedAdapter
+import com.mtg.app.voicechanger.view.dialog.DetailBottomSheet
 import com.mtg.app.voicechanger.view.dialog.NameDialog
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
@@ -74,14 +75,11 @@ class MyWorkActivity :
         adapter.mCallback = object : OnActionCallback {
             override fun callback(key: String?, vararg data: Any?) {
                 var item = data[0] as AudioFile
-                val intent = Intent(this@MyWorkActivity, ChangeVoiceActivity::class.java)
-                intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
-                intent.putExtra(
-                    Constants.PATH_FILE,
-                    item.path
-                )
-                intent.putExtra(ChangeVoiceActivity.IS_FROM_IMPORT_FLOW, true)
-                startActivity(intent)
+                if (key.equals("play")) {
+
+                } else if (key.equals("more")) {
+                    DetailBottomSheet().show(supportFragmentManager, "")
+                }
             }
         }
         binding.rcv.layoutManager = LinearLayoutManager(this)

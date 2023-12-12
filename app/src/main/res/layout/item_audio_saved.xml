@@ -31,7 +31,7 @@
         android:textColor="#303030"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toTopOf="@id/tv_detail"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/btn_play"
         app:layout_constraintStart_toEndOf="@id/iv_icon"
         app:layout_constraintTop_toTopOf="@id/iv_icon" />
 
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/btn_play"
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_28sdp"
         android:layout_marginEnd="@dimen/_4sdp"

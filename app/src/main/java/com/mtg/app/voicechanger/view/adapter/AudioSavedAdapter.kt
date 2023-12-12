@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mtg.app.voicechanger.base.BaseAdapter
 import com.mtg.app.voicechanger.data.model.AudioFile
 import com.mtg.app.voicechanger.databinding.ItemAudioBinding
+import com.mtg.app.voicechanger.databinding.ItemAudioSavedBinding
 import com.mtg.app.voicechanger.utils.NumberUtils
 import java.io.File
 
@@ -15,7 +16,7 @@ class AudioSavedAdapter(mList: List<AudioFile?>?, context: Context?) :
     BaseAdapter<AudioFile?>(mList!!, context) {
     override fun viewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
         val binding =
-            ItemAudioBinding.inflate(LayoutInflater.from(parent!!.context), parent, false)
+            ItemAudioSavedBinding.inflate(LayoutInflater.from(parent!!.context), parent, false)
         return AudioViewHolder(binding)
     }
 
@@ -30,7 +31,7 @@ class AudioSavedAdapter(mList: List<AudioFile?>?, context: Context?) :
         return mList.size
     }
 
-    private inner class AudioViewHolder(private val binding: ItemAudioBinding) :
+    private inner class AudioViewHolder(private val binding: ItemAudioSavedBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         init {
             itemView.setOnClickListener(this)
@@ -42,8 +43,11 @@ class AudioSavedAdapter(mList: List<AudioFile?>?, context: Context?) :
             var detail = NumberUtils.formatAsTime(itemAudio.duration) +"   "+itemAudio.size
             binding.tvName.text = name
             binding.tvDetail.text = detail
-            binding.root.setOnClickListener {
-                mCallback?.callback("", binding.root.tag)
+            binding.btnPlay.setOnClickListener {
+                mCallback?.callback("play", binding.root.tag)
+            }
+            binding.ivMore.setOnClickListener {
+                mCallback?.callback("more", binding.root.tag)
             }
         }
 
