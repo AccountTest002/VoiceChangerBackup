@@ -130,9 +130,10 @@ class SavedActivity :
         fileVoice?.path?.let {
             RenameDialog(this, it, object : RenameDialog.Callback {
                 override fun onRename(newPath: String) {
+                    model.updatePath(it, newPath)
                     fileVoice?.path = newPath
                     fileVoice?.name = FileUtils.getName(newPath)
-                    fileVoice?.let { model.update(it) }
+                    binding.tvTitle.text = fileVoice!!.name
                 }
             }).show()
         }
