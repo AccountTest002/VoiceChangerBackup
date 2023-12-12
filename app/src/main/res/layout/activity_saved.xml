@@ -91,7 +91,7 @@
             android:text="Summer Camping Ca..."
             android:textColor="#251D36"
             android:textSize="@dimen/_12sdp"
-            app:layout_constraintEnd_toStartOf="@id/threeDot"
+            app:layout_constraintEnd_toStartOf="@id/tvPlay"
             app:layout_constraintStart_toEndOf="@id/iv_icon"
             app:layout_constraintTop_toTopOf="@id/iv_icon" />
 

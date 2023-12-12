@@ -104,4 +104,5 @@
     <string name="setting_success">Set up success</string>
     <string name="request_write_setting">Please grant permissions to take action</string>
     <string name="enter_file_name_here">Enter file name here</string>
+    <string name="pause">Pause</string>
 </resources>
