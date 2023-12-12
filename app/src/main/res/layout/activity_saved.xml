@@ -131,7 +131,7 @@
             app:layout_constraintTop_toTopOf="@+id/tv_time" />
 
         <TextView
-            android:id="@+id/threeDot"
+            android:id="@+id/tvPlay"
             android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_26sdp"
             android:layout_marginEnd="@dimen/_22sdp"
@@ -160,6 +160,7 @@
         app:layout_constraintTop_toBottomOf="@+id/clBody">
 
         <LinearLayout
+            android:id="@+id/llShare"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -187,6 +188,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llRing"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -214,6 +216,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llRename"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -241,6 +244,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llDelete"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

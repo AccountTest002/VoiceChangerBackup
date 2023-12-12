@@ -51,7 +51,7 @@
     <string name="dialog_request_permission"><![CDATA[If you reject permission, you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]]]></string>
     <string name="process_error">Error processing. Please try again</string>
     <string name="open_file_to_change_voice">Open file to change voice</string>
-    <string name="sound_effect">Sound Effect</string>
+    <string name="sound_effect">Edit Sounds</string>
     <string name="my_works">My Works</string>
     <string name="all_changed_voices_saved_here">All changed voices saved here</string>
     <string name="recording_tap_to_stop">Recording - Tap to stop</string>
@@ -97,4 +97,8 @@
     <string name="play">Play</string>
     <string name="allow">Allow</string>
     <string name="txt_pms_audios">We need permission to access your audios</string>
+
+    <string name="setting_success">Set up success</string>
+    <string name="request_write_setting">Please grant permissions to take action</string>
+    <string name="enter_file_name_here">Enter file name here</string>
 </resources>
