@@ -13,6 +13,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import com.common.control.base.OnActionCallback
 import com.common.control.utils.AppUtils
 import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
@@ -22,10 +23,13 @@ import com.mtg.app.voicechanger.databinding.ActivitySavedBinding
 import com.mtg.app.voicechanger.media.Player
 import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
+import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils.requestWriteSetting
 import com.mtg.app.voicechanger.utils.constant.Constants.STUDENT_EXTRA
 import com.mtg.app.voicechanger.view.dialog.DeleteDialog
+import com.mtg.app.voicechanger.view.dialog.DialogReadAudioPms
 import com.mtg.app.voicechanger.view.dialog.RenameDialog
+import com.mtg.app.voicechanger.view.dialog.SetRingtoneDialog
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
 import java.io.File
@@ -113,17 +117,23 @@ class SavedActivity :
 
     private fun setRingAudio() {
         if (Settings.System.canWrite(this)) {
-            if (FileUtils.setAsRingtoneOrNotification(
-                    this,
-                    fileVoice?.path,
-                    RingtoneManager.TYPE_RINGTONE
-                )
-            ) {
-                Toast.makeText(this, R.string.setting_success, Toast.LENGTH_LONG).show();
-            }
+            SetRingtoneDialog(this, object: SetRingtoneDialog.Callback{
+                override fun onOk() {
+                    if (FileUtils.setAsRingtoneOrNotification(
+                            this@SavedActivity,
+                            fileVoice?.path,
+                            RingtoneManager.TYPE_RINGTONE
+                        )
+                    ) {
+                        Toast.makeText(this@SavedActivity, R.string.setting_success, Toast.LENGTH_LONG).show();
+                    }
+                }
+            }).show()
+
         } else {
-            Toast.makeText(this, R.string.request_write_setting, Toast.LENGTH_LONG).show();
-            requestWriteSetting(this)
+            DialogReadAudioPms(this).setCallBack(OnActionCallback { key, data ->
+                requestWriteSetting(this)
+            }).show()
         }
     }
 
