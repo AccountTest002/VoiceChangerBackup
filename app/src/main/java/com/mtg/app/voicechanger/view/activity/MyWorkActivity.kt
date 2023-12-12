@@ -7,6 +7,7 @@ import android.content.IntentFilter
 import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -84,7 +85,9 @@ class MyWorkActivity :
                         override fun onDelete() {
                             DeleteDialog(this@MyWorkActivity, object: DeleteDialog.Callback{
                                 override fun onDelete() {
-
+                                    audioList.remove(item)
+                                    adapter.notifyDataSetChanged()
+                                    model.deleteByPath(item.path)
                                 }
                             }).show()
                         }
@@ -92,9 +95,11 @@ class MyWorkActivity :
                         override fun onRename() {
                             RenameDialog(this@MyWorkActivity, item.path, object: RenameDialog.Callback{
                                 override fun onRename(newPath: String) {
-
+                                    Log.e("android_log_app: ", newPath)
+                                    model.updatePath(item.path, newPath)
+                                    item.path = newPath
+                                    adapter.notifyDataSetChanged()
                                 }
-
                             }).show()
                         }
 

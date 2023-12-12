@@ -76,4 +76,14 @@ class FileVoiceViewModel @Inject constructor(private val repository: FileVoiceRe
         fileVoices.postValue(repository.fileVoicesBG.value)
         fileVideos.postValue(repository.fileVideosBG.value)
     }
+
+    fun updatePath(path: String, newPath: String) {
+        Log.d(TAG, "FileVoiceViewModel: update " + path)
+        repository.updatePath(path, newPath)
+    }
+
+    fun deleteByPath(path: String) {
+        Log.d(TAG, "FileVoiceViewModel: delete " + path)
+        repository.deleteByPath(path)
+    }
 }

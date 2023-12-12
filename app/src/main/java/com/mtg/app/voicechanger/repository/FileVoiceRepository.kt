@@ -79,4 +79,12 @@ class FileVoiceRepository @Inject constructor(private val dao: FileVoiceDAO) {
     fun getAllAudio(): List<FileVoice>{
         return dao.allVoice
     }
+
+    fun updatePath(path: String, newPath: String) {
+        dao.updatePath(path, newPath)
+    }
+
+    fun deleteByPath(path: String) {
+        dao.deleteByPath(path)
+    }
 }

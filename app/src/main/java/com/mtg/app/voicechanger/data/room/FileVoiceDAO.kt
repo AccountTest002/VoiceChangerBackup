@@ -26,4 +26,9 @@ interface FileVoiceDAO {
 
     @Query("SELECT * FROM filevoice WHERE path= :path")
     fun check(path: String): FileVoice
+    @Query("UPDATE filevoice SET path = :newPath WHERE path = :path")
+    fun updatePath(path: String, newPath: String)
+
+    @Query("DELETE FROM filevoice WHERE path = :path")
+    fun deleteByPath(path: String)
 }
