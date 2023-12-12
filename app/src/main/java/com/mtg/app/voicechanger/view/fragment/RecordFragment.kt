@@ -27,6 +27,7 @@ import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.hide
 import com.mtg.app.voicechanger.view.activity.AudioChooserActivity
 import com.mtg.app.voicechanger.view.activity.LanguageActivity
+import com.mtg.app.voicechanger.view.activity.MyWorkActivity
 import com.mtg.app.voicechanger.view.activity.PolicyWebViewActivity
 
 class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding::inflate) {
@@ -124,6 +125,9 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
                     AudioChooserActivity.start(requireActivity())
                 }
             }).start()
+        }
+        binding.btnMyAudio.setOnClickListener {
+            MyWorkActivity.start(requireActivity())
         }
 
 //        dialog.setOnImportListener {

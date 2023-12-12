@@ -10,35 +10,45 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.common.control.base.OnActionCallback
+import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.data.model.AudioFile
+import com.mtg.app.voicechanger.data.model.FileVoice
 import com.mtg.app.voicechanger.databinding.ActivityAudioChooserBinding
+import com.mtg.app.voicechanger.databinding.ActivityMyWorkBinding
 import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.ListAudioManager
 import com.mtg.app.voicechanger.utils.LoadDataUtils
+import com.mtg.app.voicechanger.utils.NumberUtils
 import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.adapter.AudioAdapter
+import com.mtg.app.voicechanger.view.adapter.AudioSavedAdapter
+import com.mtg.app.voicechanger.view.dialog.DetailBottomSheet
 import com.mtg.app.voicechanger.view.dialog.NameDialog
+import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
+import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
+import java.io.File
 
-class AudioChooserActivity :
-    BaseActivity<ActivityAudioChooserBinding>(ActivityAudioChooserBinding::inflate) {
+class MyWorkActivity :
+    BaseActivity<ActivityMyWorkBinding>(ActivityMyWorkBinding::inflate) {
     companion object {
         @JvmStatic
         fun start(context: Context) {
-            val starter = Intent(context, AudioChooserActivity::class.java)
+            val starter = Intent(context, MyWorkActivity::class.java)
             context.startActivity(starter)
         }
     }
 
-    private val loadFileReceiver = object : BroadcastReceiver() {
-        override fun onReceive(p0: Context, p1: Intent?) {
-            loadFile()
-        }
+    private val model: FileVoiceViewModel by viewModels {
+        VoiceViewModelFactory((application as MyApplication).repository)
     }
+
     private val audioList = arrayListOf<AudioFile>()
     private val listAudioManger by lazy {
         ListAudioManager(audioList, object : ListAudioManager.CallBack {
@@ -51,7 +61,7 @@ class AudioChooserActivity :
             }
         })
     }
-    private lateinit var adapter: AudioAdapter
+    private lateinit var adapter: AudioSavedAdapter
     override fun initView() {
         val window = window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -61,38 +71,27 @@ class AudioChooserActivity :
         window.setBackgroundDrawable(statusBackground)
         binding.ctHeader.background = null
 
-        registerReceiver(loadFileReceiver, IntentFilter(LoadDataUtils.LOAD_SUCCESSFUL))
-        adapter = AudioAdapter(audioList, this)
+        adapter = AudioSavedAdapter(audioList, this)
         adapter.mCallback = object : OnActionCallback {
             override fun callback(key: String?, vararg data: Any?) {
                 var item = data[0] as AudioFile
-                val intent = Intent(this@AudioChooserActivity, ChangeVoiceActivity::class.java)
-                intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
-                intent.putExtra(
-                    Constants.PATH_FILE,
-                    item.path
-                )
-                intent.putExtra(ChangeVoiceActivity.IS_FROM_IMPORT_FLOW, true)
-                startActivity(intent)
+                if (key.equals("play")) {
+
+                } else if (key.equals("more")) {
+                    DetailBottomSheet().show(supportFragmentManager, "")
+                }
             }
         }
         binding.rcv.layoutManager = LinearLayoutManager(this)
         binding.rcv.adapter = adapter
-        loadFile()
-
-    }
-
-    private fun loadFile() {
-        LoadDataUtils.loadAudio(this, object : LoadDataUtils.CallBack {
-            override fun onSuccess(list: List<AudioFile>) {
+        model.getFileVoices().observe(this, Observer {
+            it?.let {
                 audioList.clear()
-                audioList.addAll(list)
-
+                audioList.addAll(it.map {
+                    AudioFile(it.path!!, it.duration, NumberUtils.formatAsDate(it.date), NumberUtils.formatAsSize(
+                        File(it.path!!).length()
+                    )) })
                 adapter.notifyDataSetChanged()
-                if (audioList.isEmpty()) {
-                    binding.llEmpty.visibility = View.VISIBLE
-                    binding.ivSearch.visibility = View.GONE
-                }
             }
         })
     }
@@ -142,7 +141,6 @@ class AudioChooserActivity :
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(loadFileReceiver)
 
     }
 }

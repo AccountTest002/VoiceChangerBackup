@@ -97,6 +97,9 @@
     <string name="play">Play</string>
     <string name="allow">Allow</string>
     <string name="txt_pms_audios">We need permission to access your audios</string>
+    <string name="set_as_a_ringtone">Set as a ringtone</string>
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
 
     <string name="setting_success">Set up success</string>
     <string name="request_write_setting">Please grant permissions to take action</string>

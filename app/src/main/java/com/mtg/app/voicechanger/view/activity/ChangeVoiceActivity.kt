@@ -1,6 +1,7 @@
 package com.mtg.app.voicechanger.view.activity
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.media.MediaPlayer
@@ -68,6 +69,13 @@ class ChangeVoiceActivity :
 
     companion object {
         var effectSelected = FFMPEGUtils.effects[0]
+        const val IS_FROM_IMPORT_FLOW = "IS_FROM_IMPORT_FLOW"
+        @JvmStatic
+        fun start(context: Context, isFromImportFlow: Boolean) {
+            val starter = Intent(context, ChangeVoiceActivity::class.java)
+                .putExtra(IS_FROM_IMPORT_FLOW, isFromImportFlow)
+            context.startActivity(starter)
+        }
     }
 
     private val model: FileVoiceViewModel by viewModels {
@@ -144,10 +152,15 @@ class ChangeVoiceActivity :
     }
 
     override fun onBackPressed() {
-        if (player?.isPlaying == true) {
-            stopPlayer()
+        if (intent.getBooleanExtra(IS_FROM_IMPORT_FLOW, false)) {
+            super.onBackPressed()
+        } else {
+            if (player?.isPlaying == true) {
+                stopPlayer()
+            }
+            goToRecord()
         }
-        goToRecord()
+
     }
 
     override fun onRequestPermissionsResult(
