@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.common.control.base.OnActionCallback
+import com.common.control.utils.AppUtils
 import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
@@ -109,7 +110,7 @@ class MyWorkActivity :
                         }
 
                         override fun onShare() {
-
+                            AppUtils.getInstance().shareFile(this@MyWorkActivity, File(item.path))
                         }
 
                     }).show(supportFragmentManager, "")
