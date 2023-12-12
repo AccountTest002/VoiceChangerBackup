@@ -1,5 +1,7 @@
 package com.mtg.app.voicechanger.view.fragment
 
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
 import com.google.android.material.slider.Slider
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.databinding.FragmentCustomEffectBinding
@@ -305,12 +309,12 @@ class CustomEffectFragment : Fragment() {
     private val radBtnOnCheckedChangeListener =
         CompoundButton.OnCheckedChangeListener { compoundButton: CompoundButton, b: Boolean ->
             if (b) {
-                compoundButton.setTextColor(resources.getColor(R.color.black))
+                compoundButton.setTextColor(resources.getColor(R.color._5f5f5f))
                 hzSelect =
                     compoundButton.text.toString().substring(0, compoundButton.text.length - 2)
                 selectCustom()
             } else {
-                compoundButton.setTextColor(resources.getColor(R.color.color_274577))
+                compoundButton.setTextColor(resources.getColor(R.color._805F5F5F))
             }
         }
 
