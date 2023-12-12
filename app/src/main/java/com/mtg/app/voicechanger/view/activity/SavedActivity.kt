@@ -127,13 +127,15 @@ class SavedActivity :
     }
 
     private fun renameAudio() {
-        val dialogRename = fileVoice?.let { RenameDialog(it) }
-        dialogRename?.setOnSaveListener { newPath ->
-            fileVoice?.path = newPath
-            fileVoice?.name = FileUtils.getName(newPath)
-            fileVoice?.let { model.update(it) }
+        fileVoice?.path?.let {
+            RenameDialog(this, it, object : RenameDialog.Callback {
+                override fun onRename(newPath: String) {
+                    fileVoice?.path = newPath
+                    fileVoice?.name = FileUtils.getName(newPath)
+                    fileVoice?.let { model.update(it) }
+                }
+            }).show()
         }
-        dialogRename?.show(supportFragmentManager, "RenameDialog")
     }
 
     private fun deleteAudio() {
