@@ -17,17 +17,8 @@ object LanguageUtils {
             val mList: MutableList<ItemLanguage> = ArrayList()
             mList.add(
                 ItemLanguage(
-                    R.drawable.flag_zh,
-                    "Chinese",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "zh"
-                )
-            )
-            mList.add(
-                ItemLanguage(
                     R.drawable.flag_en,
-                    "English (UK)",
+                    "English",
                     R.drawable.ic_disable,
                     R.drawable.bg_item_language,
                     "en"
@@ -35,102 +26,11 @@ object LanguageUtils {
             )
             mList.add(
                 ItemLanguage(
-                    R.drawable.flag_us,
-                    "English (US)",
+                    R.drawable.flag_ar,
+                    "Arabic",
                     R.drawable.ic_disable,
                     R.drawable.bg_item_language,
-                    "en"
-                )
-            )
-//            mList.add(ItemLanguage(R.drawable.flag_ar, "Arabic", R.drawable.ic_disable, "ar"))
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_canada,
-                    "French (Canada)",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "fr"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_fr,
-                    "French (France)",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "fr"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_de,
-                    "German",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "de"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_ja,
-                    "Japanese",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "ja"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_pt,
-                    "Portugal",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "pt"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_brazil,
-                    "Portugal (Brazil)",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "pt"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_spanish_normal,
-                    "Spanish (Spain)",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "es"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_es,
-                    "Spanish (Latinh)",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "es"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_vi,
-                    "Vietnamese",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "vi"
-                )
-            )
-            mList.add(
-                ItemLanguage(
-                    R.drawable.flag_bg,
-                    "Bulgarian",
-                    R.drawable.ic_disable,
-                    R.drawable.bg_item_language,
-                    "bg"
+                    "ar"
                 )
             )
             mList.add(
@@ -144,11 +44,38 @@ object LanguageUtils {
             )
             mList.add(
                 ItemLanguage(
+                    R.drawable.flag_de,
+                    "German",
+                    R.drawable.ic_disable,
+                    R.drawable.bg_item_language,
+                    "de"
+                )
+            )
+            mList.add(
+                ItemLanguage(
                     R.drawable.flag_el,
                     "Greek",
                     R.drawable.ic_disable,
                     R.drawable.bg_item_language,
                     "el"
+                )
+            )
+            mList.add(
+                ItemLanguage(
+                    R.drawable.flag_es,
+                    "Spanish",
+                    R.drawable.ic_disable,
+                    R.drawable.bg_item_language,
+                    "es"
+                )
+            )
+            mList.add(
+                ItemLanguage(
+                    R.drawable.flag_fr,
+                    "French",
+                    R.drawable.ic_disable,
+                    R.drawable.bg_item_language,
+                    "fr"
                 )
             )
             mList.add(
@@ -180,6 +107,15 @@ object LanguageUtils {
             )
             mList.add(
                 ItemLanguage(
+                    R.drawable.flag_ja,
+                    "Japanese",
+                    R.drawable.ic_disable,
+                    R.drawable.bg_item_language,
+                    "ja"
+                )
+            )
+            mList.add(
+                ItemLanguage(
                     R.drawable.flag_ko,
                     "Korean",
                     R.drawable.ic_disable,
@@ -207,11 +143,11 @@ object LanguageUtils {
             )
             mList.add(
                 ItemLanguage(
-                    R.drawable.flag_ru,
-                    "Russian",
+                    R.drawable.flag_pt,
+                    "Portugal",
                     R.drawable.ic_disable,
                     R.drawable.bg_item_language,
-                    "ru"
+                    "pt"
                 )
             )
             mList.add(
@@ -221,6 +157,15 @@ object LanguageUtils {
                     R.drawable.ic_disable,
                     R.drawable.bg_item_language,
                     "ro"
+                )
+            )
+            mList.add(
+                ItemLanguage(
+                    R.drawable.flag_ru,
+                    "Russian",
+                    R.drawable.ic_disable,
+                    R.drawable.bg_item_language,
+                    "ru"
                 )
             )
             mList.add(
@@ -241,12 +186,31 @@ object LanguageUtils {
                     "th"
                 )
             )
-
+            mList.add(
+                ItemLanguage(
+                    R.drawable.flag_vi,
+                    "Vietnamese",
+                    R.drawable.ic_disable,
+                    R.drawable.bg_item_language,
+                    "vi"
+                )
+            )
+            mList.add(
+                ItemLanguage(
+                    R.drawable.flag_zh,
+                    "Chinese",
+                    R.drawable.ic_disable,
+                    R.drawable.bg_item_language,
+                    "zh"
+                )
+            )
             return mList
         }
 
     fun getFlagResourceID(context: Context): Int {
-        val itemLanguage = listCountry.findLast { it.languageToLoad.equals(appPreferences.currentLanguage, true) } ?: return R.drawable.flag_en
+        val itemLanguage =
+            listCountry.findLast { it.languageToLoad.equals(appPreferences.currentLanguage, true) }
+                ?: return R.drawable.flag_en
         return itemLanguage.imageFlag
     }
 
@@ -273,7 +237,7 @@ object LanguageUtils {
         return itemLanguage.languageToLoad
     }
 
-    open fun getDefaultLanguage(): String{
+    open fun getDefaultLanguage(): String {
         val userLang = Resources.getSystem().configuration.locales.get(0).language
         if (!TextUtils.isEmpty(userLang) && checkLanguageAvailable(userLang)) {
             return userLang

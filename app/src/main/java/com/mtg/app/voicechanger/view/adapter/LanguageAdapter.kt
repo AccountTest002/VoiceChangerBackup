@@ -48,7 +48,7 @@ class LanguageAdapter(mList: List<ItemLanguage?>?, context: Context?) :
             if (itemLanguage.bgSelected == R.drawable.bg_item_language_select) {
                 binding.tvLanguage.setTextColor(Color.parseColor("#FFFFFF"))
             } else {
-                binding.tvLanguage.setTextColor(Color.parseColor("#3C3C3C"))
+                binding.tvLanguage.setTextColor(Color.parseColor("#404040"))
             }
 
             binding.tvLanguage.setSize(16)
