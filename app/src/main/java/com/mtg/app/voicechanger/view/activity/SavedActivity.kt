@@ -24,6 +24,7 @@ import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils.requestWriteSetting
 import com.mtg.app.voicechanger.utils.constant.Constants.STUDENT_EXTRA
+import com.mtg.app.voicechanger.view.dialog.DeleteDialog
 import com.mtg.app.voicechanger.view.dialog.RenameDialog
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
@@ -140,8 +141,16 @@ class SavedActivity :
     }
 
     private fun deleteAudio() {
-        fileVoice?.path?.let { FileUtils.deleteFile(this, it) }
-        fileVoice?.let { model.delete(it) }
+        fileVoice?.path?.let {
+            DeleteDialog(this@SavedActivity, object: DeleteDialog.Callback{
+                override fun onDelete() {
+                    FileUtils.deleteFile(this@SavedActivity, it)
+                    model.deleteByPath(it)
+                    finish()
+                }
+            }).show()
+        }
+
     }
 
     private fun dataItem() {

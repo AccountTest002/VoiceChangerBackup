@@ -85,6 +85,7 @@ class MyWorkActivity :
                         override fun onDelete() {
                             DeleteDialog(this@MyWorkActivity, object: DeleteDialog.Callback{
                                 override fun onDelete() {
+                                    FileUtils.deleteFile(this@MyWorkActivity, item.path)
                                     audioList.remove(item)
                                     adapter.notifyDataSetChanged()
                                     model.deleteByPath(item.path)

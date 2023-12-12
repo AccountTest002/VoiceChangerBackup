@@ -1,21 +1,8 @@
 package com.mtg.app.voicechanger.view.dialog
 
-import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.Gravity
-import android.view.Window
-import android.view.WindowManager
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
-import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseDialog
-import com.mtg.app.voicechanger.data.model.FileVoice
-import com.mtg.app.voicechanger.databinding.DialogDeleteBinding
 import com.mtg.app.voicechanger.databinding.DialogRenameBinding
 import com.mtg.app.voicechanger.utils.FileUtils
 
