@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/_14sdp"
-    android:background="@drawable/bg_dialog_no_internet">
+    android:background="@drawable/bg_dialog_no_internet"
+    android:paddingTop="@dimen/_14sdp">
 
 
     <TextView
@@ -26,14 +26,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="@string/enter_file_name_here"
-        android:fontFamily="@font/quicksand_medium"
-        android:textSize="@dimen/_11sdp"
-        android:inputType="textPersonName"
         android:backgroundTint="#448FFF"
+        android:ems="10"
+        android:fontFamily="@font/quicksand_medium"
+        android:hint="@string/enter_file_name_here"
+        android:inputType="textPersonName"
         android:textColor="#8D8D8D"
         android:textColorHint="#8D8D8D"
+        android:textSize="@dimen/_11sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_name" />
@@ -49,6 +49,7 @@
         android:background="@drawable/bg_btn_cc"
         android:fontFamily="@font/quicksand_bold"
         android:gravity="center"
+        android:includeFontPadding="false"
         android:text="@string/cancel"
         android:textAllCaps="false"
         android:textColor="#8D8D8D"
@@ -69,6 +70,7 @@
         android:background="@drawable/bg_name"
         android:fontFamily="@font/quicksand_bold"
         android:gravity="center"
+        android:includeFontPadding="false"
         android:text="@string/save"
         android:textAllCaps="false"
         android:textColor="@color/white"
