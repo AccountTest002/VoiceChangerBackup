@@ -105,4 +105,7 @@
     <string name="request_write_setting">Please grant permissions to take action</string>
     <string name="enter_file_name_here">Enter file name here</string>
     <string name="pause">Pause</string>
+    <string name="tips_on_changing_voice">Tips on changing voice</string>
+    <string name="the_audio_will_be_your_ringtone">The audio will be your ringtone</string>
+    <string name="got_it">Got it</string>
 </resources>

@@ -29,9 +29,12 @@ import com.mtg.app.voicechanger.view.activity.AudioChooserActivity
 import com.mtg.app.voicechanger.view.activity.LanguageActivity
 import com.mtg.app.voicechanger.view.activity.MyWorkActivity
 import com.mtg.app.voicechanger.view.activity.PolicyWebViewActivity
+import com.mtg.app.voicechanger.view.dialog.DialogGuide
+import com.mtg.app.voicechanger.view.dialog.DialogNoInternet
 
 class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding::inflate) {
-//    private lateinit var dialog: MoreOptionDialog
+    //    private lateinit var dialog: MoreOptionDialog
+    var dialogGuide: DialogGuide? = null
     private var callback: Callback? = null
 
     private val handler = Handler(Looper.getMainLooper())
@@ -107,7 +110,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
 
     override fun addEvent() {
         binding.btnRecord.setOnClickListener {
-            Log.d("Click","Record")
+            Log.d("Click", "Record")
             FirebaseUtils.sendEvent(requireContext(), "Layout_Home", "Click recoding")
             callback?.onRecord()
         }
@@ -116,7 +119,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
             EventLogger.getInstance()?.logEvent("click_main_setting")
         }
         binding.btnFileDevice.setOnClickListener {
-            ImportAudioFlow(requireActivity(), object: ImportAudioFlow.Callback{
+            ImportAudioFlow(requireActivity(), object : ImportAudioFlow.Callback {
                 override fun onNoPms() {
                     PermissionUtils.requestReadAudioPms(requireActivity())
                 }
@@ -128,6 +131,11 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
         }
         binding.btnMyAudio.setOnClickListener {
             MyWorkActivity.start(requireActivity())
+        }
+
+        binding.btnGuide.setOnClickListener {
+            val dialogGuide = DialogGuide(requireContext())
+            dialogGuide.show()
         }
 
 //        dialog.setOnImportListener {
@@ -177,8 +185,8 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
 //            CommonUtils.showPolicy(this)
         }
     }
+
     private fun hideRate() {
-        binding.btnRate.hide()
         binding.navContent.btnRateNavigation.hide()
     }
 
@@ -189,7 +197,12 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
                 clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
                 addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                 statusBarColor = Color.TRANSPARENT
-                setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.bg_full))
+                setBackgroundDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.bg_full
+                    )
+                )
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or

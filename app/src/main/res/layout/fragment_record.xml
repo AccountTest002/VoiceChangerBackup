@@ -46,7 +46,7 @@
                 app:layout_constraintTop_toTopOf="@+id/btn_drawer" />
 
             <ImageView
-                android:id="@+id/btn_rate"
+                android:id="@+id/btnGuide"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:src="@drawable/ic_guide"
