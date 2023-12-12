@@ -5,12 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
+import android.media.RingtoneManager
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -28,13 +31,16 @@ import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.ListAudioManager
 import com.mtg.app.voicechanger.utils.LoadDataUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
+import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.constant.Constants
 import com.mtg.app.voicechanger.view.adapter.AudioAdapter
 import com.mtg.app.voicechanger.view.adapter.AudioSavedAdapter
 import com.mtg.app.voicechanger.view.dialog.DeleteDialog
 import com.mtg.app.voicechanger.view.dialog.DetailBottomSheet
+import com.mtg.app.voicechanger.view.dialog.DialogReadAudioPms
 import com.mtg.app.voicechanger.view.dialog.NameDialog
 import com.mtg.app.voicechanger.view.dialog.RenameDialog
+import com.mtg.app.voicechanger.view.dialog.SetRingtoneDialog
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
 import java.io.File
@@ -106,7 +112,25 @@ class MyWorkActivity :
                         }
 
                         override fun onRingtone() {
+                            if (Settings.System.canWrite(this@MyWorkActivity)) {
+                                SetRingtoneDialog(this@MyWorkActivity, object: SetRingtoneDialog.Callback{
+                                    override fun onOk() {
+                                        if (FileUtils.setAsRingtoneOrNotification(
+                                                this@MyWorkActivity,
+                                                item.path,
+                                                RingtoneManager.TYPE_RINGTONE
+                                            )
+                                        ) {
+                                            Toast.makeText(this@MyWorkActivity, R.string.setting_success, Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                }).show()
 
+                            } else {
+                                DialogReadAudioPms(this@MyWorkActivity).setCallBack(OnActionCallback { key, data ->
+                                    PermissionUtils.requestWriteSetting(this@MyWorkActivity)
+                                }).show()
+                            }
                         }
 
                         override fun onShare() {
@@ -130,6 +154,7 @@ class MyWorkActivity :
             }
         })
     }
+
 
     override fun addEvent() {
         binding.ivBack.setOnClickListener {
