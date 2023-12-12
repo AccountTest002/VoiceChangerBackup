@@ -2,8 +2,11 @@ package com.mtg.app.voicechanger.view.activity
 
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.media.RingtoneManager
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.util.Log
 import android.view.WindowManager
@@ -25,14 +28,16 @@ import com.mtg.app.voicechanger.view.dialog.RenameDialog
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
 import java.io.File
+import java.io.IOException
 
 class SavedActivity :
     BaseActivity<ActivitySavedBinding>(ActivitySavedBinding::inflate) {
-    private var player: Player? = null
     private var fileVoice: FileVoice? = null
+    private var isPlaying: Boolean = true
     private val model: FileVoiceViewModel by viewModels {
         VoiceViewModelFactory((application as MyApplication).repository)
     }
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun initView() {
         fullScreen()
@@ -65,42 +70,45 @@ class SavedActivity :
         }
 
         binding.tvPlay.setOnClickListener {
-            deleteAudio()
+            onPlayClick()
         }
     }
 
-//    fun onPlayPauseClick() {
-//
-//        if (fileVoice.isPlaying) {
-//            // Đang phát, dừng lại và đổi văn bản thành "Play"
-//            // Thực hiện logic dừng audio ở đây
-//            binding.tvPlay.text = "Play"
-//            fileVoice.isPlaying = false
-//        } else {
-//            // Không phát, bắt đầu phát và đổi văn bản thành "Pause"
-//            // Thực hiện logic bắt đầu phát audio ở đây
-//            binding.tvPlay.text = "Pause"
-//            fileVoice.isPlaying = true
-//        }
-//    }
+    private fun onPlayClick() {
 
-//    private fun startPlayer() {
-//        player?.start()
-//        binding.layoutPlayer.btnPauseOrResume.setImageResource(R.drawable.ic_pause)
-//        updateTime()
-//    }
-//
-//    private fun stopPlayer() {
-//        player?.stop()
-//        binding.layoutPlayer.btnPauseOrResume.setImageResource(R.drawable.ic_play)
-//        handler.removeCallbacksAndMessages(null)
-//    }
-//
-//    private fun pausePlayer() {
-//        player?.pause()
-//        binding.layoutPlayer.btnPauseOrResume.setImageResource(R.drawable.ic_play)
-//        handler.removeCallbacksAndMessages(null)
-//    }
+        isPlaying = if (isPlaying) {
+            fileVoice?.path?.let { startPlayer(it) }
+            false
+        } else {
+            stopPlayer()
+            true
+        }
+    }
+
+    private fun startPlayer(filePath: String) {
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer()
+            try {
+                mediaPlayer?.setDataSource(filePath)
+                mediaPlayer?.prepare()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            mediaPlayer?.start()
+            binding.tvPlay.text = getString(R.string.pause)
+        }
+    }
+
+    private fun stopPlayer() {
+        mediaPlayer?.apply {
+            stop()
+            release()
+        }
+        mediaPlayer = null
+        binding.tvPlay.text = getString(R.string.play)
+    }
+
+
 
     private fun setRingAudio() {
         if (Settings.System.canWrite(this)) {
