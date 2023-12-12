@@ -7,6 +7,7 @@ import android.content.IntentFilter
 import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -15,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.common.control.base.OnActionCallback
+import com.common.control.utils.AppUtils
 import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
@@ -84,7 +86,10 @@ class MyWorkActivity :
                         override fun onDelete() {
                             DeleteDialog(this@MyWorkActivity, object: DeleteDialog.Callback{
                                 override fun onDelete() {
-
+                                    FileUtils.deleteFile(this@MyWorkActivity, item.path)
+                                    audioList.remove(item)
+                                    adapter.notifyDataSetChanged()
+                                    model.deleteByPath(item.path)
                                 }
                             }).show()
                         }
@@ -92,9 +97,11 @@ class MyWorkActivity :
                         override fun onRename() {
                             RenameDialog(this@MyWorkActivity, item.path, object: RenameDialog.Callback{
                                 override fun onRename(newPath: String) {
-
+                                    Log.e("android_log_app: ", newPath)
+                                    model.updatePath(item.path, newPath)
+                                    item.path = newPath
+                                    adapter.notifyDataSetChanged()
                                 }
-
                             }).show()
                         }
 
@@ -103,7 +110,7 @@ class MyWorkActivity :
                         }
 
                         override fun onShare() {
-
+                            AppUtils.getInstance().shareFile(this@MyWorkActivity, File(item.path))
                         }
 
                     }).show(supportFragmentManager, "")
