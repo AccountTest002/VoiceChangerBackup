@@ -93,6 +93,7 @@ class MyWorkActivity :
                             DeleteDialog(this@MyWorkActivity, object: DeleteDialog.Callback{
                                 override fun onDelete() {
                                     FileUtils.deleteFile(this@MyWorkActivity, item.path)
+                                    LoadDataUtils.remove(item.path)
                                     audioList.remove(item)
                                     adapter.notifyDataSetChanged()
                                     model.deleteByPath(item.path)
@@ -151,8 +152,19 @@ class MyWorkActivity :
                         File(it.path!!).length()
                     )) })
                 adapter.notifyDataSetChanged()
+                checkState()
             }
         })
+    }
+
+    private fun checkState() {
+        if (audioList.isEmpty()) {
+            binding.llEmpty.visibility = View.VISIBLE
+            binding.ivSearch.visibility = View.GONE
+        } else {
+            binding.llEmpty.visibility = View.GONE
+            binding.ivSearch.visibility = View.VISIBLE
+        }
     }
 
 
