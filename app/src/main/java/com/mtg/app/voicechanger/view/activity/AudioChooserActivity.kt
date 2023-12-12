@@ -92,6 +92,9 @@ class AudioChooserActivity :
                 if (audioList.isEmpty()) {
                     binding.llEmpty.visibility = View.VISIBLE
                     binding.ivSearch.visibility = View.GONE
+                } else {
+                    binding.llEmpty.visibility = View.GONE
+                    binding.ivSearch.visibility = View.VISIBLE
                 }
             }
         })

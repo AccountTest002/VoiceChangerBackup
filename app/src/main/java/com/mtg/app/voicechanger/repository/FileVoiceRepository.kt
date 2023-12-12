@@ -86,5 +86,6 @@ class FileVoiceRepository @Inject constructor(private val dao: FileVoiceDAO) {
 
     fun deleteByPath(path: String) {
         dao.deleteByPath(path)
+        fileVoices.postValue(getAllAudio())
     }
 }
