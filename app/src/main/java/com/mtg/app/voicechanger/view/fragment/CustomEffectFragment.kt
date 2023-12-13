@@ -143,12 +143,14 @@ class CustomEffectFragment : Fragment() {
                 FirebaseUtils.sendEvent(requireContext(), "Layout_Effect", "Click Custom Basic")
                 binding.switchBasic.setTrackResource(R.drawable.ic_track_enable)
                 binding.layoutBasic.root.visibility = View.VISIBLE
+                binding.clBasic.setBackgroundResource(R.drawable.bg_custom_sound_big)
                 binding.btnResetBasic.visibility = View.VISIBLE
                 binding.switchBasic.setThumbResource(R.drawable.ic_thumb2)
             } else {
                 binding.switchBasic.setTrackResource(R.drawable.ic_track_disable)
                 binding.layoutBasic.root.visibility = View.GONE
                 binding.btnResetBasic.visibility = View.INVISIBLE
+                binding.clBasic.setBackgroundResource(R.drawable.bg_custom_sound)
                 binding.switchBasic.setThumbResource(R.drawable.ic_thumb)
                 if (binding.btnResetBasic.isEnabled) {
                     binding.btnResetBasic.setImageResource(R.drawable.ic_reset_disable)
@@ -182,12 +184,14 @@ class CustomEffectFragment : Fragment() {
                 FirebaseUtils.sendEvent(requireContext(), "Layout_Effect", "Click Custom Equalizer")
                 binding.switchEqualizer.setTrackResource(R.drawable.ic_track_enable)
                 binding.layoutEqualizer.root.visibility = View.VISIBLE
+                binding.clEqualizer.setBackgroundResource(R.drawable.bg_custom_sound_big)
                 binding.btnResetEqualizer.visibility = View.VISIBLE
                 binding.switchEqualizer.setThumbResource(R.drawable.ic_thumb2)
             } else {
                 binding.switchEqualizer.setTrackResource(R.drawable.ic_track_disable)
                 binding.layoutEqualizer.root.visibility = View.GONE
                 binding.btnResetEqualizer.visibility = View.INVISIBLE
+                binding.clEqualizer.setBackgroundResource(R.drawable.bg_custom_sound)
                 binding.switchEqualizer.setThumbResource(R.drawable.ic_thumb)
                 if (binding.btnResetEqualizer.isEnabled) {
                     binding.btnResetEqualizer.setImageResource(R.drawable.ic_reset_disable)
@@ -220,12 +224,14 @@ class CustomEffectFragment : Fragment() {
                 FirebaseUtils.sendEvent(requireContext(), "Layout_Effect", "Click Custom Reverb")
                 binding.switchReverb.setTrackResource(R.drawable.ic_track_enable)
                 binding.layoutReverb.root.visibility = View.VISIBLE
+                binding.clReverb.setBackgroundResource(R.drawable.bg_custom_sound_big)
                 binding.btnResetReverb.visibility = View.VISIBLE
                 binding.switchReverb.setThumbResource(R.drawable.ic_thumb2)
             } else {
                 binding.switchReverb.setTrackResource(R.drawable.ic_track_disable)
                 binding.layoutReverb.root.visibility = View.GONE
                 binding.btnResetReverb.visibility = View.INVISIBLE
+                binding.clReverb.setBackgroundResource(R.drawable.bg_custom_sound)
                 binding.switchReverb.setThumbResource(R.drawable.ic_thumb)
                 if (binding.btnResetReverb.isEnabled) {
                     binding.btnResetReverb.setImageResource(R.drawable.ic_reset_disable)
