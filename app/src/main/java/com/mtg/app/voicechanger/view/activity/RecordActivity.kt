@@ -211,6 +211,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
 
     private fun createChildFragment(fragment: Fragment) {
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
         transaction.replace(binding.layoutFragment.id, fragment).commit()
     }
 

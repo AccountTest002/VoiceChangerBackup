@@ -164,7 +164,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
                 setBackgroundDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
-                        R.drawable.bg_full
+                        R.drawable.bg_full1
                     )
                 )
 
