@@ -119,6 +119,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
             EventLogger.getInstance()?.logEvent("click_main_setting")
         }
         binding.btnFileDevice.setOnClickListener {
+            callback?.onImport()
             ImportAudioFlow(requireActivity(), object : ImportAudioFlow.Callback {
                 override fun onNoPms() {
                     PermissionUtils.requestReadAudioPms(requireActivity())

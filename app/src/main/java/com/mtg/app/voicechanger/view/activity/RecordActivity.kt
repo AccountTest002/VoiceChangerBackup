@@ -1,26 +1,18 @@
 package com.mtg.app.voicechanger.view.activity
 
-import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
 import android.provider.MediaStore
-import android.provider.Settings
 import android.speech.tts.TextToSpeech
-import android.speech.tts.UtteranceProgressListener
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.common.control.base.OnActionCallback
-import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.media.ImportAudioFlow
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.databinding.ActivityRecordBinding
-import com.mtg.app.voicechanger.utils.FileUtils
-import com.mtg.app.voicechanger.utils.NetworkUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.base.getRealPath
 import com.mtg.app.voicechanger.utils.constant.Constants
@@ -28,11 +20,7 @@ import com.mtg.app.voicechanger.view.dialog.DialogReadAudioPms
 import com.mtg.app.voicechanger.view.dialog.DialogRecordPms
 import com.mtg.app.voicechanger.view.fragment.RecordFragment
 import com.mtg.app.voicechanger.view.fragment.StopRecordFragment
-import com.proxglobal.proxads.adsv2.ads.ProxAds
-import com.proxglobal.proxads.adsv2.callback.AdsCallback
-import com.proxglobal.purchase.ProxPurchase
 import java.io.File
-import java.util.*
 
 
 class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding::inflate),
@@ -153,7 +141,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
             if (!PermissionUtils.checkPermissionRecord(this)) {
                 showDialogRecordPms()
             } else {
-                startRecordFlow()
+                startCheckStoragePms()
             }
         }
 
@@ -161,7 +149,11 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
             if (!PermissionUtils.checkReadAudioPms(this)) {
                 showDialogReadAudioPms()
             } else {
-                startImport()
+                if (action == CLICK_RECORD) {
+                    startRecordFlow()
+                } else {
+                    startImport()
+                }
             }
         }
     }
@@ -174,7 +166,11 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
 
     override fun onRecord() {
         action = CLICK_RECORD
-        startRecordFlow()
+        if (PermissionUtils.checkPermissionRecord(this)) {
+            startCheckStoragePms()
+        } else {
+            PermissionUtils.requestRecordAudioPms(this)
+        }
     }
 
     override fun onSetting() {
@@ -270,7 +266,11 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
             if (!PermissionUtils.checkReadAudioPms(this)) {
                 showDialogReadAudioPms()
             } else {
-                startImport()
+                if (action == CLICK_RECORD) {
+                    startRecordFlow()
+                } else {
+                    startImport()
+                }
             }
         }
 
@@ -278,17 +278,21 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
             if (!PermissionUtils.checkPermissionRecord(this)) {
                 showDialogRecordPms()
             } else {
-                startRecordFlow()
+                startCheckStoragePms()
             }
         }
     }
 
-    private fun startRecordFlow() {
-        if (PermissionUtils.checkPermissionRecord(this)) {
-            createChildFragment(listFragment[1])
+    private fun startCheckStoragePms() {
+        if (!PermissionUtils.checkReadAudioPms(this)) {
+            PermissionUtils.requestReadAudioPms(this)
         } else {
-            PermissionUtils.requestRecordAudioPms(this)
+            startRecordFlow()
         }
+    }
+
+    private fun startRecordFlow() {
+        createChildFragment(listFragment[1])
     }
 
     private fun startImport() {

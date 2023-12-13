@@ -234,11 +234,7 @@ class ChangeVoiceActivity :
     }
 
     override fun initView() {
-//        if (PermissionUtils.checkPermissionReadWriteFile(this)) {
         initData()
-//        } else {
-//            requestPermissionReadWriteFile()
-//        }
 
         fullScreen()
         player = Player()
