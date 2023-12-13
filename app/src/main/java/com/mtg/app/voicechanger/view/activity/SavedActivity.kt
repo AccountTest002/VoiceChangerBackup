@@ -14,7 +14,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.common.control.base.OnActionCallback
+import com.common.control.manager.AdmobManager
 import com.common.control.utils.AppUtils
+import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
@@ -46,6 +48,9 @@ class SavedActivity :
     private var mediaPlayer: MediaPlayer? = null
 
     override fun initView() {
+        AdmobManager.getInstance().loadNative(
+            this, BuildConfig.native_language, binding.adContainer, R.layout.custom_banner_native_saved
+        )
         fullScreen()
         dataItem()
     }
