@@ -7,11 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.mtg.app.voicechanger.data.model.FileVoice
 import com.mtg.app.voicechanger.repository.FileVoiceRepository
 import com.mtg.app.voicechanger.utils.constant.Constants.TAG
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class FileVoiceViewModel @Inject constructor(private val repository: FileVoiceRepository) :
+
+class FileVoiceViewModel(private val repository: FileVoiceRepository) :
     ViewModel() {
     private val fileVoices: MutableLiveData<List<FileVoice>> = repository.fileVoices
     private val fileVideos: MutableLiveData<List<FileVoice>> = repository.fileVideos
