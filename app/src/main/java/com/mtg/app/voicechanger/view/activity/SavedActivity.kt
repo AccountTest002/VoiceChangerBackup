@@ -201,4 +201,9 @@ class SavedActivity :
         window.setBackgroundDrawable(statusBackground)
     }
 
+    override fun onStop() {
+        super.onStop()
+        stopPlayer()
+    }
+
 }
