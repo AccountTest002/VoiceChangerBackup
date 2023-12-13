@@ -1,13 +1,17 @@
 package com.mtg.app.voicechanger.view.fragment
 
+import android.content.res.ColorStateList
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
+import androidx.fragment.app.Fragment
 import com.google.android.material.slider.Slider
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.databinding.FragmentCustomEffectBinding
@@ -15,6 +19,7 @@ import com.mtg.app.voicechanger.utils.FFMPEGUtils
 import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.FirebaseUtils
 import com.mtg.app.voicechanger.view.adapter.EffectAdapter
+
 
 class CustomEffectFragment : Fragment() {
     private lateinit var binding: FragmentCustomEffectBinding
@@ -53,6 +58,44 @@ class CustomEffectFragment : Fragment() {
         binding.btnResetEqualizer.isEnabled = false
         binding.btnResetReverb.isEnabled = false
         setEnableCustom(false)
+        setGradientThumbSlider()
+    }
+
+    private fun setGradientThumbSlider(){
+        val gradientDrawable = GradientDrawable(
+            GradientDrawable.Orientation.TL_BR,
+            intArrayOf(
+                getColor(requireContext(), R.color._5d77f0),
+                getColor(requireContext(), R.color._4bdfff)
+            )
+        )
+        gradientDrawable.cornerRadius = resources.getDimension(R.dimen.icon_size)
+        val thumbTintList =
+            ColorStateList.valueOf(getColor(requireContext(), android.R.color.transparent))
+
+        //Basic
+        binding.layoutBasic.seekTempoPitch.thumbTintList = thumbTintList
+        binding.layoutBasic.seekTempoPitch.setCustomThumbDrawable(gradientDrawable)
+        binding.layoutBasic.seekTempoRate.thumbTintList = thumbTintList
+        binding.layoutBasic.seekTempoRate.setCustomThumbDrawable(gradientDrawable)
+        binding.layoutBasic.seekPanning.thumbTintList = thumbTintList
+        binding.layoutBasic.seekPanning.setCustomThumbDrawable(gradientDrawable)
+
+        //Equalizer
+        binding.layoutEqualizer.seekBandwidth.thumbTintList = thumbTintList
+        binding.layoutEqualizer.seekBandwidth.setCustomThumbDrawable(gradientDrawable)
+        binding.layoutEqualizer.seekGain.thumbTintList = thumbTintList
+        binding.layoutEqualizer.seekGain.setCustomThumbDrawable(gradientDrawable)
+
+        //Reverb
+        binding.layoutReverb.seekInGain.thumbTintList = thumbTintList
+        binding.layoutReverb.seekInGain.setCustomThumbDrawable(gradientDrawable)
+        binding.layoutReverb.seekOutGain.thumbTintList = thumbTintList
+        binding.layoutReverb.seekOutGain.setCustomThumbDrawable(gradientDrawable)
+        binding.layoutReverb.seekDelay.thumbTintList = thumbTintList
+        binding.layoutReverb.seekDelay.setCustomThumbDrawable(gradientDrawable)
+        binding.layoutReverb.seekDecay.thumbTintList = thumbTintList
+        binding.layoutReverb.seekDecay.setCustomThumbDrawable(gradientDrawable)
     }
 
     fun isCustom(): Boolean {
@@ -118,7 +161,7 @@ class CustomEffectFragment : Fragment() {
 
         binding.btnResetBasic.setOnClickListener {
             if (EffectAdapter.isExecuting) {
-                Toast.makeText(activity,R.string.processing_in_progress,Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, R.string.processing_in_progress, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -157,7 +200,7 @@ class CustomEffectFragment : Fragment() {
 
         binding.btnResetEqualizer.setOnClickListener {
             if (EffectAdapter.isExecuting) {
-                Toast.makeText(activity,R.string.processing_in_progress,Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, R.string.processing_in_progress, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -195,7 +238,7 @@ class CustomEffectFragment : Fragment() {
 
         binding.btnResetReverb.setOnClickListener {
             if (EffectAdapter.isExecuting) {
-                Toast.makeText(activity,R.string.processing_in_progress,Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, R.string.processing_in_progress, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -305,12 +348,12 @@ class CustomEffectFragment : Fragment() {
     private val radBtnOnCheckedChangeListener =
         CompoundButton.OnCheckedChangeListener { compoundButton: CompoundButton, b: Boolean ->
             if (b) {
-                compoundButton.setTextColor(resources.getColor(R.color.black))
+                compoundButton.setTextColor(resources.getColor(R.color._5f5f5f))
                 hzSelect =
                     compoundButton.text.toString().substring(0, compoundButton.text.length - 2)
                 selectCustom()
             } else {
-                compoundButton.setTextColor(resources.getColor(R.color.color_274577))
+                compoundButton.setTextColor(resources.getColor(R.color._805F5F5F))
             }
         }
 

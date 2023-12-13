@@ -20,9 +20,9 @@
     <string name="install">Install</string>
     <string name="maybe_later">Maybe later</string>
     <string name="submit">Submit</string>
-    <string name="first_content_rate">We’re working hard for a better user experience.</string>
-    <string name="second_content_rate">We’d greatly appreciate if you can rate us.</string>
-    <string name="do_you_like_our_app">Do you like our App?</string>
+    <string name="first_content_rate">We work hard to bring a better user experience.</string>
+    <string name="second_content_rate">We work hard to bring a better user experience.</string>
+    <string name="do_you_like_our_app">We appreciate you rating us!</string>
     <string name="write_your_feedback">Write your feedback…</string>
     <string name="please_check_the_internet_or_vpn_and_try_again">Please check the Internet or VPN and try again</string>
     <string name="please_wait" translatable="false">Please wait!</string>

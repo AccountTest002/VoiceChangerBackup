@@ -55,7 +55,7 @@
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_28sdp"
         android:layout_marginEnd="@dimen/_4sdp"
-        android:background="@drawable/ic_bg_action_allow"
+        android:background="@drawable/bg_play"
         android:fontFamily="@font/quicksand_medium"
         android:gravity="center"
         android:includeFontPadding="false"
