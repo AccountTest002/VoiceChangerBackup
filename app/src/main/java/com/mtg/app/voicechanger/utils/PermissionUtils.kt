@@ -49,6 +49,11 @@ object PermissionUtils {
                 context,
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED
+                    &&
+                    ContextCompat.checkSelfPermission(
+                        context,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    ) == PackageManager.PERMISSION_GRANTED
         }
     }
 
@@ -85,7 +90,7 @@ object PermissionUtils {
         } else {
             ActivityCompat.requestPermissions(
                 act,
-                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE),
                 REQUEST_PERMISSION_READ_AUDIO
             )
         }
