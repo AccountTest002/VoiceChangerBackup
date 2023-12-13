@@ -43,9 +43,9 @@ class StopRecordFragment :
 
     override fun onStart() {
         super.onStart()
-        if (isStop) {
-            back()
-        }
+//        if (isStop) {
+//            back()
+//        }
     }
 
     override fun onStop() {

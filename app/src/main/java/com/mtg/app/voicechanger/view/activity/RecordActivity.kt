@@ -293,7 +293,9 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(ActivityRecordBinding
     }
 
     private fun startRecordFlow() {
-        createChildFragment(listFragment[1])
+        val fragment1 = StopRecordFragment().newInstance()
+        fragment1.setCallback(this)
+        createChildFragment(fragment1)
     }
 
     private fun startImport() {
