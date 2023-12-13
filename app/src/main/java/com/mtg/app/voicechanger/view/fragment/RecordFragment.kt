@@ -55,57 +55,8 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
 
     override fun initView() {
         fullScreen()
-
         setupDrawerNavigation()
-//        val rotate1Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_rotate1)
-//        val rotate2Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_rotate2)
-//        val rotate3Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_rotate3)
-//        val rotate4Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_rotate4)
-//        binding.aniRecord.icAniRecord1.startAnimation(rotate2Animation)
-//        binding.aniRecord.icAniRecord2.startAnimation(rotate4Animation)
-//        binding.aniRecord.icAniRecord3.startAnimation(rotate1Animation)
-//        binding.aniRecord.icAniRecord4.startAnimation(rotate2Animation)
-//        binding.aniRecord.icAniRecord5.startAnimation(rotate4Animation)
-//        binding.aniRecord.icAniRecord6.startAnimation(rotate3Animation)
-//        val rocketAnimation = binding.aniRecord.icAniRecord7.background as AnimationDrawable
-//        rocketAnimation.start()
-//        val translate1Animation =
-//            AnimationUtils.loadAnimation(requireContext(), R.anim.anim_translate1)
-//        binding.aniRecord.icAniRecord.startAnimation(translate1Animation)
-//        handler.postDelayed({
-//            binding.btnSetting.visibility = View.VISIBLE
-//            binding.btnMoreOption.visibility = View.VISIBLE
-//            binding.txtContent.visibility = View.VISIBLE
-//            binding.txtContent2.visibility = View.VISIBLE
-//            binding.btnRecord.visibility = View.VISIBLE
-//            binding.txtMess.txtMess.setText(R.string.mess_start_record)
-//            binding.txtMess.root.visibility = View.VISIBLE
-//            val translate2Animation =
-//                AnimationUtils.loadAnimation(requireContext(), R.anim.anim_translate2)
-//            runnableAnimation = object : Runnable {
-//                override fun run() {
-//                    binding.txtMess.root.startAnimation(translate2Animation)
-//                    handler.postDelayed(this, 1000)
-//                }
-//            }
-//            handler.post(runnableAnimation!!)
-//        }, 1500)
 
-//        dialog = MoreOptionDialog()
-
-//        ProxAds.instance.showMediumNativeWithShimmerStyle20(
-//            requireActivity(),
-//            BuildConfig.native_home,
-//            binding.adContainer,
-//            object : AdsCallback() {})
-//        if (ProxPurchase.getInstance().checkPurchased()
-//            || !NetworkUtils.isNetworkAvailable(requireContext())
-//        ) {
-//            binding.adContainer.visibility = View.GONE
-//        } else {
-//            val marginParams = binding.btnRecord.layoutParams as ViewGroup.MarginLayoutParams
-//            marginParams.setMargins(0, 0, 0, 0)
-//        }
     }
 
     override fun addEvent() {
@@ -129,9 +80,17 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
                     AudioChooserActivity.start(requireActivity())
                 }
             }).start()
+            requireActivity().overridePendingTransition(
+                R.anim.anim_right_left_1,
+                R.anim.anim_right_left_2
+            )
         }
         binding.btnMyAudio.setOnClickListener {
             MyWorkActivity.start(requireActivity())
+            requireActivity().overridePendingTransition(
+                R.anim.anim_right_left_1,
+                R.anim.anim_right_left_2
+            )
         }
 
         binding.btnGuide.setOnClickListener {
@@ -167,6 +126,10 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
         binding.navContent.btnLanguage.setOnClickListener {
             EventLogger.getInstance()?.logEvent("click_set_language")
             startActivity(Intent(context, LanguageActivity::class.java))
+            requireActivity().overridePendingTransition(
+                R.anim.anim_right_left_1,
+                R.anim.anim_right_left_2
+            )
         }
         binding.navContent.btnRateNavigation.setOnClickListener {
             EventLogger.getInstance()?.logEvent("click_set_rate")

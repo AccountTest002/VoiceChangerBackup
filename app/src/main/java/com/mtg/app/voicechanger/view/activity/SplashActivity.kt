@@ -7,6 +7,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.mtg.app.voicechanger.databinding.ActivitySplashBinding
 import com.mtg.app.voicechanger.BuildConfig
+import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.consent_dialog.ConsentDialogManager
 import com.mtg.app.voicechanger.data.preferences.SharedPrefs
@@ -86,8 +87,16 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         } else {
             if (!appPreferences.isChooseLanguage) {
                 LanguageActivity.start(this)
+                this.overridePendingTransition(
+                    R.anim.anim_right_left_1,
+                    R.anim.anim_right_left_2
+                )
             } else {
                 RecordActivity.start(this)
+                this.overridePendingTransition(
+                    R.anim.anim_right_left_1,
+                    R.anim.anim_right_left_2
+                )
             }
         }
 
