@@ -21,29 +21,9 @@ import com.mtg.app.voicechanger.utils.constant.Constants.TAG
 import java.lang.Exception
 
 object PermissionUtils {
-    const val REQUEST_PERMISSION_RECORD = 10
+    const val REQUEST_PERMISSION_RECORD = 1043
     const val REQUEST_PERMISSION_READ_WRITE = 11
     const val REQUEST_PERMISSION_READ_AUDIO = 32134
-
-    fun checkPermissionRecord(context: Context): Boolean {
-        val record = ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)
-        return record == PackageManager.PERMISSION_GRANTED
-    }
-
-    fun checkPermissionReadWriteFile(context: Context): Boolean {
-        val write =
-            ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-        val read =
-            ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            )
-
-        return write == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED
-    }
 
     @JvmStatic
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -58,33 +38,6 @@ object PermissionUtils {
         }
     }
 
-    @JvmStatic
-    fun openDialogAccessAllFile(activity: Activity) {
-        val builder = AlertDialog.Builder(activity)
-        builder.setMessage(R.string.dialog_request_permission)
-            .setTitle(R.string.app_name_store)
-        builder.setPositiveButton(R.string.settings) { dialog: DialogInterface?, id: Int ->
-            requestAccessAllFile(
-                activity
-            )
-        }
-        builder.setNegativeButton(R.string.cancel) { dialog: DialogInterface?, id: Int -> activity.finish() }
-        builder.setCancelable(false)
-        val dialogRequest = builder.create()
-        dialogRequest.show()
-    }
-
-    private fun requestAccessAllFile(activity: Activity) {
-        try {
-            val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
-            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri)
-            activity.startActivityForResult(intent, REQUEST_PERMISSION_RECORD)
-        } catch (e: Exception) {
-            Log.d(TAG, "requestAccessAllFile: error " + e.message)
-        }
-    }
-
-
     fun checkReadAudioPms(context: Context): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ContextCompat.checkSelfPermission(
@@ -96,6 +49,29 @@ object PermissionUtils {
                 context,
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    fun checkPermissionRecord(context: Context): Boolean {
+        val record = ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)
+        return record == PackageManager.PERMISSION_GRANTED
+    }
+
+    fun requestRecordAudioPms(act: Activity) {
+        ActivityCompat.requestPermissions(
+            act,
+            arrayOf(Manifest.permission.RECORD_AUDIO),
+            REQUEST_PERMISSION_RECORD
+        )
+    }
+
+    fun requestRecordPmsSettings(act: Activity) {
+        try {
+            val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
+            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri)
+            act.startActivityForResult(intent, REQUEST_PERMISSION_RECORD)
+        } catch (e: Exception) {
+            Log.d(TAG, "requestPms: error " + e.message)
         }
     }
 
@@ -114,6 +90,7 @@ object PermissionUtils {
             )
         }
     }
+
     fun requestReadAudioPmsSettings(act: Activity) {
         try {
             val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)

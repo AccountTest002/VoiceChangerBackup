@@ -70,6 +70,7 @@ class ChangeVoiceActivity :
     companion object {
         var effectSelected = FFMPEGUtils.effects[0]
         const val IS_FROM_IMPORT_FLOW = "IS_FROM_IMPORT_FLOW"
+
         @JvmStatic
         fun start(context: Context, isFromImportFlow: Boolean) {
             val starter = Intent(context, ChangeVoiceActivity::class.java)
@@ -169,57 +170,7 @@ class ChangeVoiceActivity :
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PermissionUtils.REQUEST_PERMISSION_READ_WRITE) {
-            if (PermissionUtils.checkPermissionReadWriteFile(this)) {
-                initData()
-            } else {
-                showDialogGoToSetting()
-            }
-        }
-    }
 
-    private fun showDialogGoToSetting() {
-        showConfirmationDialog(
-            title = getString(R.string.app_name_store),
-            msg = getString(R.string.dialog_request_permission),
-            positiveText = getString(R.string.settings),
-            negativeText = null,
-            cancelable = false,
-            onResponse = {
-                if (it) goToSetting()
-            }
-        )
-    }
-
-    private fun goToSetting() {
-        try {
-            val uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID)
-            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri)
-            goToSettingLauncher.launch(intent)
-        } catch (_: Exception) {
-        }
-    }
-
-    private val goToSettingLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (PermissionUtils.checkPermissionRecord(this)) {
-                if (PermissionUtils.checkPermissionReadWriteFile(this)) {
-                    initData()
-                } else {
-                    requestPermissionReadWriteFile()
-                }
-            }
-
-        }
-
-    private fun requestPermissionReadWriteFile() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val permissions = arrayOf(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-            requestPermissions(permissions, PermissionUtils.REQUEST_PERMISSION_READ_WRITE)
-        }
     }
 
     private fun initData() {
@@ -283,11 +234,11 @@ class ChangeVoiceActivity :
     }
 
     override fun initView() {
-        if (PermissionUtils.checkPermissionReadWriteFile(this)) {
-            initData()
-        } else {
-            requestPermissionReadWriteFile()
-        }
+//        if (PermissionUtils.checkPermissionReadWriteFile(this)) {
+        initData()
+//        } else {
+//            requestPermissionReadWriteFile()
+//        }
 
         fullScreen()
         player = Player()
