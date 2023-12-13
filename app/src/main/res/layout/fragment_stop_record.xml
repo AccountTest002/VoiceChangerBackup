@@ -8,7 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clHeadBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_90sdp"
+        android:layout_height="@dimen/_74sdp"
+        android:paddingTop="@dimen/_24sdp"
         android:background="@drawable/bg_head_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -16,25 +17,27 @@
         <ImageView
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:adjustViewBounds="true"
             android:src="@drawable/ic_back"
-            app:layout_constraintVertical_bias="0.8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="@dimen/_250sdp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/record_audio"
-            android:fontFamily="@font/quicksand_bold"
-            android:textSize="@dimen/_18sdp"
-            android:textColor="@color/white"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/quicksand_medium"
             android:includeFontPadding="false"
+            android:text="@string/record_audio"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_back"
-            app:layout_constraintTop_toTopOf="@+id/btn_back"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_back"/>
+            app:layout_constraintTop_toTopOf="@+id/btn_back" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -17,8 +17,9 @@
         <ImageView
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:adjustViewBounds="true"
             android:src="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,11 +28,12 @@
         <TextView
             android:layout_width="@dimen/_250sdp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/quicksand_medium"
             android:includeFontPadding="false"
             android:text="@string/voice_effects"
             android:textColor="@color/white"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/_16sdp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_back"
             app:layout_constraintStart_toEndOf="@+id/btn_back"
             app:layout_constraintTop_toTopOf="@+id/btn_back" />
@@ -44,10 +46,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/_5sdp"
+        app:layout_constraintBottom_toTopOf="@+id/layout_effect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clHeadBar"
-        app:layout_constraintBottom_toTopOf="@+id/layout_effect"/>
+        app:layout_constraintTop_toBottomOf="@+id/clHeadBar" />
 
     <include
         android:id="@+id/layout_effect"
@@ -97,10 +99,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand_bold"
+                android:includeFontPadding="false"
                 android:text="@string/save"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_17sdp"
-                android:includeFontPadding="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
