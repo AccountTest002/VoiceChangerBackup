@@ -111,4 +111,5 @@
     <string name="got_it">Got it</string>
     <string name="txt_ringtone_confirm">The audio will be your ringtone</string>
     <string name="txt_write_settings_pms">We need permission to manage ringtones, please authorize</string>
+    <string name="txt_record_pms">We need permission to record audio</string>
 </resources>
