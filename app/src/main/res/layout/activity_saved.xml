@@ -151,6 +151,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:id="@+id/llBody"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_70sdp"
         android:layout_marginVertical="@dimen/_10sdp"
@@ -158,7 +159,8 @@
         android:paddingHorizontal="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clBody">
+        app:layout_constraintTop_toBottomOf="@+id/clBody"
+        app:layout_constraintBottom_toTopOf="@+id/ad_container">
 
         <LinearLayout
             android:id="@+id/llShare"
@@ -272,5 +274,14 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/ad_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@+id/llBody"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

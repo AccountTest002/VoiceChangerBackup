@@ -14,6 +14,7 @@ import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import com.common.control.manager.AdmobManager
 import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.media.ImportAudioFlow
 import com.mtg.app.voicechanger.R
@@ -30,7 +31,6 @@ import com.mtg.app.voicechanger.view.activity.LanguageActivity
 import com.mtg.app.voicechanger.view.activity.MyWorkActivity
 import com.mtg.app.voicechanger.view.activity.PolicyWebViewActivity
 import com.mtg.app.voicechanger.view.dialog.DialogGuide
-import com.mtg.app.voicechanger.view.dialog.DialogNoInternet
 
 class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding::inflate) {
     //    private lateinit var dialog: MoreOptionDialog
@@ -54,6 +54,9 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
     }
 
     override fun initView() {
+        AdmobManager.getInstance().loadNative(
+            context, BuildConfig.native_language, binding.adContainer, R.layout.custom_native_main
+        )
         fullScreen()
         setupDrawerNavigation()
 

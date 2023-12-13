@@ -4,18 +4,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@drawable/bg_radius_top_12">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:background="#E7E7E7" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_ads_orange" />
+            android:src="@drawable/ic_if_ads1"
+            android:layout_alignParentEnd="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_new_ads1" />
 
         <LinearLayout
+            android:id="@+id/body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_16sdp"
@@ -53,6 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
+                    android:fontFamily="@font/quicksand_medium"
                     android:maxLines="1"
                     android:text="My tilte"
                     android:textColor="#000"
@@ -77,6 +91,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="bottom"
+                            android:fontFamily="@font/quicksand_medium"
                             android:maxLines="2"
                             android:text="dsa sd sad dsa sa sad ád a\ndsaddsa  dsa dsa"
                             android:textColor="#000"
@@ -90,24 +105,33 @@
 
             </LinearLayout>
 
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_below="@+id/body"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:cardElevation="@dimen/_5sdp">
             <TextView
                 android:id="@+id/ad_call_to_action"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_32sdp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:background="@drawable/bg_action_native"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_main_native"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:minWidth="@dimen/_50sdp"
                 android:paddingHorizontal="@dimen/_16sdp"
                 android:text="Install"
+                android:fontFamily="@font/quicksand_bold"
                 android:textAllCaps="true"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+                android:textSize="@dimen/_15sdp"
+                />
+        </androidx.cardview.widget.CardView>
 
 
     </RelativeLayout>
