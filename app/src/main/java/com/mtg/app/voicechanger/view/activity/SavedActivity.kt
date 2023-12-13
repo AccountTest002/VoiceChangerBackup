@@ -97,6 +97,12 @@ class SavedActivity :
             try {
                 mediaPlayer?.setDataSource(filePath)
                 mediaPlayer?.prepare()
+                mediaPlayer?.setOnCompletionListener { mp ->
+                    binding.tvPlay.text = getString(R.string.play)
+                    isPlaying = true
+                    mediaPlayer = null
+                    mp.release()
+                }
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -106,12 +112,17 @@ class SavedActivity :
     }
 
     private fun stopPlayer() {
-        mediaPlayer?.apply {
-            stop()
-            release()
+        try {
+            mediaPlayer?.apply {
+                stop()
+                release()
+            }
+            mediaPlayer = null
+            binding.tvPlay.text = getString(R.string.play)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        mediaPlayer = null
-        binding.tvPlay.text = getString(R.string.play)
+
     }
 
 
