@@ -122,6 +122,10 @@ class MyWorkActivity :
                                                 this@MyWorkActivity,
                                                 item.path,
                                                 RingtoneManager.TYPE_RINGTONE
+                                            ) && FileUtils.setAsRingtoneOrNotification(
+                                                this@MyWorkActivity,
+                                                item.path,
+                                                RingtoneManager.TYPE_NOTIFICATION
                                             )
                                         ) {
                                             Toast.makeText(this@MyWorkActivity, R.string.setting_success, Toast.LENGTH_LONG).show();

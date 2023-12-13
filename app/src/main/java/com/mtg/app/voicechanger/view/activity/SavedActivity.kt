@@ -135,6 +135,10 @@ class SavedActivity :
                             this@SavedActivity,
                             fileVoice?.path,
                             RingtoneManager.TYPE_RINGTONE
+                        ) && FileUtils.setAsRingtoneOrNotification(
+                            this@SavedActivity,
+                            fileVoice?.path,
+                            RingtoneManager.TYPE_NOTIFICATION
                         )
                     ) {
                         Toast.makeText(this@SavedActivity, R.string.setting_success, Toast.LENGTH_LONG).show();
