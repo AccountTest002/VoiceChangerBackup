@@ -5,7 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.media.RingtoneManager
+import android.net.Uri
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
@@ -58,7 +60,7 @@ class MyWorkActivity :
     private val model: FileVoiceViewModel by viewModels {
         VoiceViewModelFactory((application as MyApplication).repository)
     }
-
+    private var mediaPlayer = MediaPlayer()
     private val audioList = arrayListOf<AudioFile>()
     private val listAudioManger by lazy {
         ListAudioManager(audioList, object : ListAudioManager.CallBack {
@@ -84,9 +86,9 @@ class MyWorkActivity :
         adapter = AudioSavedAdapter(audioList, this)
         adapter.mCallback = object : OnActionCallback {
             override fun callback(key: String?, vararg data: Any?) {
-                var item = data[0] as AudioFile
+                val item = data[0] as AudioFile
                 if (key.equals("play")) {
-
+                    playAudio(item.path)
                 } else if (key.equals("more")) {
                     DetailBottomSheet(item, object: DetailBottomSheet.Callback{
                         override fun onDelete() {
@@ -139,6 +141,8 @@ class MyWorkActivity :
                         }
 
                     }).show(supportFragmentManager, "")
+                } else if (key.equals("pause")) {
+                    stopAudio()
                 }
             }
         }
@@ -209,6 +213,38 @@ class MyWorkActivity :
         binding.ivCancelSearch.setOnClickListener {
             binding.edtSearch.setText("")
         }
+    }
+
+    private fun playAudio(path: String) {
+        try {
+            stopAudio()
+            mediaPlayer = MediaPlayer()
+            mediaPlayer.setDataSource(applicationContext, Uri.parse(path))
+            mediaPlayer.prepareAsync()
+            mediaPlayer.setOnPreparedListener { mp ->
+                mp.start()
+            }
+            mediaPlayer.setOnCompletionListener { mp ->
+                adapter.pauseAllAudio()
+                mp.release()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun stopAudio(){
+        try {
+            mediaPlayer.pause()
+            mediaPlayer.stop()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopAudio()
     }
 
     override fun onDestroy() {
