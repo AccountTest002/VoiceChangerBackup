@@ -149,7 +149,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
         }
         binding.navContent.btnPrivacy.setOnClickListener {
             PolicyWebViewActivity.start(requireActivity())
-//            CommonUtils.showPolicy(this)
+            CommonUtils.showPolicy(requireActivity())
         }
     }
 

@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name_store" translatable="false">Voice Changer</string>
+
     <string name="facebook_app_id" translatable="false">658479892893626</string>
     <string name="facebook_client_token" translatable="false">4581f4e98590e6488d30a686ee373133</string>
+    <string name="text_on_boarding_1">Prank Air Horn &amp;siren sounds</string>
+    <string name="text_on_boarding_2">Fart sounds &amp; fart songs</string>
+    <string name="text_on_boarding_3">Hair clipper &amp; funny sounds</string>
 
     <string name="language">Language</string>
     <string name="english">English</string>
@@ -14,9 +18,6 @@
     <string name="thank_you">Thank you</string>
     <string name="rate">Rate</string>
     <string name="next">Next</string>
-    <string name="text_on_boarding_1">Prank Air Horn &amp;siren sounds</string>
-    <string name="text_on_boarding_2">Fart sounds &amp; fart songs</string>
-    <string name="text_on_boarding_3">Hair clipper &amp; funny sounds</string>
     <string name="get_started">Get Started</string>
     <string name="this_action_can_contain_ads">This action can contain ads...</string>
     <string name="try_again">Try again!</string>
@@ -112,4 +113,7 @@
     <string name="change_voice">Change Voice</string>
     <string name="sound_effects">Sound Effects</string>
     <string name="ok">OK</string>
+    <string name="ringtone">Ringtone</string>
+    <string name="voice">Voice</string>
+    <string name="changer">Changer</string>
 </resources>

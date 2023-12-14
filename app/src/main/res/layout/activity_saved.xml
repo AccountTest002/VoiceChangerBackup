@@ -212,7 +212,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:fontFamily="@font/quicksand_medium"
-                android:text="Ringphone"
+                android:text="@string/ringtone"
                 android:textColor="@color/_303030"
                 android:textSize="@dimen/_12sdp" />
 
@@ -240,7 +240,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:fontFamily="@font/quicksand_medium"
-                android:text="Reanme"
+                android:text="@string/rename"
                 android:textColor="@color/_303030"
                 android:textSize="@dimen/_12sdp" />
 
@@ -267,7 +267,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:fontFamily="@font/quicksand_medium"
-                android:text="Delete"
+                android:text="@string/delete"
                 android:textColor="@color/_303030"
                 android:textSize="@dimen/_12sdp" />
 
