@@ -67,8 +67,10 @@ android {
             addConstantTo(owner, "open_app", "ca-app-pub-3940256099942544/3419835294")
             addConstantTo(owner, "inter_splash", "ca-app-pub-3940256099942544/1033173712")
 
-            addConstantTo(owner, "native_guide", "ca-app-pub-3940256099942544/1044960115")
             addConstantTo(owner, "native_language", "ca-app-pub-3940256099942544/2247696110")
+            addConstantTo(owner, "native_onboard", "ca-app-pub-3940256099942544/2247696110")
+            addConstantTo(owner, "native_main", "ca-app-pub-3940256099942544/2247696110")
+            addConstantTo(owner, "native_saved", "ca-app-pub-3940256099942544/2247696110")
 
         }
     }

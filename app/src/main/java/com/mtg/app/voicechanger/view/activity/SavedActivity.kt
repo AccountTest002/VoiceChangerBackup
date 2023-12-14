@@ -49,7 +49,7 @@ class SavedActivity :
 
     override fun initView() {
         AdmobManager.getInstance().loadNative(
-            this, BuildConfig.native_language, binding.adContainer, R.layout.custom_banner_native_saved
+            this, BuildConfig.native_saved, binding.adContainer, R.layout.custom_banner_native_saved
         )
         fullScreen()
         dataItem()

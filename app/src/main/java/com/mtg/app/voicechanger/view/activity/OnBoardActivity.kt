@@ -47,7 +47,7 @@ class OnBoardActivity :
         binding.tvNext.paintFlags = Paint.UNDERLINE_TEXT_FLAG or Paint.ANTI_ALIAS_FLAG
 
         AdmobManager.getInstance().loadNative(
-            this, BuildConfig.native_guide, binding.frAd, R.layout.custom_native_onboard
+            this, BuildConfig.native_onboard, binding.frAd, R.layout.custom_native_onboard
         )
         AppOpenManager.getInstance().hideNativeOrBannerWhenShowOpenApp(this, binding.frAd)
 
