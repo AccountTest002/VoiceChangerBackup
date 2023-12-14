@@ -10,11 +10,8 @@ object NumberUtils {
         val seconds = (TimeUnit.MILLISECONDS.toSeconds(time) % 60L).toInt()
         val minutes = (TimeUnit.MILLISECONDS.toMinutes(time) % 60L).toInt()
         val hours = TimeUnit.MILLISECONDS.toHours(time).toInt()
-        return if (hours == 0) String.format(
-            "%02d:%02d",
-            minutes,
-            seconds
-        ) else String.format("%02d:%02d:%02d", hours, minutes, seconds)
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds)
     }
 
     @SuppressLint("SimpleDateFormat")

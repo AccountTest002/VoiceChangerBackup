@@ -32,7 +32,7 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_percent=".45"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvTittle"
@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:text="@string/voice"
             android:fontFamily="@font/quicksand_bold"
+            android:text="@string/voice"
             android:textColor="@color/white"
             android:textSize="@dimen/_23sdp"
             app:layout_constraintBottom_toBottomOf="@id/img_logo"
@@ -54,20 +54,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_4sdp"
-            android:text="@string/changer"
             android:fontFamily="@font/quicksand"
+            android:text="@string/changer"
             android:textColor="@color/white"
             android:textSize="@dimen/_23sdp"
             app:layout_constraintBottom_toBottomOf="@id/tvTittle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvTittle"
-            app:layout_constraintTop_toTopOf="@id/tvTittle"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="@id/tvTittle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="@dimen/_16sdp"
+        android:paddingTop="@dimen/_13sdp"
         app:layout_constraintBottom_toTopOf="@id/tv_version"
         app:layout_constraintTop_toBottomOf="@id/layout_top">
 
@@ -80,10 +80,10 @@
                 android:id="@+id/btn_language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_18sdp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp">
+                android:paddingVertical="@dimen/_5sdp">
 
                 <ImageView
                     android:layout_width="@dimen/_34sdp"
@@ -103,8 +103,8 @@
 
                 <ImageView
                     android:id="@+id/img_flag"
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_25sdp"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
                     android:layout_marginEnd="@dimen/_35sdp"
                     android:src="@drawable/flag_en" />
             </LinearLayout>
@@ -113,10 +113,10 @@
                 android:id="@+id/btn_rate_navigation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_18sdp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp">
+                android:paddingVertical="@dimen/_5sdp">
 
                 <ImageView
                     android:layout_width="@dimen/_34sdp"
@@ -135,8 +135,9 @@
                     android:textSize="@dimen/_15sdp" />
 
                 <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/_40sdp"
                     android:background="@drawable/ic_back_menu"
                     android:padding="@dimen/_3sdp" />
@@ -146,10 +147,10 @@
                 android:id="@+id/btn_share"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_18sdp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp">
+                android:paddingVertical="@dimen/_5sdp">
 
                 <ImageView
                     android:layout_width="@dimen/_34sdp"
@@ -168,8 +169,9 @@
                     android:textSize="@dimen/_15sdp" />
 
                 <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/_40sdp"
                     android:background="@drawable/ic_back_menu"
                     android:padding="@dimen/_3sdp" />
@@ -179,10 +181,10 @@
                 android:id="@+id/btn_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_18sdp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp">
+                android:paddingVertical="@dimen/_5sdp">
 
                 <ImageView
                     android:layout_width="@dimen/_34sdp"
@@ -201,8 +203,9 @@
                     android:textSize="@dimen/_15sdp" />
 
                 <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/_40sdp"
                     android:background="@drawable/ic_back_menu"
                     android:padding="@dimen/_3sdp" />
@@ -214,8 +217,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp">
+                android:paddingVertical="@dimen/_5sdp">
 
                 <ImageView
                     android:layout_width="@dimen/_34sdp"
@@ -234,8 +236,9 @@
                     android:textSize="@dimen/_15sdp" />
 
                 <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/_40sdp"
                     android:background="@drawable/ic_back_menu"
                     android:padding="@dimen/_3sdp" />
