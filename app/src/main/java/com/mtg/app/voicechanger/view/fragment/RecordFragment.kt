@@ -23,6 +23,7 @@ import com.mtg.app.voicechanger.databinding.FragmentRecordBinding
 import com.mtg.app.voicechanger.utils.ActionUtils
 import com.mtg.app.voicechanger.utils.CommonUtils
 import com.mtg.app.voicechanger.utils.EventLogger
+import com.mtg.app.voicechanger.utils.LanguageUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.hide
 import com.mtg.app.voicechanger.view.activity.AudioChooserActivity
@@ -126,7 +127,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
     @SuppressLint("SetTextI18n")
     private fun setupDrawerNavigation() {
         binding.navContent.tvVersion.text = "Ver ${BuildConfig.VERSION_NAME}"
-
+        binding.navContent.imgFlag.setImageResource(LanguageUtils.getFlagResourceID(requireActivity()))
         binding.navContent.btnLanguage.setOnClickListener {
             EventLogger.getInstance()?.logEvent("click_set_language")
             startActivity(Intent(context, LanguageActivity::class.java))

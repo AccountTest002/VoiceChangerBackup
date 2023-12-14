@@ -27,7 +27,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_16sdp"
         android:fontFamily="@font/quicksand_bold"
-        android:text="@string/english"
+        android:text="English"
         android:textColor="#404040"
         android:textSize="@dimen/_13sdp"
         app:layout_constraintBottom_toBottomOf="parent"
