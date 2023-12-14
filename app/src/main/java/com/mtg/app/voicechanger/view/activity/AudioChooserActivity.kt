@@ -17,6 +17,7 @@ import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.data.model.AudioFile
 import com.mtg.app.voicechanger.databinding.ActivityAudioChooserBinding
+import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.ListAudioManager
 import com.mtg.app.voicechanger.utils.LoadDataUtils
@@ -63,18 +64,17 @@ class AudioChooserActivity :
 
         registerReceiver(loadFileReceiver, IntentFilter(LoadDataUtils.LOAD_SUCCESSFUL))
         adapter = AudioAdapter(audioList, this)
-        adapter.mCallback = object : OnActionCallback {
-            override fun callback(key: String?, vararg data: Any?) {
-                var item = data[0] as AudioFile
-                val intent = Intent(this@AudioChooserActivity, ChangeVoiceActivity::class.java)
-                intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
-                intent.putExtra(
-                    Constants.PATH_FILE,
-                    item.path
-                )
-                intent.putExtra(ChangeVoiceActivity.IS_FROM_IMPORT_FLOW, true)
-                startActivity(intent)
-            }
+        adapter.mCallback = OnActionCallback { _, data ->
+            EventLogger.getInstance()?.logEvent("click_file")
+            val item = data[0] as AudioFile
+            val intent = Intent(this@AudioChooserActivity, ChangeVoiceActivity::class.java)
+            intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
+            intent.putExtra(
+                Constants.PATH_FILE,
+                item.path
+            )
+            intent.putExtra(ChangeVoiceActivity.IS_FROM_IMPORT_FLOW, true)
+            startActivity(intent)
         }
         binding.rcv.layoutManager = LinearLayoutManager(this)
         binding.rcv.adapter = adapter
@@ -83,21 +83,19 @@ class AudioChooserActivity :
     }
 
     private fun loadFile() {
-        LoadDataUtils.loadAudio(this, object : LoadDataUtils.CallBack {
-            override fun onSuccess(list: List<AudioFile>) {
-                audioList.clear()
-                audioList.addAll(list)
+        LoadDataUtils.loadAudio(this) { list ->
+            audioList.clear()
+            audioList.addAll(list)
 
-                adapter.notifyDataSetChanged()
-                if (audioList.isEmpty()) {
-                    binding.llEmpty.visibility = View.VISIBLE
-                    binding.ivSearch.visibility = View.GONE
-                } else {
-                    binding.llEmpty.visibility = View.GONE
-                    binding.ivSearch.visibility = View.VISIBLE
-                }
+            adapter.notifyDataSetChanged()
+            if (audioList.isEmpty()) {
+                binding.llEmpty.visibility = View.VISIBLE
+                binding.ivSearch.visibility = View.GONE
+            } else {
+                binding.llEmpty.visibility = View.GONE
+                binding.ivSearch.visibility = View.VISIBLE
             }
-        })
+        }
     }
 
     override fun addEvent() {

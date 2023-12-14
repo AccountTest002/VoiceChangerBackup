@@ -25,9 +25,9 @@ import com.mtg.app.voicechanger.data.model.FileVoice
 import com.mtg.app.voicechanger.databinding.ActivityChangeVoiceBinding
 import com.mtg.app.voicechanger.interfaces.FFmpegExecuteCallback
 import com.mtg.app.voicechanger.media.Player
+import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.FFMPEGUtils
 import com.mtg.app.voicechanger.utils.FileUtils
-import com.mtg.app.voicechanger.utils.FirebaseUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
 import com.mtg.app.voicechanger.utils.constant.Constants.CHANGE_TO_RECORD
 import com.mtg.app.voicechanger.utils.constant.Constants.PATH_FILE
@@ -250,7 +250,7 @@ class ChangeVoiceActivity :
         binding.btnBack.setOnClickListener { onBackPressed() }
 
         binding.btnSave.setOnClickListener {
-            FirebaseUtils.sendEvent(this, "Layout_Effect", "Click Save")
+            EventLogger.getInstance()?.logEvent("click_save")
             pausePlayer()
             val name = binding.layoutPlayer.txtName2.text.toString()
             val fragment = listFragment[1]
@@ -306,8 +306,6 @@ class ChangeVoiceActivity :
         }
 
         binding.layoutEffect.btnEffect.setOnClickListener {
-            FirebaseUtils.sendEvent(this, "Layout_Effect", "Click Effect")
-
             val fragment = listFragment[1]
             if (fragment is CustomEffectFragment) {
                 if (fragment.isCustom()) {
@@ -334,7 +332,6 @@ class ChangeVoiceActivity :
         }
 
         binding.layoutEffect.btnCustom.setOnClickListener {
-            FirebaseUtils.sendEvent(this, "Layout_Effect", "Click Custom")
             clickBasicEffect(false)
         }
     }
@@ -470,6 +467,7 @@ class ChangeVoiceActivity :
 
     private fun clickBasicEffect(basicEffect: Boolean) {
         if (basicEffect) {
+            EventLogger.getInstance()?.logEvent("click_change_voice")
             isCustom = false
 
             binding.layoutPlayer.txtName2.text = nameFile + "-" + effectSelected.title
@@ -494,6 +492,7 @@ class ChangeVoiceActivity :
             createChildFragment(listFragment[0])
             isCreatedCustomEffectFragment = false
         } else {
+            EventLogger.getInstance()?.logEvent("click_sound effects")
             binding.layoutPlayer.txtName2.text =
                 binding.layoutPlayer.txtName2.text.toString() + "-Custom"
 

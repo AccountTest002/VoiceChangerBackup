@@ -10,6 +10,7 @@ import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseFragment
 import com.mtg.app.voicechanger.databinding.FragmentStopRecordBinding
 import com.mtg.app.voicechanger.media.Recorder
+import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
 import com.mtg.app.voicechanger.utils.constant.Constants
@@ -69,6 +70,7 @@ class StopRecordFragment :
     override fun addEvent() {
         binding.btnBack.setOnClickListener { back() }
         binding.btnStart.setOnClickListener {
+            EventLogger.getInstance()?.logEvent("click_record_start")
             recording()
             binding.btnStart.visibility = View.GONE
             binding.tvStart.visibility = View.GONE
@@ -76,6 +78,7 @@ class StopRecordFragment :
             binding.tvStop.visibility = View.VISIBLE
         }
         binding.btnStop.setOnClickListener {
+            EventLogger.getInstance()?.logEvent("click_record_stop")
             stopRecord()
             binding.btnStart.visibility = View.VISIBLE
             binding.tvStart.visibility = View.VISIBLE

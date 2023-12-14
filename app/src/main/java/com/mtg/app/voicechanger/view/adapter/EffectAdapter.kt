@@ -14,6 +14,7 @@ import com.google.android.material.button.MaterialButton
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.data.model.Effect
 import com.mtg.app.voicechanger.databinding.ItemEffectBinding
+import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.view.activity.ChangeVoiceActivity
 import java.util.ArrayList
 
@@ -51,12 +52,8 @@ class EffectAdapter(
     override fun onBindViewHolder(holder: EffectViewHolder, position: Int) {
         val button = holder.binding.btnAddEffect
 
-
-//        button.text = effects[position].title
         holder.binding.tvName.text = effects[position].title
         button.setImageResource(effects[position].src)
-        val rocketAnimation = holder.binding.imgSelect.background
-//        rocketAnimation.start()
         if (effects[position].title == ChangeVoiceActivity.effectSelected.title) {
             holder.binding.imgSelect.visibility = View.VISIBLE
             imgSelect = holder.binding.imgSelect
@@ -73,6 +70,10 @@ class EffectAdapter(
             imgSelect!!.visibility = View.GONE
             holder.binding.imgSelect.visibility = View.VISIBLE
             imgSelect = holder.binding.imgSelect
+
+            EventLogger.getInstance()?.logEvent("click_${effects[position].title}")
+
+
             addEffectListener?.let {
                 it(effects[position])
             }

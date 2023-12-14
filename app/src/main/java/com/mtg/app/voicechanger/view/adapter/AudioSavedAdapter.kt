@@ -11,6 +11,7 @@ import com.mtg.app.voicechanger.base.BaseAdapter
 import com.mtg.app.voicechanger.data.model.AudioFile
 import com.mtg.app.voicechanger.databinding.ItemAudioBinding
 import com.mtg.app.voicechanger.databinding.ItemAudioSavedBinding
+import com.mtg.app.voicechanger.utils.EventLogger
 import com.mtg.app.voicechanger.utils.NumberUtils
 import java.io.File
 
@@ -62,9 +63,11 @@ class AudioSavedAdapter(mList: List<AudioFile?>?, context: Context?) :
                 val item = binding.root.tag as AudioFile
                 if (item != itemPlay) {
                     mCallback?.callback("play", binding.root.tag)
+                    EventLogger.getInstance()?.logEvent("click_my_works_play")
                     itemPlay = item
                 } else {
                     mCallback?.callback("pause", binding.root.tag)
+                    EventLogger.getInstance()?.logEvent("click_my_works_pause")
                     itemPlay = null
                 }
                 notifyDataSetChanged()

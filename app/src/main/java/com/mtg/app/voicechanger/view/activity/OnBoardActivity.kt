@@ -73,14 +73,14 @@ class OnBoardActivity :
 
         binding.tvNext.setOnClickListener {
             when (binding.viewpagerOnboard.currentItem) {
-                0 -> EventLogger.getInstance()?.logEvent("click_guide_1")
-                1 -> EventLogger.getInstance()?.logEvent("click_guide_2")
-                2 -> EventLogger.getInstance()?.logEvent("click_guide_3")
+                0 -> EventLogger.getInstance()?.logEvent("click_ins_guide_1")
+                1 -> EventLogger.getInstance()?.logEvent("click_ins_guide_2")
+                2 -> EventLogger.getInstance()?.logEvent("click_ins_guide_3")
             }
             if (binding.viewpagerOnboard.currentItem == (binding.viewpagerOnboard.adapter as ViewPagerAddFragmentsAdapter).itemCount - 1) {
                 SharedPrefs.put(this, Constants.KEY_FIRST_INTRO, true)
+                EventLogger.getInstance()?.logEvent("click_get_started")
                 startActivity(Intent(this@OnBoardActivity, RecordActivity::class.java))
-
             } else {
                 binding.viewpagerOnboard.currentItem++
             }

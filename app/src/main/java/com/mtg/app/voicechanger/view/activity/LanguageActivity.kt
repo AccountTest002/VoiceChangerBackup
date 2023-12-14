@@ -102,7 +102,10 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
     }
 
     override fun addEvent() {
-        binding.btBack.setOnClickListener { finish() }
+        binding.btBack.setOnClickListener {
+            EventLogger.getInstance()?.logEvent("click_ins_back")
+            finish()
+        }
         binding.ivDone.setOnClickListener {
             EventLogger.getInstance()?.logEvent("click_language_tick")
             //Intent intent = new Intent(this, MainActivity.class);

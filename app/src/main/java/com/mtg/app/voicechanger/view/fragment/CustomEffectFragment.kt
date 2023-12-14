@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.RadioGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import com.google.android.material.slider.Slider
@@ -17,7 +16,6 @@ import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.databinding.FragmentCustomEffectBinding
 import com.mtg.app.voicechanger.utils.FFMPEGUtils
 import com.mtg.app.voicechanger.utils.FileUtils
-import com.mtg.app.voicechanger.utils.FirebaseUtils
 import com.mtg.app.voicechanger.view.adapter.EffectAdapter
 
 
@@ -140,7 +138,6 @@ class CustomEffectFragment : Fragment() {
     private fun actionCustomBasic() {
         binding.switchBasic.setOnCheckedChangeListener { _: CompoundButton?, b: Boolean ->
             if (b) {
-                FirebaseUtils.sendEvent(requireContext(), "Layout_Effect", "Click Custom Basic")
                 binding.switchBasic.setTrackResource(R.drawable.ic_track_enable)
                 binding.layoutBasic.root.visibility = View.VISIBLE
                 binding.clBasic.setBackgroundResource(R.drawable.bg_custom_sound_big)
@@ -181,7 +178,6 @@ class CustomEffectFragment : Fragment() {
     private fun actionCustomEqualizer() {
         binding.switchEqualizer.setOnCheckedChangeListener { _: CompoundButton?, b: Boolean ->
             if (b) {
-                FirebaseUtils.sendEvent(requireContext(), "Layout_Effect", "Click Custom Equalizer")
                 binding.switchEqualizer.setTrackResource(R.drawable.ic_track_enable)
                 binding.layoutEqualizer.root.visibility = View.VISIBLE
                 binding.clEqualizer.setBackgroundResource(R.drawable.bg_custom_sound_big)
@@ -221,7 +217,6 @@ class CustomEffectFragment : Fragment() {
     private fun actionCustomReverb() {
         binding.switchReverb.setOnCheckedChangeListener { _: CompoundButton?, b: Boolean ->
             if (b) {
-                FirebaseUtils.sendEvent(requireContext(), "Layout_Effect", "Click Custom Reverb")
                 binding.switchReverb.setTrackResource(R.drawable.ic_track_enable)
                 binding.layoutReverb.root.visibility = View.VISIBLE
                 binding.clReverb.setBackgroundResource(R.drawable.bg_custom_sound_big)

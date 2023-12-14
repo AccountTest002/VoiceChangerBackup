@@ -23,7 +23,6 @@ import com.mtg.app.voicechanger.databinding.FragmentRecordBinding
 import com.mtg.app.voicechanger.utils.ActionUtils
 import com.mtg.app.voicechanger.utils.CommonUtils
 import com.mtg.app.voicechanger.utils.EventLogger
-import com.mtg.app.voicechanger.utils.FirebaseUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils
 import com.mtg.app.voicechanger.utils.hide
 import com.mtg.app.voicechanger.view.activity.AudioChooserActivity
@@ -64,8 +63,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
 
     override fun addEvent() {
         binding.btnRecord.setOnClickListener {
-            Log.d("Click", "Record")
-            FirebaseUtils.sendEvent(requireContext(), "Layout_Home", "Click recoding")
+            EventLogger.getInstance()?.logEvent("click_main_record&change")
             callback?.onRecord()
         }
         binding.btnDrawer.setOnClickListener {
@@ -73,6 +71,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
             EventLogger.getInstance()?.logEvent("click_main_setting")
         }
         binding.btnFileDevice.setOnClickListener {
+            EventLogger.getInstance()?.logEvent("click_main_edit_sound")
             callback?.onImport()
             ImportAudioFlow(requireActivity(), object : ImportAudioFlow.Callback {
                 override fun onNoPms() {
@@ -89,6 +88,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
             )
         }
         binding.btnMyAudio.setOnClickListener {
+            EventLogger.getInstance()?.logEvent("click_my_works")
             MyWorkActivity.start(requireActivity())
             requireActivity().overridePendingTransition(
                 R.anim.anim_right_left_1,
@@ -99,6 +99,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
         binding.btnGuide.setOnClickListener {
             val dialogGuide = DialogGuide(requireContext())
             dialogGuide.show()
+            EventLogger.getInstance()?.logEvent("click_main_tips")
         }
 
 //        dialog.setOnImportListener {
@@ -145,9 +146,11 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
             CommonUtils.shareApp(requireActivity())
         }
         binding.navContent.btnFeedback.setOnClickListener {
+            EventLogger.getInstance()?.logEvent("click_set_feedback")
             ActionUtils.sendFeedback(requireActivity())
         }
         binding.navContent.btnPrivacy.setOnClickListener {
+            EventLogger.getInstance()?.logEvent("click_set_privacy_policy")
             PolicyWebViewActivity.start(requireActivity())
             CommonUtils.showPolicy(requireActivity())
         }
