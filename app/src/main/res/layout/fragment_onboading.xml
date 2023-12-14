@@ -7,8 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/img_background_gradient" />
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/img_inside"
@@ -17,7 +16,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/img_inside_1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".6"
+        app:layout_constraintHeight_percent=".55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,12 +27,13 @@
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_40sdp"
         android:gravity="center"
-        android:lines="2"
+        android:lines="1"
+        android:fontFamily="@font/quicksand_bold"
         android:text="@string/text_on_boarding_3"
         android:textColor="@color/color_274577"
-        android:textSize="20sp"
+        android:textSize="@dimen/_17sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="@id/img_inside"
+        app:layout_constraintTop_toBottomOf="@+id/img_inside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

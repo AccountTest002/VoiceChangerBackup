@@ -115,10 +115,10 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
 //            setLanguage(itemLanguage!!.languageToLoad)
             setLanguageWithoutNotification(itemLanguage!!.languageToLoad)
 
-//            if (!SharedPrefs.getBoolean(this, Constants.KEY_FIRST_INTRO)) {
-//                OnBoardActivity.start(this)
-//                return@setOnClickListener
-//            }
+            if (!SharedPrefs.getBoolean(this, Constants.KEY_FIRST_INTRO)) {
+                OnBoardActivity.start(this)
+                return@setOnClickListener
+            }
 
             SharedPrefs.put(this, Constants.SHARE_PREF_LANGUAGE, itemLanguage!!.name)
             SharedPrefs.setLanguageConfig(this)
