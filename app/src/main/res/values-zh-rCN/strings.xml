@@ -37,7 +37,6 @@
     <string name="name_unchange">名称不变</string>
     <string name="file_not_exist">文件不存在</string>
     <string name="record_amp_changer"><![CDATA[记录和更改器]]></string>
-    <string name="zero_time">0</string>
     <string name="cancel">取消</string>
     <string name="dialog_request_permission"><![CDATA[如果拒绝权限，则无法使用此服务\n\n请在[设置] > [权限]]开启权限]]></string>
     <string name="process_error">处理错误。 请再试一次</string>

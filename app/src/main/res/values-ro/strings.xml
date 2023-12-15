@@ -37,7 +37,6 @@
     <string name="name_unchange">Nume neschimbat</string>
     <string name="file_not_exist">Fișierul nu există</string>
     <string name="record_amp_changer"><![CDATA[Înregistrare și schimbător]]></string>
-    <string name="zero_time">0</string>
     <string name="cancel">Anulare</string>
     <string name="dialog_request_permission"><![CDATA[Dacă respingi permisiunea, nu poți folosi acest serviciu\n\nActivează permisiunile la [Setting] > [Permission]]]></string>
     <string name="process_error">Eroare la procesare. Vă rugăm să încercați din nou</string>

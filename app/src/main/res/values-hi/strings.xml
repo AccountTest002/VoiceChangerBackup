@@ -37,7 +37,6 @@
     <string name="name_unchange">नाम अपरिवर्तित</string>
     <string name="file_not_exist">फ़ाइल मौजूद नहीं है</string>
     <string name="record_amp_changer"><![CDATA[रिकॉर्ड और परिवर्तक]]></string>
-    <string name="zero_time">0</string>
     <string name="cancel">रद्द करना</string>
     <string name="dialog_request_permission"><![CDATA[यदि आप अनुमति अस्वीकार करते हैं, तो आप इस सेवा का उपयोग नहीं कर सकते\n\nकृपया [सेटिंग] > [अनुमति]]]> पर अनुमतियां चालू करें</string>
     <string name="process_error">प्रसंस्करण में त्रुटि. कृपया पुन: प्रयास करें</string>

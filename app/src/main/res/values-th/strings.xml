@@ -37,7 +37,6 @@
     <string name="name_unchange">ชื่อไม่เปลี่ยนแปลง</string>
     <string name="file_not_exist">ไม่มีไฟล์อยู่</string>
     <string name="record_amp_changer"><![CDATA[บันทึกและตัวเปลี่ยน]]></string>
-    <string name="zero_time">00:00 น</string>
     <string name="cancel">ยกเลิก</string>
     <string name="dialog_request_permission"><![CDATA[หากคุณปฏิเสธการอนุญาต คุณจะใช้บริการนี้ไม่ได้\n\nโปรดเปิดการอนุญาตที่ [การตั้งค่า] > [การอนุญาต]]]></string>
     <string name="process_error">เกิดข้อผิดพลาดในการประมวลผล กรุณาลองอีกครั้ง</string>

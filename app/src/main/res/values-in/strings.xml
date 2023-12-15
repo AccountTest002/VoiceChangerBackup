@@ -37,7 +37,6 @@
     <string name="name_unchange">Nama tidak berubah</string>
     <string name="file_not_exist">File tidak ada</string>
     <string name="record_amp_changer"><![CDATA[Rekam & Pengubah]]></string>
-    <string name="zero_time">0</string>
     <string name="cancel">Membatalkan</string>
     <string name="dialog_request_permission"><![CDATA[Jika Anda menolak izin, Anda tidak dapat menggunakan layanan ini\n\nSilakan aktifkan izin di [Pengaturan] > [Izin]]]></string>
     <string name="process_error">Pemrosesan kesalahan. Silakan coba lagi</string>

@@ -37,7 +37,6 @@
     <string name="name_unchange">Името не е променено</string>
     <string name="file_not_exist">Файлът не съществува</string>
     <string name="record_amp_changer"><![CDATA[Запис и чейнджър]]></string>
-    <string name="zero_time">00:00 часа</string>
     <string name="cancel">Отказ</string>
     <string name="dialog_request_permission"><![CDATA[Ако отхвърлите разрешение, не можете да използвате тази услуга\n\nМоля, включете разрешенията в [Настройки] > [Разрешение]]]></string>
     <string name="process_error">Обработка на грешка. Моля, опитайте отново</string>

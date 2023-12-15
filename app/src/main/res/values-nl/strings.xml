@@ -37,7 +37,6 @@
     <string name="name_unchange">Naam ongewijzigd</string>
     <string name="file_not_exist">Bestand bestaat niet</string>
     <string name="record_amp_changer"><![CDATA[Record & Wisselaar]]></string>
-    <string name="zero_time">00:00 uur</string>
     <string name="cancel">Annuleren</string>
     <string name="dialog_request_permission"><![CDATA[Als u de toestemming weigert, kunt u deze service niet gebruiken\n\nSchakel de rechten in via [Instelling] > [Toestemming]]]></string>
     <string name="process_error">Foutverwerking. Probeer het opnieuw</string>
