@@ -101,7 +101,6 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_below="@+id/tv_title"
-            android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_4sdp"
             android:layout_marginBottom="@dimen/_4sdp"
@@ -113,23 +112,23 @@
             android:textSize="@dimen/_11sdp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/iv_icon"
-            app:layout_constraintEnd_toStartOf="@id/tv_time"
-            app:layout_constraintStart_toEndOf="@id/iv_icon"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
         <TextView
             android:id="@+id/tv_size"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_16sdp"
             android:fontFamily="@font/quicksand"
             android:text="1320 kB"
             android:textColor="#8D8D8D"
             android:textSize="@dimen/_11sdp"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintBottom_toBottomOf="@id/tv_time"
             app:layout_constraintStart_toEndOf="@id/tv_time"
-            app:layout_constraintTop_toTopOf="@+id/tv_time" />
+            app:layout_constraintTop_toTopOf="@+id/tv_time"
+            app:layout_constraintEnd_toStartOf="@+id/tvPlay"/>
 
         <TextView
             android:id="@+id/tvPlay"
