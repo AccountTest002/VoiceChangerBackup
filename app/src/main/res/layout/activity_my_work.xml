@@ -78,6 +78,8 @@
                 android:layout_marginEnd="@dimen/_30sdp"
                 android:background="@drawable/bg_radius_16"
                 android:paddingStart="@dimen/_32sdp"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 android:textSize="@dimen/_11sdp"
                 android:fontFamily="@font/quicksand_medium"
                 android:textColor="#303030"

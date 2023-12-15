@@ -1,9 +1,7 @@
 package com.mtg.app.voicechanger.view.activity
 
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.media.RingtoneManager
@@ -26,28 +24,21 @@ import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
 import com.mtg.app.voicechanger.data.model.AudioFile
-import com.mtg.app.voicechanger.data.model.FileVoice
-import com.mtg.app.voicechanger.databinding.ActivityAudioChooserBinding
 import com.mtg.app.voicechanger.databinding.ActivityMyWorkBinding
 import com.mtg.app.voicechanger.utils.FileUtils
 import com.mtg.app.voicechanger.utils.ListAudioManager
 import com.mtg.app.voicechanger.utils.LoadDataUtils
 import com.mtg.app.voicechanger.utils.NumberUtils
 import com.mtg.app.voicechanger.utils.PermissionUtils
-import com.mtg.app.voicechanger.utils.constant.Constants
-import com.mtg.app.voicechanger.view.adapter.AudioAdapter
 import com.mtg.app.voicechanger.view.adapter.AudioSavedAdapter
 import com.mtg.app.voicechanger.view.dialog.DeleteDialog
 import com.mtg.app.voicechanger.view.dialog.DetailBottomSheet
 import com.mtg.app.voicechanger.view.dialog.DialogReadAudioPms
-import com.mtg.app.voicechanger.view.dialog.NameDialog
 import com.mtg.app.voicechanger.view.dialog.RenameDialog
 import com.mtg.app.voicechanger.view.dialog.SetRingtoneDialog
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class MyWorkActivity :
     BaseActivity<ActivityMyWorkBinding>(ActivityMyWorkBinding::inflate) {
