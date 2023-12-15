@@ -46,6 +46,8 @@ import com.mtg.app.voicechanger.view.dialog.SetRingtoneDialog
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class MyWorkActivity :
     BaseActivity<ActivityMyWorkBinding>(ActivityMyWorkBinding::inflate) {
@@ -153,12 +155,14 @@ class MyWorkActivity :
         binding.rcv.layoutManager = LinearLayoutManager(this)
         binding.rcv.adapter = adapter
         model.getFileVoices().observe(this, Observer {
-            it?.let {
+            it?.let { it ->
                 audioList.clear()
                 audioList.addAll(it.map {
                     AudioFile(it.path!!, it.duration, NumberUtils.formatAsDate(it.date), NumberUtils.formatAsSize(
                         File(it.path!!).length()
-                    )) })
+                    ))
+                })
+                audioList.reverse()
                 adapter.notifyDataSetChanged()
                 checkState()
             }
