@@ -74,6 +74,7 @@
                 android:id="@+id/edt_search"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_32sdp"
+                android:paddingEnd="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
                 android:background="@drawable/bg_radius_16"
