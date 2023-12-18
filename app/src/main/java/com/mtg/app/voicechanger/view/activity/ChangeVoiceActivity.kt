@@ -36,6 +36,7 @@ import com.mtg.app.voicechanger.view.adapter.EffectAdapter
 import com.mtg.app.voicechanger.view.dialog.NameDialog
 import com.mtg.app.voicechanger.view.fragment.BasicEffectFragment
 import com.mtg.app.voicechanger.view.fragment.CustomEffectFragment
+import com.mtg.app.voicechanger.view.fragment.StopRecordFragment
 import com.mtg.app.voicechanger.viewmodel.FileVoiceViewModel
 import com.mtg.app.voicechanger.viewmodel.VoiceViewModelFactory
 import kotlinx.coroutines.CoroutineScope
@@ -143,13 +144,11 @@ class ChangeVoiceActivity :
     }
 
     override fun onBackPressed() {
-        if (intent.getBooleanExtra(IS_FROM_IMPORT_FLOW, false)) {
-            super.onBackPressed()
+        val fragmentManager = supportFragmentManager
+        if (fragmentManager.backStackEntryCount > 0) {
+            fragmentManager.popBackStack()
         } else {
-            if (player?.isPlaying == true) {
-                stopPlayer()
-            }
-            goToRecord()
+            super.onBackPressed()
         }
 
     }
@@ -246,8 +245,21 @@ class ChangeVoiceActivity :
 
     }
 
+    private fun addStopRecordFragment() {
+        val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+
+        val stopRecordFragment = StopRecordFragment()
+
+        transaction.replace(binding.layoutEffect.layoutFragment.id, stopRecordFragment)
+        transaction.addToBackStack(null) // Thêm Fragment hiện tại vào back stack
+        transaction.commit()
+    }
+
     override fun addEvent() {
-        binding.btnBack.setOnClickListener { onBackPressed() }
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
         binding.btnSave.setOnClickListener {
             EventLogger.getInstance()?.logEvent("click_save")

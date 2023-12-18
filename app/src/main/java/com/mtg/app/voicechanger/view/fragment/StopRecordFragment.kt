@@ -84,6 +84,10 @@ class StopRecordFragment :
             binding.tvStart.visibility = View.VISIBLE
             binding.btnStop.visibility = View.GONE
             binding.tvStop.visibility = View.GONE
+
+            binding.timelineTextView.text = R.string.zero_time.toString()
+            binding.visualizer.clear()
+
             val intent = Intent(requireActivity(), ChangeVoiceActivity::class.java)
             intent.action = NameDialog.RECORD_TO_CHANGE_VOICE
             intent.putExtra(
