@@ -24,22 +24,13 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
     }
 
     override fun initView() {
-        setImageBackground()
 //        setLanguage(LanguageUtils.getCurrentLanguageCode(this))
         SharedPrefs.clearCountTopic(this)
 //        Handler(Looper.getMainLooper()).postDelayed({ handleAds() }, 2000)
-        ConsentDialogManager.instance?.showConsentDialogSplash(this) {
+//        ConsentDialogManager.instance?.showConsentDialogSplash(this) {
             handleAds()
-        }
+//        }
         EventLogger.getInstance()?.logEvent("open_splash")
-    }
-
-    private fun setImageBackground() {
-        if (Common.screenWidth / Common.screenHeight > 108 / 216) {
-            binding.imgBackground.layoutParams.height = Common.screenHeight
-        } else {
-            binding.imgBackground.layoutParams.width = Common.screenWidth
-        }
     }
 
     private fun handleAds() {
