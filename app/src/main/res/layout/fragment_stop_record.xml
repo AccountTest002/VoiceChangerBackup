@@ -8,8 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clHeadBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_74sdp"
-        android:paddingTop="@dimen/_24sdp"
+        android:layout_height="@dimen/_54sdp"
         android:background="@drawable/bg_head_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

@@ -57,7 +57,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
         AdmobManager.getInstance().loadNative(
             context, BuildConfig.native_main, binding.adContainer, R.layout.custom_native_constraint_main
         )
-        fullScreen()
+//        fullScreen()
         setupDrawerNavigation()
 
     }

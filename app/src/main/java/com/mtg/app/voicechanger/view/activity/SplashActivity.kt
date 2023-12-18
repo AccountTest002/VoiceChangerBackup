@@ -1,5 +1,7 @@
 package com.mtg.app.voicechanger.view.activity
 
+import android.os.Build
+import androidx.core.content.ContextCompat
 import com.common.control.interfaces.AdCallback
 import com.common.control.manager.AdmobManager
 import com.common.control.manager.AppOpenManager
@@ -19,19 +21,23 @@ import com.mtg.app.voicechanger.utils.constant.Constants
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     private var appPreferences = AppPreferences.instance
     override fun binding() {
-        isFullScreen = true
+        isFullScreen = false
         super.binding()
     }
 
     override fun initView() {
-//        setLanguage(LanguageUtils.getCurrentLanguageCode(this))
+        setStatusBarColor(ContextCompat.getColor(this, R.color.white))
         SharedPrefs.clearCountTopic(this)
-//        Handler(Looper.getMainLooper()).postDelayed({ handleAds() }, 2000)
 //        ConsentDialogManager.instance?.showConsentDialogSplash(this) {
             handleAds()
 //        }
         EventLogger.getInstance()?.logEvent("open_splash")
     }
+
+    private fun setStatusBarColor(color: Int) {
+        window.statusBarColor = color
+    }
+
 
     private fun handleAds() {
         AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity::class.java)
@@ -62,17 +68,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
     }
 
     private fun startMain() {
-        val languageToLoad = SharedPrefs.getString(this, Constants.SHARE_PREF_LANGUAGE, "default")
-//        if (languageToLoad == "default") {
-//            startActivity(Intent(this, LanguageActivity::class.java))
-//        } else {
-//            //todo
-//            if (SharedPrefs.getBoolean(this, Const.IS_SKIP_ONBOARD)) {
-//                startActivity(Intent(this, MainActivity::class.java))
-//            } else {
-//                startActivity(Intent(this@SplashActivity, OnBoardActivity::class.java))
-//            }
-//        }
         if (SharedPrefs.getBoolean(this, Constants.KEY_FIRST_INTRO)) {
             RecordActivity.start(this)
         } else {
@@ -92,13 +87,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         }
 
         finish()
-    }
-
-    override fun onStart() {
-        super.onStart()
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            startActivity(Intent(this@SplashActivity, OnBoardActivity::class.java)) //check onboard first time in OnboardActivity
-//        }, 2000)
     }
 
     override fun addEvent() {

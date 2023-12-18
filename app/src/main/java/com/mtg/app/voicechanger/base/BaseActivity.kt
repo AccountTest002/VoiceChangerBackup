@@ -83,7 +83,7 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
-        changeStatusBar(ContextCompat.getColor(this, R.color.white))
+        changeStatusBar(ContextCompat.getColor(this, R.color._5d77f0))
         setContentView(binding.root)
     }
 

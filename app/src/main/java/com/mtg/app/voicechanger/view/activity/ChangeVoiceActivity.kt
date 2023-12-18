@@ -101,17 +101,17 @@ class ChangeVoiceActivity :
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    fun fullScreen() {
-        val window = window
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        val statusBackground = ContextCompat.getDrawable(this, R.drawable.bg_head_bar)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = Color.TRANSPARENT
-        }
-        window.setBackgroundDrawable(statusBackground)
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    fun fullScreen() {
+//        val window = window
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//        val statusBackground = ContextCompat.getDrawable(this, R.drawable.bg_head_bar)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            window.statusBarColor = Color.TRANSPARENT
+//        }
+//        window.setBackgroundDrawable(statusBackground)
+//    }
 
     override fun onStart() {
         super.onStart()
@@ -226,7 +226,7 @@ class ChangeVoiceActivity :
     override fun initView() {
         initData()
 
-        fullScreen()
+//        fullScreen()
         player = Player()
         isPlaying = true
 

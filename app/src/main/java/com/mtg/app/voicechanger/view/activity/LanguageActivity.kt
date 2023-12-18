@@ -27,7 +27,10 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
     private var languageAdapter: LanguageAdapter? = null
     private var itemLanguage: ItemLanguage? = null
     private var appPreferences = AppPreferences.instance
-
+    override fun binding() {
+        isFullScreen = false
+        super.binding()
+    }
     companion object {
         @JvmStatic
         fun start(context: Context) {
