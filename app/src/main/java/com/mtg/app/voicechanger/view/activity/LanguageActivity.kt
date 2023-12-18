@@ -31,6 +31,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
         isFullScreen = false
         super.binding()
     }
+
     companion object {
         @JvmStatic
         fun start(context: Context) {
@@ -39,12 +40,16 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
         }
     }
 
+    private fun setStatusBarColor(color: Int) {
+        window.statusBarColor = color
+    }
+
     override fun initView() {
+        setStatusBarColor(ContextCompat.getColor(this, R.color.white))
         AdmobManager.getInstance().loadNative(
             this, BuildConfig.native_language, binding.frAd, R.layout.custom_native_language
         )
         AppOpenManager.getInstance().hideNativeOrBannerWhenShowOpenApp(this, binding.frAd)
-        setStatusBarColor()
         initListLanguage()
         initRCLanguage()
         handleButtonBack()
@@ -54,10 +59,6 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(ActivityLanguageB
 //        } else {
 //            binding.imgBackground.layoutParams.width = Common.screenWidth
 //        }
-    }
-
-    private fun setStatusBarColor() {
-        window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
     }
 
     private fun handleButtonBack() {
