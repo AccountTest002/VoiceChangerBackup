@@ -37,7 +37,6 @@
     <string name="name_unchange">Tên không thay đổi</string>
     <string name="file_not_exist">Tệp không tồn tại</string>
     <string name="record_amp_changer"><![CDATA[Ghi & Thay đổi]]></string>
-    <string name="zero_time">0</string>
     <string name="cancel">Hủy bỏ</string>
     <string name="dialog_request_permission"><![CDATA[Nếu bạn từ chối quyền, bạn không thể sử dụng dịch vụ này\n\nVui lòng bật quyền tại [Cài đặt] > [Quyền]]]></string>
     <string name="process_error">Xử lý lỗi. Vui lòng thử lại</string>

@@ -10,8 +10,10 @@ class ListAudioManager(private val currentList: MutableList<AudioFile>, private 
     }
 
     fun filterList(text: String) {
+        val lowerCaseText = text.lowercase()
+
         currentList.clear()
-        currentList.addAll(orgList.filter { it.path.contains(text) })
+        currentList.addAll(orgList.filter { it.path.lowercase().contains(lowerCaseText) })
         callback.onEmpty(currentList.isEmpty())
     }
 

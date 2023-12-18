@@ -37,7 +37,6 @@
     <string name="name_unchange">Imię bez zmian</string>
     <string name="file_not_exist">Plik nie istnieje</string>
     <string name="record_amp_changer"><![CDATA[Nagrywanie i zmieniarka]]></string>
-    <string name="zero_time">0</string>
     <string name="cancel">Anulować</string>
     <string name="dialog_request_permission"><![CDATA[Jeśli odrzucisz pozwolenie, nie będziesz mógł korzystać z tej usługi\n\nWłącz uprawnienia w [Ustawienia] > [Uprawnienia]]]></string>
     <string name="process_error">Przetwarzanie błędów. Proszę spróbuj ponownie</string>

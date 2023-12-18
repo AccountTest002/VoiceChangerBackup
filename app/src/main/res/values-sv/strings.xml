@@ -37,7 +37,6 @@
     <string name="name_unchange">Namn oförändrat</string>
     <string name="file_not_exist">Filen finns inte</string>
     <string name="record_amp_changer"><![CDATA[Record & Changer]]></string>
-    <string name="zero_time">0</string>
     <string name="cancel">Annullera</string>
     <string name="dialog_request_permission"><![CDATA[Om du avvisar behörighet kan du inte använda den här tjänsten\n\nVar vänlig slå på behörigheter på [Inställning] > [Tillstånd]]]></string>
     <string name="process_error">Fel vid bearbetning. Var god försök igen</string>

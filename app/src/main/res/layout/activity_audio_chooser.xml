@@ -79,6 +79,8 @@
                 android:background="@drawable/bg_radius_16"
                 android:paddingStart="@dimen/_32sdp"
                 android:textSize="@dimen/_11sdp"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 android:fontFamily="@font/quicksand_medium"
                 android:textColor="#303030"
                 app:layout_constraintBottom_toBottomOf="parent"

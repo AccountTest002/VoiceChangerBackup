@@ -27,7 +27,7 @@ class StopRecordFragment :
     private val handler = Handler(Looper.getMainLooper())
     private val runnableTime: Runnable = object : Runnable {
         override fun run() {
-            binding.timelineTextView.text = NumberUtils.formatAsTime(
+            binding.timelineTextView.text = NumberUtils.formatAsTimeHours(
                 recorder!!.currentTime
             )
             binding.visualizer.addAmp(recorder!!.maxAmplitude, recorder!!.tickDuration)

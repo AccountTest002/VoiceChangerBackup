@@ -37,7 +37,6 @@
     <string name="name_unchange">Nombre sin cambios</string>
     <string name="file_not_exist">El archivo no existe</string>
     <string name="record_amp_changer"><![CDATA[Grabador y cambiador]]></string>
-    <string name="zero_time">0</string>
     <string name="cancel">Cancelar</string>
     <string name="dialog_request_permission"><![CDATA[Si rechaza el permiso, no podrá utilizar este servicio\n\nActive los permisos en [Configuración] > [Permiso]]]></string>
     <string name="process_error">Error de procesamiento. Inténtalo de nuevo</string>
