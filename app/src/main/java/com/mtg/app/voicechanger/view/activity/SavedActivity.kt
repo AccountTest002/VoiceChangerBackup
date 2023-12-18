@@ -15,6 +15,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.common.control.base.OnActionCallback
 import com.common.control.manager.AdmobManager
+import com.common.control.manager.AppOpenManager
 import com.common.control.utils.AppUtils
 import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.MyApplication
@@ -51,6 +52,7 @@ class SavedActivity :
         AdmobManager.getInstance().loadNative(
             this, BuildConfig.native_saved, binding.adContainer, R.layout.custom_banner_native_saved
         )
+        AppOpenManager.getInstance().hideNativeOrBannerWhenShowOpenApp(this, binding.adContainer)
         fullScreen()
         dataItem()
     }
