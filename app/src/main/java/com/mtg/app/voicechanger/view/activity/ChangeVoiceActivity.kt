@@ -16,6 +16,11 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.common.control.interfaces.AdCallback
+import com.common.control.manager.AdmobManager
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.mtg.app.voicechanger.AdCache
+import com.mtg.app.voicechanger.BuildConfig
 import com.mtg.app.voicechanger.MyApplication
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseActivity
@@ -222,6 +227,18 @@ class ChangeVoiceActivity :
         }
     }
 
+    private fun loadInterAds() {
+        if (AdCache.getInstance().interSaved == null) {
+            AdmobManager.getInstance()
+                .loadInterAds(this, BuildConfig.inter_saved, object : AdCallback() {
+                    override fun onResultInterstitialAd(interstitialAd: InterstitialAd?) {
+                        super.onResultInterstitialAd(interstitialAd)
+                        AdCache.getInstance().interSaved = interstitialAd
+                    }
+                })
+        }
+    }
+
     override fun initView() {
         initData()
 
@@ -303,6 +320,7 @@ class ChangeVoiceActivity :
                 }
             }
             nameDialog.show(supportFragmentManager, "NameDialog")
+
         }
 
         binding.layoutPlayer.visualizer.callback = this
@@ -589,5 +607,10 @@ class ChangeVoiceActivity :
         val intent = Intent(this, SavedActivity::class.java)
         intent.putExtra(STUDENT_EXTRA, fileVoice)
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadInterAds()
     }
 }

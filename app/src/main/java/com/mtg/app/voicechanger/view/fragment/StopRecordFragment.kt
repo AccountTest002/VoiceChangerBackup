@@ -85,7 +85,7 @@ class StopRecordFragment :
             binding.btnStop.visibility = View.GONE
             binding.tvStop.visibility = View.GONE
 
-            binding.timelineTextView.text = R.string.zero_time.toString()
+            binding.timelineTextView.text = "00:00:00"
             binding.visualizer.clear()
 
             val intent = Intent(requireActivity(), ChangeVoiceActivity::class.java)

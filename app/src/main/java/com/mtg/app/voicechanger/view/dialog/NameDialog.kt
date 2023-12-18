@@ -13,6 +13,9 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import com.common.control.interfaces.AdCallback
+import com.common.control.manager.AdmobManager
+import com.mtg.app.voicechanger.AdCache
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.databinding.DialogNameBinding
 import com.mtg.app.voicechanger.utils.FileUtils
@@ -88,6 +91,13 @@ class NameDialog : DialogFragment() {
             }
 
             dismiss()
+
+            AdmobManager.getInstance().showInterstitial(requireActivity(), AdCache.getInstance().interSaved, object : AdCallback() {
+                override fun onAdClosed() {
+                    super.onAdClosed()
+                    AdCache.getInstance().interSaved = null
+                }
+            })
         }
 
         binding.btnCancel.setOnClickListener {

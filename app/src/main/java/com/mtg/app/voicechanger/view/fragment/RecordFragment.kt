@@ -3,23 +3,27 @@ package com.mtg.app.voicechanger.view.fragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.os.Bundle
 import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import com.common.control.interfaces.AdCallback
 import com.common.control.manager.AdmobManager
+import com.common.control.manager.AppOpenManager
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.mtg.app.voicechanger.AdCache
 import com.mtg.app.voicechanger.BuildConfig
-import com.mtg.app.voicechanger.media.ImportAudioFlow
 import com.mtg.app.voicechanger.R
 import com.mtg.app.voicechanger.base.BaseFragment
 import com.mtg.app.voicechanger.databinding.FragmentRecordBinding
+import com.mtg.app.voicechanger.media.ImportAudioFlow
 import com.mtg.app.voicechanger.utils.ActionUtils
 import com.mtg.app.voicechanger.utils.CommonUtils
 import com.mtg.app.voicechanger.utils.EventLogger
@@ -66,6 +70,14 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
         binding.btnRecord.setOnClickListener {
             EventLogger.getInstance()?.logEvent("click_main_record&change")
             callback?.onRecord()
+
+            AdmobManager.getInstance().showInterstitial(requireActivity(), AdCache.getInstance().interRecord, object : AdCallback() {
+                override fun onAdClosed() {
+                    super.onAdClosed()
+                    AdCache.getInstance().interRecord = null
+                }
+            })
+
         }
         binding.btnDrawer.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
@@ -87,6 +99,12 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
                 R.anim.anim_right_left_1,
                 R.anim.anim_right_left_2
             )
+            AdmobManager.getInstance().showInterstitial(requireActivity(), AdCache.getInstance().interOpenEditSound, object : AdCallback() {
+                override fun onAdClosed() {
+                    super.onAdClosed()
+                    AdCache.getInstance().interOpenEditSound = null
+                }
+            })
         }
         binding.btnMyAudio.setOnClickListener {
             EventLogger.getInstance()?.logEvent("click_my_works")
@@ -95,6 +113,12 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
                 R.anim.anim_right_left_1,
                 R.anim.anim_right_left_2
             )
+            AdmobManager.getInstance().showInterstitial(requireActivity(), AdCache.getInstance().interOpenMyWorks, object : AdCallback() {
+                override fun onAdClosed() {
+                    super.onAdClosed()
+                    AdCache.getInstance().interOpenMyWorks = null
+                }
+            })
         }
 
         binding.btnGuide.setOnClickListener {
@@ -188,6 +212,41 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(FragmentRecordBinding
         }
     }
 
+    private fun loadInterAds() {
+        if (AdCache.getInstance().interRecord == null) {
+            AdmobManager.getInstance()
+                .loadInterAds(requireActivity(), BuildConfig.inter_record, object : AdCallback() {
+                    override fun onResultInterstitialAd(interstitialAd: InterstitialAd?) {
+                        super.onResultInterstitialAd(interstitialAd)
+                        AdCache.getInstance().interRecord = interstitialAd
+                    }
+                })
+        }
+        if (AdCache.getInstance().interOpenEditSound == null) {
+            AdmobManager.getInstance()
+                .loadInterAds(requireActivity(), BuildConfig.inter_edit_sound, object : AdCallback() {
+                    override fun onResultInterstitialAd(interstitialAd: InterstitialAd?) {
+                        super.onResultInterstitialAd(interstitialAd)
+                        AdCache.getInstance().interOpenEditSound = interstitialAd
+                    }
+                })
+        }
+        if (AdCache.getInstance().interOpenMyWorks == null) {
+            AdmobManager.getInstance()
+                .loadInterAds(requireActivity(), BuildConfig.inter_my_works, object : AdCallback() {
+                    override fun onResultInterstitialAd(interstitialAd: InterstitialAd?) {
+                        super.onResultInterstitialAd(interstitialAd)
+                        AdCache.getInstance().interOpenMyWorks = interstitialAd
+                    }
+                })
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        AppOpenManager.getInstance().hideNativeOrBannerWhenShowOpenApp(requireActivity(), binding.adContainer)
+        loadInterAds()
+    }
 
     interface Callback {
         fun onRecord()
