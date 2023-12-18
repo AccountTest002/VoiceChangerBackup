@@ -55,9 +55,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ct_search_top"
-            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/iv_back_search"
@@ -77,12 +77,13 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
                 android:background="@drawable/bg_radius_16"
-                android:paddingStart="@dimen/_32sdp"
-                android:textSize="@dimen/_11sdp"
-                android:imeOptions="actionDone"
-                android:singleLine="true"
                 android:fontFamily="@font/quicksand_medium"
+                android:imeOptions="actionDone"
+                android:paddingStart="@dimen/_32sdp"
+                android:paddingEnd="@dimen/_30sdp"
+                android:singleLine="true"
                 android:textColor="#303030"
+                android:textSize="@dimen/_11sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_back_search"
