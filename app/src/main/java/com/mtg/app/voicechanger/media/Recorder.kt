@@ -13,27 +13,28 @@ import com.mtg.app.voicechanger.utils.constant.Constants.TAG
 import java.io.IOException
 
 class Recorder(context: Context) : RecorderListener {
-    private var recorder: MediaRecorder?
-    var path: String?
+    private var recorder: MediaRecorder? = null
+    var path: String? = null
         private set
-    private var startTime: Long
-    var isRecording: Boolean
+    private var startTime: Long = 0
+    private var isRecording: Boolean = false
 
     init {
         path = context.let { FileUtils.getTempRecordingFilePath(it) }
         Log.d(TAG, "Recorder: create $path")
-        recorder = MediaRecorder()
-        recorder?.run {
-            setAudioSource(MediaRecorder.AudioSource.VOICE_RECOGNITION)
+        initializeMediaRecorder()
+    }
+
+    private fun initializeMediaRecorder() {
+        recorder = MediaRecorder().apply {
+            setAudioSource(MediaRecorder.AudioSource.MIC)
             setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
             setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
             setAudioChannels(2)
             setAudioEncodingBitRate(320000)
             setAudioSamplingRate(44100)
+            setOutputFile(path)
         }
-        recorder!!.setOutputFile(path)
-        startTime = 0
-        isRecording = false
     }
 
     override fun start() {
@@ -64,6 +65,7 @@ class Recorder(context: Context) : RecorderListener {
             recorder!!.release()
             startTime = 0
             isRecording = false
+            initializeMediaRecorder()
             Log.d(TAG, "Recorder: stop")
         }
     }
