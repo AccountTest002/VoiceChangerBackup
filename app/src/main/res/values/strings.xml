@@ -3,6 +3,8 @@
 
     <string name="facebook_app_id" translatable="false">658479892893626</string>
     <string name="facebook_client_token" translatable="false">4581f4e98590e6488d30a686ee373133</string>
+    <string name="txt_voice" translatable="false">Voice</string>
+    <string name="txt_changer" translatable="false">Changer</string>
     <string name="text_on_boarding_1">Change voice to funny sounds</string>
     <string name="text_on_boarding_2">Voice converted to loudspeaker</string>
     <string name="text_on_boarding_3">Chipmunk &amp; robot sounds</string>
