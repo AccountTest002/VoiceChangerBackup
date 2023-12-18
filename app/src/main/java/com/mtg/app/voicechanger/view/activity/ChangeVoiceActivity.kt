@@ -213,7 +213,7 @@ class ChangeVoiceActivity :
 
             binding.layoutPlayer.root.visibility = View.INVISIBLE
             binding.layoutLoading.root.visibility = View.VISIBLE
-            binding.layoutLoading.txtProcessing.setText(R.string.process_error)
+//            binding.layoutLoading.txtProcessing.setText(R.string.process_error)
             binding.layoutLoading.txtProcessing.setTextColor(resources.getColor(R.color.white))
             binding.btnSave.isEnabled = false
         } else {
@@ -404,7 +404,7 @@ class ChangeVoiceActivity :
                         pausePlayer()
                     }
 
-                    binding.layoutLoading.progressProcessing.progress = 0f.roundToInt()
+//                    binding.layoutLoading.progressProcessing.progress = 0f.roundToInt()
                     if (isCreatedCustomEffectFragment) {
                         val fragment = listFragment[1]
                         if (fragment is CustomEffectFragment) {
@@ -417,7 +417,7 @@ class ChangeVoiceActivity :
 
             override fun onProgress(v: Float) {
                 myScop.launch(Dispatchers.Main) {
-                    binding.layoutLoading.progressProcessing.progress = (v * 10).roundToInt()
+//                    binding.layoutLoading.progressProcessing.progress = (v * 10).roundToInt()
                 }
             }
         })

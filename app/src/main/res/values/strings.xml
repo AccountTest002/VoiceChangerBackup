@@ -43,7 +43,7 @@
     <string name="record_amp_changer"><![CDATA[Record & Changer]]></string>
     <string name="cancel">Cancel</string>
     <string name="dialog_request_permission"><![CDATA[If you reject permission, you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]]]></string>
-    <string name="process_error">Error processing. Please try again</string>
+    <string name="process_error">In progress, please wait a moment.</string>
     <string name="open_file_to_change_voice">Open file to change voice</string>
     <string name="sound_effect">Edit Sounds</string>
     <string name="my_works">My Works</string>
@@ -111,10 +111,11 @@
     <string name="voice">Voice</string>
     <string name="changer">Changer</string>
 
-    <string name="zero_time">00:00:00</string>
-    <string name="play_time">00:00</string>
+    <string name="zero_time" translatable="false">00:00:00</string>
+    <string name="play_time" translatable="false">00:00</string>
     <string name="rate_us">Rate</string>
     <string name="privacy">Privacy Policy</string>
     <string name="feedback_us">Feedback</string>
     <string name="share">Share App</string>
+    <string name="loading2">Loading...</string>
 </resources>
